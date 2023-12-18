@@ -19,4 +19,14 @@ router.route("/add").post((req, res) => {
     });
 });
 
+// fetch all users
+router.route("/").get((req, res) => {
+    Book.find().then((books) => {
+        res.json(books);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    });
+});
+
 export default router;
