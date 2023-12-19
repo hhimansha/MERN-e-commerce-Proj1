@@ -5,7 +5,7 @@ const Book = require("../models/bookModel");
 //@route GET /api/books
 //@access public
 const getBooks = asyncHandler(async(req,res) => {
-    const books = Book.find();
+    const books = await Book.find();
     res.status(200).json(books);
 });
 
@@ -19,7 +19,14 @@ const createBook = asyncHandler(async(req,res) => {
         res.status(400);
         throw new Error("All the fields are required!");
     }
-    res.status(201).json({message : "Create a book"});
+
+    const book = await Book.create({
+        title,
+        author,
+        publishYear,
+    });
+
+    res.status(201).json(book);
 });
 
 //@desc Get a book
