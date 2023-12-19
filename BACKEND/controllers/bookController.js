@@ -46,7 +46,18 @@ const getBook = asyncHandler(async(req,res) => {
 //@route PUT /api/books/:id
 //@access public
 const updateBook = asyncHandler(async(req,res) => {
-    res.status(200).json({message : `Update a book ${req.params.id}`});
+    const book = await Book.findById(req.params.id);
+    if(!book){
+        res.status(404);
+        throw new Error("Book not found");
+    }
+
+    const updatedBook =  await Book.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true}
+    );
+    res.status(200).json(updatedBook);
 });
 
 //@desc Delete a book
