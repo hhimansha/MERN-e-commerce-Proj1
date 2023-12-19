@@ -10,6 +10,12 @@ const getBooks = (req,res) => {
 //@route POST /api/books
 //@access public
 const createBook = (req,res) => {
+    console.log("This is the body : ", req.body);
+    const {title, author, publishYear} = req.body;
+    if(!title || !author || !publishYear){
+        res.status(400);
+        throw new Error("All the fields are required!");
+    }
     res.status(201).json({message : "Create a book"});
 }
 
