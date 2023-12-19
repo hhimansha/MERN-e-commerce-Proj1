@@ -1,30 +1,27 @@
 const express = require("express");
 const router = express.Router();
+const {
+    getBooks,
+    getBook,
+    createBook,
+    updateBook,
+    deleteBook
+    } = require("../controllers/bookController")
 
 //setup route for get all books
-router.route("/").get((req,res) => {
-    res.status(200).json({message : "Get all books"});
-})
+router.route("/").get(getBooks)
 
 //setup route for get a specific book
-router.route("/:id").get((req,res) => {
-    res.status(200).json({message : `Get book for ${req.params.id}`});
-})
+router.route("/:id").get(getBook)
 
 //setup route for create a book
-router.route("/").post((req,res) => {
-    res.status(200).json({message : "post a book"});
-})
+router.route("/").post(createBook)
 
 //setup route for update a book
-router.route("/:id").put((req,res) => {
-    res.status(200).json({message : `Update a book ${req.params.id}`});
-})
+router.route("/:id").put(updateBook)
 
 //setup route for delete a book
-router.route("/:id").delete((req,res) => {
-    res.status(200).json({message : `Delete a book ${req.params.id}`});
-})
+router.route("/:id").delete(deleteBook)
 
 //export the router
 module.exports = router;
