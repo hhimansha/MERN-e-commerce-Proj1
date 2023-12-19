@@ -64,7 +64,14 @@ const updateBook = asyncHandler(async(req,res) => {
 //@route DELETE /api/books/:id
 //@access public
 const deleteBook = asyncHandler(async(req,res) => {
-    res.status(200).json({message : `Delete a book ${req.params.id}`});
+    const book = await Book.findById(req.params.id);
+    if(!book){
+        res.status(404);
+        throw new Error("Book not found");
+    }
+
+    await Book.remove();
+    res.status(200).json(book);
 });
 
 module.exports = {getBook, getBooks, createBook, updateBook, deleteBook};
