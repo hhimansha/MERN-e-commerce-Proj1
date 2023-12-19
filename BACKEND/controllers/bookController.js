@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Book = require("../models/bookModel");
+const { error } = require("console");
 
 //@desc Get all books
 //@route GET /api/books
@@ -33,7 +34,12 @@ const createBook = asyncHandler(async(req,res) => {
 //@route GET /api/books/:id
 //@access public
 const getBook = asyncHandler(async(req,res) => {
-    res.status(200).json({message : `Get book for ${req.params.id}`});
+    const book = await Book.findById(req.params.id);
+    if(!book){
+        res.status(404);
+        throw new Error("Book not found");
+    }
+    res.status(200).json(book);
 });
 
 //@desc Update a book
