@@ -14,6 +14,18 @@ const bookSchema = mongoose.Schema(
       type: Number,
       required: [true, "Please add the publish year"],
     },
+    imageSrc: {
+      type: String,
+      required: [true, "Please add the image"],
+    },
+    description: {
+      type: String,
+      required: [true, "Please add the description"],
+    },
+    price: {
+      type: Number,
+      required: [true, "Please add the  price"],
+    },
   },
   {
     timestamps: true,
