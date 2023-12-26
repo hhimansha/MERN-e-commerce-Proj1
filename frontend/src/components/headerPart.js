@@ -7,6 +7,9 @@ function HeaderPart() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <nav className="navbar bg-body-tertiary">
                 <div className="container-fluid">
+                <h1 class="text-red-500">
+                    Hello world!
+                </h1>
                     <Link to="/" className="navbar-brand">
                         <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />
                     </Link>
