@@ -16,10 +16,10 @@ function HeaderPart() {
                     </form>
                     <div className="login-Section">
                         <Link to="/" className="navbar-brand">
-                            Login
+                            <button type="button" class="btn btn-outline-warning">Login</button>
                         </Link>
                         <Link to="/" className="navbar-brand">
-                            Register
+                            <button type="button" class="btn btn-warning">Register</button>
                         </Link>
                     </div>
                     
