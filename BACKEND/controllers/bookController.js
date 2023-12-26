@@ -16,7 +16,7 @@ const getBooks = asyncHandler(async(req,res) => {
 const createBook = asyncHandler(async(req,res) => {
     console.log("This is the body : ", req.body);
     const {title, author, publishYear, imageSrc, description, price} = req.body;
-    if(!title || !author || !publishYear){
+    if(!title || !author || !publishYear || !imageSrc || !description || !price){
         res.status(400);
         throw new Error("All the fields are required!");
     }
