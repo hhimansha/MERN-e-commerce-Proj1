@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import img1 from './images/headerLogo.png';
+import img2 from './images/hero.jpg';
 
 function HeaderPart() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <nav className="navbar bg-body-tertiary">
-                <div className="container-fluid">
-                <h1 class="text-red-500">
-                    Hello world!
-                </h1>
+            <nav className="flex center">
+                <div className="flex items-center">
+            
                     <Link to="/" className="navbar-brand">
                         <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />
                     </Link>
@@ -30,8 +29,10 @@ function HeaderPart() {
 
                 </div>
             </nav>
+            <img src={img2} alt="Logo" className="w-100" />
 
         </nav>
+        
     );
 }
 
