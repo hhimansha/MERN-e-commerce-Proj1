@@ -10,20 +10,24 @@ function HeaderPart() {
                     <Link to="/" className="navbar-brand">
                         <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />
                     </Link>
+                    <form className="d-flex" role="search">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <div className="login-Section">
+                        <Link to="/" className="navbar-brand">
+                            Login
+                        </Link>
+                        <Link to="/" className="navbar-brand">
+                            Register
+                        </Link>
+                    </div>
+                    
+
+
                 </div>
             </nav>
-            <div className="container-fluid">
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link active">Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/add" className="nav-link active">Add student</Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
         </nav>
     );
 }
