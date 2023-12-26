@@ -24,11 +24,27 @@ function HeaderPart() {
                             <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border border-black focus:outline-none bg-black">Register</button>
                         </Link>
                     </div>
-                    
-
-
                 </div>
+                
             </nav>
+
+            <div className="flex items-center justify-center space-x-10 mx-auto bg-black text-white">
+                <Link to="/" className="navbar-brand hover:text-ff8400">
+                    Home
+                </Link>
+                <Link to="/about" className="navbar-brand hover:text-ff8400">
+                    Magazines
+                </Link>
+                <Link to="/services" className="navbar-brand hover:text-ff8400">
+                    Books
+                </Link>
+                <Link to="/contact" className="navbar-brand hover:text-ff8400">
+                    Audiobooks
+                </Link>
+                <Link to="/contact" className="navbar-brand hover:text-ff8400">
+                    Pages
+                </Link>
+                </div>
             <img src={img2} alt="Logo" className="w-100" />
 
         </nav>
