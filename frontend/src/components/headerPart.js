@@ -7,7 +7,7 @@ function HeaderPart() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <nav className="flex center">
-                <div className="flex items-center">
+                <div className="flex items-center space-x-80 mx-auto">
             
                     <Link to="/" className="navbar-brand">
                         <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />
@@ -18,10 +18,10 @@ function HeaderPart() {
                     </form>
                     <div className="login-Section">
                         <Link to="/" className="navbar-brand">
-                            <button type="button" class="btn btn-outline-warning">Login</button>
+                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-black hover:border-black">Login</button>
                         </Link>
-                        <Link to="/" className="navbar-brand">
-                            <button type="button" class="btn btn-warning">Register</button>
+                        <Link to="/" className="mx-2">
+                            <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border border-black focus:outline-none bg-black">Register</button>
                         </Link>
                     </div>
                     
