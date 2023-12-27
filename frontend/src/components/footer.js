@@ -13,7 +13,7 @@ function Footer() {
             <i className="fas fa-map-marker-alt text-orange-500 text-3xl"></i>
             <div className="cta-text ml-4">
               <h4 className="text-white text-lg font-semibold">Find us</h4>
-              <span className="text-gray-500">1010 Avenue, sw 54321, chandigarh</span>
+              <span className="text-gray-500">Colombo, western province, sri lanka</span>
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@ function Footer() {
             <i className="fas fa-phone text-orange-500 text-3xl"></i>
             <div className="cta-text ml-4">
               <h4 className="text-white text-lg font-semibold">Call us</h4>
-              <span className="text-gray-500">9876543210 0</span>
+              <span className="text-gray-500">0712528831</span>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ function Footer() {
             <i className="far fa-envelope-open text-orange-500 text-3xl"></i>
             <div className="cta-text ml-4">
               <h4 className="text-white text-lg font-semibold">Mail us</h4>
-              <span className="text-gray-500">mail@info.com</span>
+              <span className="text-gray-500">himansha.official@gmail.com</span>
             </div>
           </div>
         </div>
@@ -72,9 +72,20 @@ function Footer() {
                 <span className="text-gray-500 hover:text-orange-500">Home</span>
               </li>
               <li>
-                <span className="text-gray-500 hover:text-orange-500">about</span>
+                <span className="text-gray-500 hover:text-orange-500">About us</span>
               </li>
-              {/* Add more links here */}
+              <li>
+                <span className="text-gray-500 hover:text-orange-500">Magazines</span>
+              </li>
+              <li>
+                <span className="text-gray-500 hover:text-orange-500">Books</span>
+              </li>
+              <li>
+                <span className="text-gray-500 hover:text-orange-500">Audiobooks</span>
+              </li>
+              <li>
+                <span className="text-gray-500 hover:text-orange-500">Contact</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -109,13 +120,13 @@ function Footer() {
         <div className="text-center md:text-left mb-4 md:mb-0">
           <div className="copyright-text">
             <p className="text-gray-500">
-              Copyright &copy; 2018, All Right Reserved Anup
+              Copyright &copy; 2023, All Right Reserved by Haritha
             </p>
           </div>
         </div>
         <div className="text-right grid">
             <div className="footer-menu">
-                <ul className="flex space-x-4">
+                <ul className="flex space-x-4 justify-end">
                 <li><span className="text-gray-500 hover:text-orange-500">Home</span></li>
                 <li><span className="text-gray-500 hover:text-orange-500">Terms</span></li>
                 <li><span className="text-gray-500 hover:text-orange-500">Privacy</span></li>
