@@ -6,6 +6,7 @@ function home() {
     return (
         <img src={img2} alt="Logo" className="w-100" />
         
+        
     );
 }
 

@@ -20,21 +20,21 @@ function HeaderPart() {
                     </form>
                     <div className="login-Section">
                         <Link to="/" className="navbar-brand">
-                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-black hover:border-black">Login</button>
+                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-black hover:border-black">Log In</button>
                         </Link>
                         <Link to="/" className="mx-2">
-                            <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border border-black focus:outline-none bg-black">Sign Up</button>
+                            <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
                         </Link>
                     </div>
                 </div>
                 
             </nav>
 
-            <div className="flex items-center justify-center space-x-10 mx-auto bg-black text-white p-2">
-                <Link to="/" className="navbar-brand hover:text-ff8400">
+            <div className="flex items-center justify-center space-x-10 mx-auto bg-black text-white p-4 text-lg ">
+                <Link to="/" className="transition duration-900 ease-in-out hover:underline">
                     Home
                 </Link>
-                <Link to="/about" className="navbar-brand hover:text-ff8400">
+                <Link to="/about" className="navbar-brand hover:text-black hover:bg-primary">
                     Magazines
                 </Link>
                 <Link to="/services" className="navbar-brand hover:text-ff8400">
