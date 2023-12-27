@@ -1,13 +1,16 @@
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import HeaderPart from "./components/headerPart";
+import Home from "./components/home";
 
 function App() {
   return (
     <Router>
       <div>
         <HeaderPart/>
+        <Home/>
       </div>
+      
     </Router>
   );
 }
