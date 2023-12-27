@@ -20,7 +20,7 @@ function HeaderPart() {
                     </form>
                     <div className="login-Section">
                         <Link to="/" className="navbar-brand">
-                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-black hover:border-black">Log In</button>
+                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-grey hover:border-black">Log In</button>
                         </Link>
                         <Link to="/" className="mx-2">
                             <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
@@ -30,7 +30,7 @@ function HeaderPart() {
                 
             </nav>
 
-            <div className="flex items-center justify-center space-x-10 mx-auto bg-black text-white p-4 text-lg ">
+            <div className="flex items-center justify-center space-x-10 mx-auto bg-grey text-white p-4 text-lg ">
                 <Link to="/" className="transition duration-900 ease-in-out hover:underline">
                     Home
                 </Link>

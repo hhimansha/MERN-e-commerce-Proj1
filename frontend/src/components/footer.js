@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import img1 from './images/headerLogo.png';
+import img1 from './images/headerLogoOrange.png';
 
 function Footer() {
   return (
-    <footer className="footer-section bg-black">
+    <footer className="footer-section bg-grey">
   <div className="mx-auto items-center w-4/5">
     <div className="footer-cta pt-5 pb-5 border-b border-gray-700">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -93,7 +93,7 @@ function Footer() {
                 <input
                   type="text"
                   placeholder="Email Address"
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 text-white"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 text-white rounded-full"
                 />
                 <button className="absolute right-0 bg-orange-500 px-4 py-2 border border-orange-500 top-0">
                   <i className="fab fa-telegram-plane text-white"></i>
@@ -104,7 +104,7 @@ function Footer() {
         </div>
       </div>
     </div>
-    <div className="copyright-area pt-5 pb-5">
+    <div className="copyright-area pt-5 pb-5  grid">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="text-center md:text-left mb-4 md:mb-0">
           <div className="copyright-text">
@@ -113,27 +113,18 @@ function Footer() {
             </p>
           </div>
         </div>
-        <div className="text-center md:text-right">
-          <div className="footer-menu">
-            <ul>
-              <li>
-                <span className="text-gray-500 hover:text-orange-500">Home</span>
-              </li>
-              <li>
-                <span className="text-gray-500 hover:text-orange-500">Terms</span>
-              </li>
-              <li>
-                <span className="text-gray-500 hover:text-orange-500">Privacy</span>
-              </li>
-              <li>
-                <span className="text-gray-500 hover:text-orange-500">Policy</span>
-              </li>
-              <li>
-                <span className="text-gray-500 hover:text-orange-500">Contact</span>
-              </li>
-            </ul>
-          </div>
+        <div className="text-right grid">
+            <div className="footer-menu">
+                <ul className="flex space-x-4">
+                <li><span className="text-gray-500 hover:text-orange-500">Home</span></li>
+                <li><span className="text-gray-500 hover:text-orange-500">Terms</span></li>
+                <li><span className="text-gray-500 hover:text-orange-500">Privacy</span></li>
+                <li><span className="text-gray-500 hover:text-orange-500">Policy</span></li>
+                <li><span className="text-gray-500 hover:text-orange-500">Contact</span></li>
+                </ul>
+            </div>
         </div>
+
       </div>
     </div>
   </div>
