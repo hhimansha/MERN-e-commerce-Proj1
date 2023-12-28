@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import HeaderPart from "./components/headerPart";
 import Home from "./components/home";
 import Footer from "./components/footer";
+import SignUp from "./components/signUp";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <div>
         <HeaderPart/>
         <Home/>
+        <SignUp/>
         <Footer/>
+        
       </div>
       
     </Router>

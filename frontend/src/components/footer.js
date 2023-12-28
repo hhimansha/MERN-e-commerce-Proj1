@@ -120,7 +120,7 @@ function Footer() {
         <div className="text-center md:text-left mb-4 md:mb-0">
           <div className="copyright-text">
             <p className="text-gray-500">
-              Copyright &copy; 2023, All Right Reserved by Haritha
+              Copyright &copy; 2023, All Right Reserved
             </p>
           </div>
         </div>
