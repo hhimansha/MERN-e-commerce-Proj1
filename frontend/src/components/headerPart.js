@@ -10,9 +10,9 @@ function HeaderPart() {
                 <div className="flex items-center mx-auto">
             
                     <Link to="/" className="navbar-brand">
-                        <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />
+                        <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top " />
                     </Link>
-                    <form className="d-flex items-center" role="search">
+                    <form className="d-flex items-center mx-60" role="search">
                         <input className="p-2  border border-gray-300 rounded-full w-80 pl-5" type="search" placeholder="Search your book here" aria-label="Search" />
                         <button type="submit">
                             <img width="30"src="https://img.icons8.com/ios/100/search--v1.png" alt="search--v1"/>

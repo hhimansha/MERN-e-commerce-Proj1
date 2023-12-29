@@ -11,9 +11,9 @@ function App() {
     <Router>
       <div>
         <HeaderPart/>
-        
+        <Home/>
         <SignUp/>
-        <Login/>
+        
         <Footer/>
         
       </div>
