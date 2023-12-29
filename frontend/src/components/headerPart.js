@@ -31,19 +31,19 @@ function HeaderPart() {
             </nav>
 
             <div className="flex items-center justify-center mx-auto bg-grey text-white text-lg ">
-                <Link to="/" className="navbar-brand hover:bg-primary p-2 px-6">
+                <Link to="/" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
                     Home
                 </Link>
-                <Link to="/about" className="navbar-brand hover:bg-primary p-2 px-6">
+                <Link to="/about" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
                     Magazines
                 </Link>
-                <Link to="/services" className="navbar-brand hover:bg-primary p-2 px-6">
+                <Link to="/services" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
                     Books
                 </Link>
-                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6">
+                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
                     Audiobooks
                 </Link>
-                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6">
+                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
                     Pages
                 </Link>
                 </div>

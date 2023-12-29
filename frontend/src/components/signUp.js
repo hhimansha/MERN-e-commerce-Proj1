@@ -23,7 +23,10 @@ function signUp(){
                     </button>
                 </div>
                     <div className="LoginLink text-center text-gray-500 m-4">
-                        Already have an account? <span className="text-primary">Log in here</span> 
+                        Already have an account?
+                        <Link to="/login">
+                        <span className="text-primary">Log in here</span> 
+                        </Link> 
                     </div>
                 
             </form>
