@@ -7,7 +7,7 @@ function HeaderPart() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <nav className="flex center py-3">
-                <div className="flex items-center space-x-60 mx-auto">
+                <div className="flex items-center mx-auto">
             
                     <Link to="/" className="navbar-brand">
                         <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />

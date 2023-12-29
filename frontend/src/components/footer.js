@@ -69,7 +69,7 @@ function Footer() {
             </div>
             <ul>
               <li>
-                <span className="text-gray-500 hover:text-orange-500">Home</span>
+                <span className="text-grey-500 hover:text-orange-500">Home</span>
               </li>
               <li>
                 <span className="text-gray-500 hover:text-orange-500">About us</span>

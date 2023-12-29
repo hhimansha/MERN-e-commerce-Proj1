@@ -4,7 +4,7 @@ import img2 from './images/hero.jpg';
 
 function home() {
     return (
-        <img src={img2} alt="Logo" className="w-100" />
+        <img src={img2} alt="Logo" className="max-w-full" />
         
         
     );
