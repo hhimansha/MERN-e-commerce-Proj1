@@ -7,9 +7,9 @@ function login(){
             <h1 className="text-4xl text-black text-center mb-4">Log In</h1>
             <form className="w-96 grid">
                 
-                <label className="text-grey">Email Address*</label>
+                <label className="text-gray-500">Email Address*</label>
                 <input type="email" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your email here"></input>
-                <label className="text-grey">Password*</label>
+                <label className="text-gray-500">Password*</label>
                 <input type="password" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your password here"></input>
                 <div className="btn section flex m-4 ml-0">
                     <button
