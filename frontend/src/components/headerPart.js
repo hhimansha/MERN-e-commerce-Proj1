@@ -10,12 +10,12 @@ function HeaderPart() {
                 <div className="flex items-center mx-auto">
             
                     <Link to="/" className="navbar-brand">
-                        <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top " />
+                        <img src={img1} alt="Logo" width="170"  className="d-inline-block align-text-top" />
                     </Link>
                     <form className="d-flex items-center mx-60" role="search">
                         <input className="p-2  border border-gray-300 rounded-full w-80 pl-5" type="search" placeholder="Search your book here" aria-label="Search" />
                         <button type="submit">
-                            <img width="30"src="https://img.icons8.com/ios/100/search--v1.png" alt="search--v1"/>
+                            <img width="30"src="https://img.icons8.com/ios/100/search--v1.png" alt="search--v1" className=" -mb-2.5 ml-2"/>
                         </button>
                     </form>
                     <div className="login-Section">
@@ -31,19 +31,19 @@ function HeaderPart() {
             </nav>
 
             <div className="flex items-center justify-center mx-auto bg-grey text-white text-lg ">
-                <Link to="/" className="navbar-brand hover:bg-primary p-2 px-4">
+                <Link to="/" className="navbar-brand hover:bg-primary p-2 px-6">
                     Home
                 </Link>
-                <Link to="/about" className="navbar-brand hover:bg-primary p-2 px-4">
+                <Link to="/about" className="navbar-brand hover:bg-primary p-2 px-6">
                     Magazines
                 </Link>
-                <Link to="/services" className="navbar-brand hover:bg-primary p-2 px-4">
+                <Link to="/services" className="navbar-brand hover:bg-primary p-2 px-6">
                     Books
                 </Link>
-                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-4">
+                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6">
                     Audiobooks
                 </Link>
-                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-4">
+                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6">
                     Pages
                 </Link>
                 </div>
