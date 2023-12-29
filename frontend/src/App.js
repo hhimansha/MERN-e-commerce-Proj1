@@ -4,6 +4,7 @@ import HeaderPart from "./components/headerPart";
 import Home from "./components/home";
 import Footer from "./components/footer";
 import SignUp from "./components/signUp";
+import Login from "./components/login";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <div>
         <HeaderPart/>
         
-        <SignUp/>
+       
+        <Login/>
         <Footer/>
         
       </div>

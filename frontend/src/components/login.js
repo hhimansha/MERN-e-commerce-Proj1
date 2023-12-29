@@ -1,22 +1,19 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-function signUp(){
+function login(){
     return(
         <div className="grid justify-center bg-grey-light mx-auto my-20 p-5 rounded-3xl max-w-lg">
-            <h1 className="text-4xl text-black text-center mb-4">Sign Up</h1>
+            <h1 className="text-4xl text-black text-center mb-4">Log In</h1>
             <form className="w-96 grid">
-                <label className="text-grey">First Name</label>
-                <input type="text" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your first name here"></input>
-                <label className="text-grey">Last Name</label>
-                <input type="text" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your last name here"></input>
+                
                 <label className="text-grey">Email Address*</label>
                 <input type="email" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your email here"></input>
                 <label className="text-grey">Password*</label>
                 <input type="password" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your password here"></input>
                 <div className="btn section flex m-4 ml-0">
                 <button type="clear" className="px-5 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-grey hover:border-black">Clear</button>
-                <button type="submit" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary ml-3">Sign Up</button>
+                <button type="submit" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary ml-3">Log In</button>
                 </div>
                 
             </form>
@@ -24,4 +21,4 @@ function signUp(){
     );
 }
 
-export default signUp;
+export default login;
