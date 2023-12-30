@@ -66,15 +66,16 @@ const updateBook = asyncHandler(async(req,res) => {
 //@desc Delete a book
 //@route DELETE /api/books/:id
 //@access public
-const deleteBook = asyncHandler(async(req,res) => {
+const deleteBook = asyncHandler(async (req, res) => {
     const book = await Book.findById(req.params.id);
-    if(!book){
+    if (!book) {
         res.status(404);
         throw new Error("Book not found");
     }
 
-    await Book.remove();
+    await book.deleteOne(); // Use deleteOne to remove the document
     res.status(200).json(book);
 });
+
 
 module.exports = {getBook, getBooks, createBook, updateBook, deleteBook};
