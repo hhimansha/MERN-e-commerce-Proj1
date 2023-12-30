@@ -7,7 +7,7 @@ function Home() {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const response = await fetch('http://localhost:4000/api/books/');
+            const response = await fetch('/api/books/');
             const json = await response.json();
 
             if (response.ok) {
@@ -21,11 +21,11 @@ function Home() {
     return (
         <>
             <img src={img2} alt="Logo" className="max-w-full" />
-            <div className="books">
+            <div className="books text-black">
                 {books && books.map((book) => (
-                    <p key={book._id}>{book.author}</p>
+                    <h1 key={book._id}>{book.title}</h1>
                 ))}
-            </div>
+                </div> 
         </>
     );
 }

@@ -1,4 +1,4 @@
-{
+{ "proxy": "http://localhost:9092",
   "name": "book-store-backend",
   "version": "1.0.0",
   "description": "",

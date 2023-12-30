@@ -7,6 +7,7 @@ const cors = require('cors');
 
 connectDB();
 const app = express();
+app.use(cors());
 
 // Use process.env.PORT or default to 9092 if not specified
 const port = process.env.PORT || 9092;

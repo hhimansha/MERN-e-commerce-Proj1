@@ -13,7 +13,7 @@ function App() {
       <div>
         <HeaderPart/>
         <Home/>
-        <SignUp/>
+        
         <Footer/>
       </div>
     </Router>
