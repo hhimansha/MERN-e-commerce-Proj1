@@ -1,6 +1,6 @@
 const BookDetails = ({ book }) => {
     return(
-        <div className="fetchAllBooks flex">
+        <div className="fetchAllBooks grid">
             <div className="books text-black">
             
                     <div className="max-w-sm bg-grey rounded-lg shadow dark:bg-grey-light">
