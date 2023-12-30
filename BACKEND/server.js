@@ -3,6 +3,7 @@ const errorHandler = require("./middleware/errorHandler");
 const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const connectDB = require("./config/dbConnect");
+const cors = require('cors');
 
 connectDB();
 const app = express();
