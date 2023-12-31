@@ -106,9 +106,7 @@ function Footer() {
                   placeholder="Email Address"
                   className="w-full px-4 py-2 bg-gray-800 border border-gray-700 text-white rounded-full"
                 />
-                <button className="absolute right-0 bg-orange-500 px-4 py-2 border border-orange-500 top-0">
-                  <i className="fab fa-telegram-plane text-white"></i>
-                </button>
+
               </form>
             </div>
           </div>
