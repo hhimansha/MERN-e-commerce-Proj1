@@ -20,7 +20,7 @@ function Home() {
     return (
         <>
             <img src={img2} alt="Logo" className="max-w-full" />
-            <div className="books">
+            <div className="books flex justify-center flex-wrap w-4/5">
                 {books && books.map((book) => (
                     <BookDetails key={books._id} book={book}/>
                 ))}
