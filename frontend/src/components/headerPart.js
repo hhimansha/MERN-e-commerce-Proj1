@@ -20,7 +20,7 @@ function HeaderPart() {
                     </form>
                     <div className="login-Section">
                         <Link to="/login" className="navbar-brand">
-                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-grey hover:border-black">Log In</button>
+                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log In</button>
                         </Link>
                         <Link to="/signup" className="mx-2">
                             <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
@@ -30,20 +30,20 @@ function HeaderPart() {
                 
             </nav>
 
-            <div className="flex items-center justify-center mx-auto bg-grey text-white text-lg ">
-                <Link to="/" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
+            <div className="flex items-center justify-center mx-auto bg-grey text-white text-lg">
+                <Link to="/" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full transition duration-200 ease-in-out">
                     Home
                 </Link>
-                <Link to="/about" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
+                <Link to="/about" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full transition duration-200 ease-in-out">
                     Magazines
                 </Link>
-                <Link to="/services" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
+                <Link to="/services" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full transition duration-200 ease-in-out">
                     Books
                 </Link>
-                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
+                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full transition duration-200 ease-in-out">
                     Audiobooks
                 </Link>
-                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full">
+                <Link to="/contact" className="navbar-brand hover:bg-primary p-2 px-6 rounded-full transition duration-200 ease-in-out">
                     Pages
                 </Link>
                 </div>
