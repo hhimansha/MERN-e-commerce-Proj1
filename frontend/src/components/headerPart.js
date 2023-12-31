@@ -19,10 +19,10 @@ function HeaderPart() {
                         </button>
                     </form>
                     <div className="login-Section">
-                        <Link to="/" className="navbar-brand">
+                        <Link to="/login" className="navbar-brand">
                             <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black hover:text-white hover:bg-grey hover:border-black">Log In</button>
                         </Link>
-                        <Link to="/" className="mx-2">
+                        <Link to="/signup" className="mx-2">
                             <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
                         </Link>
                     </div>

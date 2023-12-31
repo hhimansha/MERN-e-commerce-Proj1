@@ -1,6 +1,6 @@
 // App.js
 import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import HeaderPart from "./components/headerPart";
 import Home from "./components/Home"; // Update import to use uppercase 'Home'
 import Footer from "./components/footer";
@@ -12,8 +12,11 @@ function App() {
     <Router>
       <div>
         <HeaderPart/>
-        <Home/>
-        <SignUp/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
         <Footer/>
       </div>
     </Router>
