@@ -12,6 +12,9 @@ module.exports = {
       textColor: {
         'primary': '#ff8400', // Use the same color code as the 'primary' background color
       },
+      width: {
+        '242': '242px',
+      },
     },
   },
   plugins: [],
