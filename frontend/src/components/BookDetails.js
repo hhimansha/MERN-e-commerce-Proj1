@@ -4,7 +4,7 @@ const BookDetails = ({ book }) => {
             <div className="books text-black m-5">
                 <div className="max-w-sm bg-grey rounded-lg drop-shadow-md dark:bg-grey-light">
                     <a href="#">
-                        <img src={book.imageSrc} alt={book.title} className="rounded-t-lg w-80 h-72"/>
+                        <img src={book.imageSrc} alt={book.title} className="rounded-t-lg w-80 h-72 "/>
                     </a>
                     <div className="p-5">
                         <a href="#">

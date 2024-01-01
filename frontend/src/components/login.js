@@ -22,7 +22,7 @@ function login(){
                 <div className="LoginLink text-center text-gray-500 m-4">
                     New to Verbidise? 
                     <Link to="/signup">
-                    <span className="text-primary">Sign up here</span> 
+                    <span className="text-primary"> Sign up here</span> 
                     </Link>
                 </div>
                 
