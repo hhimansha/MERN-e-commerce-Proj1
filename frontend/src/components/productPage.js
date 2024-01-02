@@ -12,36 +12,7 @@ function productPage(){
                             <img src="https://arena-book-shop.myshopify.com/cdn/shop/products/7_9fbff576-c9e9-4e66-97d9-41df460ec738_540x.jpg?v=1571645141" alt=""
                                 className="object-cover w-full lg:h-full "/>
                         </div>
-                        <div className="flex-wrap hidden md:flex ">
-                            <div className="w-1/2 p-2 sm:w-1/4">
-                                <a href="#"
-                                    className="block border border-blue-300 dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
-                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
-                                        className="object-cover w-full lg:h-20"/>
-                                </a>
-                            </div>
-                            <div className="w-1/2 p-2 sm:w-1/4">
-                                <a href="#"
-                                    className="block border border-transparent dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
-                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
-                                        className="object-cover w-full lg:h-20"/>
-                                </a>
-                            </div>
-                            <div className="w-1/2 p-2 sm:w-1/4">
-                                <a href="#"
-                                    className="block border border-transparent dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
-                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
-                                        className="object-cover w-full lg:h-20"/>
-                                </a>
-                            </div>
-                            <div className="w-1/2 p-2 sm:w-1/4">
-                                <a href="#"
-                                    className="block border border-transparent dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
-                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
-                                        className="object-cover w-full lg:h-20"/>
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div className="w-full px-4 md:w-1/2 ">
