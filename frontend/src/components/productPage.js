@@ -9,7 +9,7 @@ function productPage(){
                 <div className="w-full px-4 md:w-1/2 ">
                     <div className="sticky top-0 z-50 overflow-hidden ">
                         <div className="relative mb-6 lg:mb-10 lg:h-2/4 ">
-                            <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
+                            <img src="https://arena-book-shop.myshopify.com/cdn/shop/products/7_9fbff576-c9e9-4e66-97d9-41df460ec738_540x.jpg?v=1571645141" alt=""
                                 className="object-cover w-full lg:h-full "/>
                         </div>
                         <div className="flex-wrap hidden md:flex ">
@@ -47,7 +47,7 @@ function productPage(){
                 <div className="w-full px-4 md:w-1/2 ">
                     <div className="lg:pl-20">
                         <div className="mb-8 ">
-                            <span className="text-lg font-medium text-rose-500 dark:text-rose-200">New</span>
+                            
                             <h2 className="max-w-xl mt-2 mb-6 text-2xl font-bold dark:text-grey md:text-4xl">
                                 Shoes</h2>
                             <div className="flex items-center mb-6">
@@ -107,7 +107,7 @@ function productPage(){
                                 <span>$1000.99</span>
                                 
                             </p>
-                            <p className="text-green-600 dark:text-green-300 ">7 in stock</p>
+                            
                         </div>
                         
                         <div className="w-32 mb-8 ">
@@ -130,14 +130,14 @@ function productPage(){
                         <div className="flex flex-wrap items-center -mx-4 ">
                             <div className="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
                                 <button
-                                    className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                                    className="flex items-center justify-center w-full p-4 text-base text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">
                                     Add to Cart
                                 </button>
                             </div>
                             <div className="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
                                 <button
-                                    className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
-                                    Add to wishlist
+                                    className="flex items-center justify-center w-full p-4 text-base text-white font-semibold rounded-full border focus:outline-none bg-primary">
+                                    Buy now
                                 </button>
                             </div>
                         </div>
