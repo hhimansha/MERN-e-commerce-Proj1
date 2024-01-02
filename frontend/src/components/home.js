@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img2 from './images/hero.jpg';
 import BookDetails from './BookDetails';
+import Productpage from './productPage';
 
 function Home() {
     const [books, setBooks] = useState(null);
