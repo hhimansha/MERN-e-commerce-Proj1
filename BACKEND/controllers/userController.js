@@ -5,9 +5,7 @@ const bcrypt = require('bcryptjs');
 const userModel = require("../models/userModel");
 const jwt = require('jsonwebtoken');
 
-const createToken = (_id) => {
-    jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
-}
+
 
 
 //@desc register a user
@@ -37,10 +35,10 @@ const registerUser = asyncHandler(async(req,res) => {
         password : hashedPassword,
     });
 
-    //create a token
-    const token = createToken(user._id)
+    
 
     console.log(`User created ${user}`);
+
     if(user) {
         res.status(201).json({_id : user._id, email:user.email});
     }else{
