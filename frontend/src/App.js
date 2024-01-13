@@ -19,7 +19,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/product" element={<Productpage />} />
         </Routes>
-        <Productpage/>
+        
         <Footer/>
       </div>
     </Router>
