@@ -13,6 +13,7 @@ function SignUp(){
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        console.log("Form submitted");
         await signup(firstname, lastname, email, password)
     }
 
@@ -36,6 +37,8 @@ function SignUp(){
                         Sign Up
                     </button>
                 </div>
+
+                {error && <div className="text-red text-center m-2 text-2xl">{error}</div>}
                 
                 <div className="LoginLink text-center text-gray-500 m-4">
                     Already have an account?
