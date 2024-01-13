@@ -1,19 +1,30 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 
-function signUp(){
+function SignUp(){
+    const[firstname, setFName] = useState('')
+    const[lastname, setLName] = useState('')
+    const[email, setEmail] = useState('')
+    const[password, setPassword] = useState('') 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        console.log(firstname, lastname, email, password)
+    }
+
     return(
         <div className="grid justify-center bg-grey-light mx-auto my-20 p-5 rounded-3xl max-w-lg drop-shadow-md">
             <h1 className="text-4xl text-black text-center mb-4">Sign Up</h1>
-            <form className="w-96 grid">
+            <form className="w-96 grid" onSubmit={handleSubmit}>
                 <label className="text-gray-500">First Name</label>
-                <input type="text" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your first name here"></input>
+                <input type="text" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your first name here" onChange={(e) => setFName(e.target.value)} value={firstname}></input>
                 <label className="text-gray-500">Last Name</label>
-                <input type="text" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your last name here"></input>
+                <input type="text" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your last name here" onChange={(e) => setLName(e.target.value)} value={lastname}></input>
                 <label className="text-gray-500">Email Address*</label>
-                <input type="email" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your email here"></input>
+                <input type="email" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your email here" onChange={(e) => setEmail(e.target.value)} value={email}></input>
                 <label className="text-gray-500">Password*</label>
-                <input type="password" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your password here"></input>
+                <input type="password" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your password here" onChange={(e) => setPassword(e.target.value)} value={password}></input>
                 <div className="btn section flex m-4 ml-0">
                     <button
                         type="submit"
@@ -34,4 +45,4 @@ function signUp(){
     );
 }
 
-export default signUp;
+export default SignUp;
