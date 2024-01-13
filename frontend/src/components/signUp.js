@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
 
 function SignUp(){
     const[firstname, setFName] = useState('')
     const[lastname, setLName] = useState('')
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('') 
+    const {signup, error, isLoading} = useSignup()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(firstname, lastname, email, password)
+        await signup(firstname, lastname, email, password)
     }
 
     return(
@@ -33,12 +36,13 @@ function SignUp(){
                         Sign Up
                     </button>
                 </div>
-                    <div className="LoginLink text-center text-gray-500 m-4">
-                        Already have an account?
-                        <Link to="/login">
-                        <span className="text-primary"> Log in here</span> 
-                        </Link> 
-                    </div>
+                
+                <div className="LoginLink text-center text-gray-500 m-4">
+                    Already have an account?
+                    <Link to="/login">
+                    <span className="text-primary"> Log in here</span> 
+                    </Link> 
+                </div>
                 
             </form>
         </div>

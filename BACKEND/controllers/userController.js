@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 //@desc register a user
 //@route POST /api/users/register
 //@access public
-const registerUser = asyncHandler(async (req, res) => {
+const signUpUser = asyncHandler(async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
   if (!firstname || !lastname || !email || !password) {
     res.status(400);
@@ -74,4 +74,4 @@ const currentUser = asyncHandler(async (req, res) => {
   res.json({ message: "Current user" });
 });
 
-module.exports = { registerUser, loginUser, currentUser };
+module.exports = { signUpUser, loginUser, currentUser };
