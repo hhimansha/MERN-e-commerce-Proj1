@@ -38,7 +38,11 @@ function SignUp(){
                     </button>
                 </div>
 
-                {error && <div className="text-red text-center m-2 text-2xl">{error}</div>}
+                {error && (
+                <div className="text-red text-center m-2 text-2xl">
+                    {error}
+                </div>
+        )}
                 
                 <div className="LoginLink text-center text-gray-500 m-4">
                     Already have an account?
