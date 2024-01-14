@@ -1,9 +1,18 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import img1 from './images/headerLogo.png';
+import { useLogout } from "../hooks/useLogout";
 //import img2 from './images/hero.jpg';
 
 function HeaderPart() {
+
+    const {Logout} = useLogout()
+
+    const handleClick = () => {
+        Logout();
+    }
+    
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <nav className="flex center py-3">
@@ -25,6 +34,10 @@ function HeaderPart() {
                         <Link to="/signup" className="mx-2">
                             <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
                         </Link>
+
+                        <div className="mx-2">
+                            <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log Out</button>
+                        </div>
                     </div>
                 </div>
                 
