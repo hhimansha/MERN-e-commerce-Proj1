@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 
 function LogIn(){
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('') 
+    const {login, error, isLoading} = useLogin()
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(email, password)
+        await login(email, password)
     }
 
 
@@ -23,13 +25,20 @@ function LogIn(){
                 <label className="text-gray-500">Password*</label>
                 <input type="password" className="rounded-full p-2 px-5 mb-4 border border-gray-300" placeholder="Enter your password here" onChange={(e) => setPassword(e.target.value)} value={password}></input>
                 <div className="btn section flex m-4 ml-0">
-                    <button
+                    <button disabled={isLoading}
                         type="submit"
                         className="mx-auto px-5 py-2 px-10 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary"
                         >
                         Log In
                     </button>
                 </div>
+
+                {error && (
+                <div className="text-red text-center m-2 text-2xl">
+                    {error}
+                </div>
+                )}
+
                 <div className="LoginLink text-center text-gray-500 m-4">
                     New to Verbidise? 
                     <Link to="/signup">
