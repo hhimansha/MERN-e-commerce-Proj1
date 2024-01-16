@@ -2,11 +2,13 @@ import React from "react";
 import { Link, useLocation } from 'react-router-dom';
 import img1 from './images/headerLogo.png';
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 //import img2 from './images/hero.jpg';
 
 function HeaderPart() {
 
     const {Logout} = useLogout()
+    const {user} = useAuthContext()
 
     const handleClick = () => {
         Logout();
@@ -28,16 +30,19 @@ function HeaderPart() {
                         </button>
                     </form>
                     <div className="login-Section">
-                        <Link to="/login" className="navbar-brand">
-                            <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log In</button>
-                        </Link>
-                        <Link to="/signup" className="mx-2">
-                            <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
-                        </Link>
-
-                        <div className="mx-2">
-                            <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log Out</button>
-                        </div>
+                        {user && (
+                        <><span className="p-5">{user.email}</span><Link to="/" className="mx-2">
+                                <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log Out</button>
+                            </Link></>
+                        )}
+                        {!user && (
+                        <><Link to="/login" className="navbar-brand">
+                                <button type="button" className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log In</button>
+                            </Link><Link to="/signup" className="mx-2">
+                                    <button type="button" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Sign Up</button>
+                            </Link></>
+                        )}
+                        
                     </div>
                 </div>
                 
