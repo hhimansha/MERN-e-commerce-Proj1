@@ -31,7 +31,7 @@ function HeaderPart() {
                     </form>
                     <div className="login-Section">
                         {user && (
-                        <><span className="p-5">{user.email}</span><Link to="/" className="mx-2">
+                        <><span className="p-2 font-semibold text-primary">{user.email.split('@')[0]}</span><Link to="/" className="mx-2">
                                 <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log Out</button>
                             </Link></>
                         )}
