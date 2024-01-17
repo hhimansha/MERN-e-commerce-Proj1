@@ -11,24 +11,21 @@ import Productpage from "./components/productPage";
 import AdminDash from './components/AdminDash';
 
 function App() {
-  const { user } = useAuthContext();
 
+  const {user}=useAuthContext()
   return (
     <Router>
       <div>
-        <HeaderPart />
+        <HeaderPart/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
+          <Route path="/login" element={!user ? <Login /> : <Navigate to = "/" />} />
+          <Route path="/signup" element={!user ? <SignUp /> : <Navigate to = "/" />} />
           <Route path="/product" element={<Productpage />} />
-          <Route
-            path="/login"
-            element={!user ? <Login /> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
-          />
-          <Route path="/admindash" element={user && user.isAdmin ? <AdminDash /> : <Navigate to="/" />} />
+          <Route path="/admindash" element={<AdminDash />} />
         </Routes>
-
-        <Footer />
+        
+        <Footer/>
       </div>
     </Router>
   );
