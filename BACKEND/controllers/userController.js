@@ -22,6 +22,7 @@ const signUpUser = asyncHandler(async (req, res) => {
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
   console.log("Hashed password ", hashedPassword);
+
   const user = await User.create({
     firstname,
     lastname,
@@ -49,6 +50,17 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("All the fields are required!");
   }
 
+  // Check if it's the admin login
+  if (email === "admin1@admin.com" && password === "Admin@1") {
+    // For admin login, you can create a special token or set a flag in the response
+    const adminToken = jwt.sign({ isAdmin: true }, process.env.JWT_SECRET, {
+      expiresIn: '1h', // Adjust the expiration time as needed
+    });
+    res.status(200).json({ adminToken });
+    return;
+  }
+
+  // For regular user login
   const user = await User.findOne({ email });
 
   if (!user) {
@@ -66,6 +78,10 @@ const loginUser = asyncHandler(async (req, res) => {
   console.log(`User logged ${user}`);
   res.status(200).json({ _id: user._id, email: user.email });
 });
+
+
+
+
 
 //@desc current user info
 //@route GET /api/users/current
