@@ -14,31 +14,31 @@ const AdminDash = () => {
   return (
     <div>
     
-    <aside class="bg-grey text-white h-screen w-64 fixed">
-        <div class="p-4">
+      <div class="flex">
+        <nav class="w-64 bg-grey min-h-screen fixed">
           <img
             src={img1}
-            className="max-w-full"
+            className="max-w-full p-5"
             alt="logo"
           />
-        </div>
-        <ul class="mt-6 text-center">
-            <li class="mb-2 py-5"><a href="#" class="text-gray-300 hover:text-white py-5 px-24 w-full hover:bg-primary ">Dashboard</a></li>
-            <li class="mb-2 py-5"><a href="#" class="text-gray-300 hover:text-white py-5 px-24 w-full hover:bg-primary ">Users</a></li>
-            <li class="mb-2 py-5"><a href="#" class="text-gray-300 hover:text-white py-5 px-24 w-full hover:bg-primary ">Products</a></li>
-        </ul>
-    </aside>
+          <ul className='text-center text-lg'>
+              <Link to="/admindash"><li class="py-5 px-6 text-white hover:bg-primary"><a href="#" class="block">Dashboard</a></li></Link>
+              <Link to="/admindash/users"><li class="py-5 px-6 text-white hover:bg-primary"><a href="#" class="block">Users</a></li></Link>
+              <Link to="/admindash/products"><li class="py-5 px-6 text-white hover:bg-primary"><a href="#" class="block">Products</a></li></Link>
+              <Link to="/admindash/orders"><li class="py-5 px-6 text-white hover:bg-primary"><a href="#" class="block">Active orders</a></li></Link>
+          </ul>   
+          <div className='text-center'>
+          {user && (
+          <><p className="pb-2 font-semibold text-primary mt-56">{user.email}</p>
+          <Link to="/" className="mx-2">
+            <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-white font-semibold rounded-full border border-black transition duration-1000 ease-in-out bg-primary">Log Out</button>
+          </Link></>
+          )}
+          </div>
+        </nav>
+      </div>
 
-
-    <main class="ml-64 p-8">
-        <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
-        {user && (
-        <><span className="p-2 font-semibold text-primary">{user.email.split('@')[0]}</span><Link to="/" className="mx-2">
-                <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black">Log Out</button>
-            </Link></>
-        )}
-
-    </main>
+      
     </div>
   );
 };
