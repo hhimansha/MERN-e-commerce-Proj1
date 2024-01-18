@@ -15,7 +15,7 @@ router.route("/").get(getBooks)
 router.route("/:id").get(getBook)
 
 //setup route for create a book
-router.route("/").post(createBook)
+router.route("/admindash/products").post(createBook)
 
 //setup route for update a book
 router.route("/:id").put(updateBook)

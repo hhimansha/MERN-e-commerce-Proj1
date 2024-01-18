@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import HeaderPart from './components/headerPart';
@@ -7,7 +6,8 @@ import Footer from './components/footer';
 import SignUp from './components/signUp';
 import LogIn from './components/login';
 import Productpage from './components/productPage';
-import AdminDash from './components/AdminDash';
+import AdminDash from './components/Admin/AdminDash';
+import AddProducts from './components/Admin/AddProducts'
 
 function App() {
     const { user} = useAuthContext();
@@ -16,7 +16,7 @@ function App() {
     return (
         <Router>
             <div>
-                {/*}<HeaderPart />{*/}
+                <HeaderPart />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
@@ -28,7 +28,8 @@ function App() {
                     <Route
                         path="/admindash"
                         element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
-                    />                
+                    />    
+                     <Route path="/admindash/products" element={<AddProducts />} />            
                     </Routes>
                 {/*}<Footer />{*/}
             </div>
