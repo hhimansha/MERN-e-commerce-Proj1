@@ -29,7 +29,7 @@ function App() {
                         path="/admindash"
                         element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
                     />    
-                     <Route path="/admindash/products" element={<AddProducts />} />            
+                     <Route path="/admindash/products" element={user?.isAdmin ? <AddProducts /> : <Navigate to="/" />} />            
                     </Routes>
                 {/*}<Footer />{*/}
             </div>

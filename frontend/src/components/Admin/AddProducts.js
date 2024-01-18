@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from "react";
 //import { BooksContext } from "../../context/BooksContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -21,10 +21,16 @@ function AddProducts(){
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        // Check if already authenticated and redirect
+        if (localStorage.getItem("user")) {
+            return <Navigate to="/admindash" />;
+        }
+
         if(!user){
             setError('You must be logged in')
             return
         }
+
 
         const book = {title, author, publishYear, imageSrc, description, price}
 
