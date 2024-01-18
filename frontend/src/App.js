@@ -1,5 +1,4 @@
-// App.js
-import React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import HeaderPart from './components/headerPart';
@@ -11,12 +10,13 @@ import Productpage from './components/productPage';
 import AdminDash from './components/AdminDash';
 
 function App() {
-    const { user } = useAuthContext();
+    const { user} = useAuthContext();
 
+    
     return (
         <Router>
             <div>
-                <HeaderPart />
+                {/*}<HeaderPart />{*/}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
@@ -25,9 +25,12 @@ function App() {
                         path="/login"
                         element={!user ? <LogIn /> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
                     />
-                    <Route path="/admindash" element={user && user.isAdmin ? <AdminDash /> : <Navigate to="/" />} />
-                </Routes>
-                <Footer />
+                    <Route
+                        path="/admindash"
+                        element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
+                    />                
+                    </Routes>
+                {/*}<Footer />{*/}
             </div>
         </Router>
     );
