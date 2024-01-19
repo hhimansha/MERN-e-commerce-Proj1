@@ -14,15 +14,15 @@ function App() {
     return (
         <Router>
             <div>
-                <HeaderPart />
                 
+
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
-                    <Route path="/product" element={<Productpage />} />
+                    <Route path="/" element={<><HeaderPart /><Home /><Footer /></>} />
+                    <Route path="/signup" element={!user ? <><HeaderPart /><SignUp /><Footer /></> : <Navigate to="/" />} />
+                    <Route path="/product" element={<><HeaderPart /><Productpage /><Footer /></>} />
                     <Route
                         path="/login"
-                        element={!user ? <LogIn /> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
+                        element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admindash"
@@ -40,7 +40,7 @@ function App() {
                         )}
                     />
                 </Routes>
-                {/*}<Footer />{*/}
+                
             </div>
         </Router>
     );

@@ -63,11 +63,11 @@ function AddProducts(){
         }
     }
     return(
-        <div className="ml-72 mr-10 w-1400 rounded-3xl bg-grey-light">
-            <h3>Add a New Book</h3>
-            <form className="create m-10 w-1100 flex" onSubmit = {handleSubmit}>
+        <div className=" mr-10 w-1400 rounded-3xl bg-grey-light">
+            <h3 className="text-2xl text-black text-center m-4">Add a New Book</h3>
+            <form className="create m-10 w-1100 flex flex-wrap" onSubmit = {handleSubmit}>
                 
-                <div className="mr-1">
+                <div className="mr-5 grid">
                 <label>Title : </label>
                 <input
                     type="text"
@@ -77,7 +77,7 @@ function AddProducts(){
                 />
                 </div>
 
-                <div className="mr-1">
+                <div className="mr-5 grid">
                 <label>Author : </label>
                 <input
                     type="text"
@@ -86,7 +86,7 @@ function AddProducts(){
                     className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('author') ? 'error' : ''}`}
                 /></div>
 
-                <div className="mr-1">
+                <div className="mr-5 grid">
                 <label>Publish Year : </label>
                 <input
                     type="number"
@@ -95,7 +95,7 @@ function AddProducts(){
                     className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28 ${emptyFields && emptyFields.includes('publishYear') ? 'error' : ''}`}
                 /></div>
 
-                <div className="">
+                <div className="mr-5 grid">
                 <label>Image Src : </label>
                 <input
                     type="text"
@@ -104,7 +104,7 @@ function AddProducts(){
                     className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('imageSrc') ? 'error' : ''}`}
                 /></div>
 
-                <div className="">
+                <div className="mr-5 grid">
                 <label>Description : </label>
                 <input
                     type="text"
@@ -113,13 +113,13 @@ function AddProducts(){
                     className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('description') ? 'error' : ''}`}
                 /></div>
 
-                <div className="">
+                <div className="mr-5 grid">
                 <label>Price : </label>
                 <input
                     type="number"
                     onChange={(e) => setPrice(e.target.value)}
                     value={price}
-                    className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('price') ? 'error' : ''}`}
+                    className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28  ${emptyFields && emptyFields.includes('price') ? 'error' : ''}`}
                 /></div>
 
                 <button className="mx-auto px-5 py-2 px-10 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Book</button>
