@@ -14,7 +14,8 @@ function App() {
     return (
         <Router>
             <div>
-                {/*}<HeaderPart />{*/}
+                <HeaderPart />
+                
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
