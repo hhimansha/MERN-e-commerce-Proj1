@@ -63,60 +63,61 @@ function AddProducts(){
         }
     }
     return(
-        <form className="create" onSubmit = {handleSubmit}>
+        <div className="ml-64">
             <h3>Add a New Book</h3>
+        <form className="create" onSubmit = {handleSubmit}>
+            
 
             <label>Title : </label>
             <input
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                className={emptyFields && emptyFields.includes('title') ? 'error' : ''}
+                className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('title') ? 'error' : ''}`}
             />
 
-            <label>author : </label>
+            <label>Author : </label>
             <input
                 type="text"
                 onChange={(e) => setAuthor(e.target.value)}
                 value={author}
-                className={emptyFields && emptyFields.includes('author') ? 'error' : ''}
-            />
-
-            <label>publishYear : </label>
+                className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('author') ? 'error' : ''}`}
+                />
+            <label>Publish Year : </label>
             <input
                 type="number"
                 onChange={(e) => setPublishYear(e.target.value)}
                 value={publishYear}
-                className={emptyFields && emptyFields.includes('publishYear') ? 'error' : ''}
-            />
-
-            <label>imageSrc : </label>
+                className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('publishYear') ? 'error' : ''}`}
+                />
+            
+            <label>Image Src : </label>
             <input
                 type="text"
                 onChange={(e) => setImageSrc(e.target.value)}
                 value={imageSrc}
-                className={emptyFields && emptyFields.includes('imageSrc') ? 'error' : ''}
+                className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('imageSrc') ? 'error' : ''}`}
             />
 
-            <label>description : </label>
+            <label>Description : </label>
             <input
                 type="text"
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
-                className={emptyFields && emptyFields.includes('description') ? 'error' : ''}
+                className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('description') ? 'error' : ''}`}
             />
 
-            <label>price : </label>
+            <label>Price : </label>
             <input
                 type="number"
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
-                className={emptyFields && emptyFields.includes('price') ? 'error' : ''}
+                className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('price') ? 'error' : ''}`}
             />
 
-            <button>Add Book</button>
-            {error && <div className="error">{error}</div>}
-        </form>
+            <button className="mx-auto px-5 py-2 px-10 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Book</button>
+            {error && <div className="error ">{error}</div>}
+        </form></div>
     )
 }
 

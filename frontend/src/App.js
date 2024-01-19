@@ -8,15 +8,13 @@ import LogIn from './components/login';
 import Productpage from './components/productPage';
 import AdminDash from './components/Admin/AdminDash';
 import AddProducts from './components/Admin/AddProducts'
-
 function App() {
-    const { user} = useAuthContext();
+    const { user } = useAuthContext();
 
-    
     return (
         <Router>
             <div>
-                <HeaderPart />
+                {/*}<HeaderPart />{*/}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
@@ -28,9 +26,19 @@ function App() {
                     <Route
                         path="/admindash"
                         element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
-                    />    
-                     <Route path="/admindash/products" element={user?.isAdmin ? <AddProducts /> : <Navigate to="/" />} />            
-                    </Routes>
+                    />
+                    <Route
+                        path="/admindash/products"
+                        element={user?.isAdmin ? (
+                            <>
+                                <AdminDash />
+                                <AddProducts />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
+                </Routes>
                 {/*}<Footer />{*/}
             </div>
         </Router>
@@ -38,3 +46,4 @@ function App() {
 }
 
 export default App;
+
