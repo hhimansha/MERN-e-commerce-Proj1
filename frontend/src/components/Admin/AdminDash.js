@@ -65,9 +65,9 @@ const AdminDash = () => {
             )}
           </div>
         </nav>
-        <div className='content ml-72'>
+        {/*}<div className='content ml-72'>
           <AddProducts/>
-        </div>
+            </div>{*/}
       </div>
     </div>
   );

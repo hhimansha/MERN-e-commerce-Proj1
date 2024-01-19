@@ -63,9 +63,11 @@ function AddProducts(){
         }
     }
     return(
-        <div className=" mr-10 w-1400 rounded-3xl bg-grey-light">
-            <h3 className="text-2xl text-black text-center m-4">Add a New Book</h3>
-            <form className="create m-10 w-1100 flex flex-wrap" onSubmit = {handleSubmit}>
+        <div className="mx-auto max-w-screen-lg">
+            <div className="bg-grey-light rounded-3xl p-8">
+                <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">Add a New Book</h3>
+                <form className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" onSubmit={handleSubmit}>
+
                 
                 <div className="mr-5 grid">
                 <label>Title : </label>
@@ -122,9 +124,9 @@ function AddProducts(){
                     className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28  ${emptyFields && emptyFields.includes('price') ? 'error' : ''}`}
                 /></div>
 
-                <button className="mx-auto px-5 py-2 px-10 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Book</button>
+<button className="col-span-full px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Book</button>
                 {error && <div className="error ">{error}</div>}
-            </form>
+            </form></div>
         </div>
     )
 }
