@@ -8,30 +8,39 @@ import LogIn from './components/login';
 import Productpage from './components/productPage';
 import AdminDash from './components/Admin/AdminDash';
 import AddProducts from './components/Admin/AddProducts'
-
 function App() {
-    const { user} = useAuthContext();
+    const { user } = useAuthContext();
 
-    
     return (
         <Router>
             <div>
-                <HeaderPart />
+                
+
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
-                    <Route path="/product" element={<Productpage />} />
+                    <Route path="/" element={<><HeaderPart /><Home /><Footer /></>} />
+                    <Route path="/signup" element={!user ? <><HeaderPart /><SignUp /><Footer /></> : <Navigate to="/" />} />
+                    <Route path="/product" element={<><HeaderPart /><Productpage /><Footer /></>} />
                     <Route
                         path="/login"
-                        element={!user ? <LogIn /> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
+                        element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admindash"
                         element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
-                    />    
-                     <Route path="/admindash/products" element={user?.isAdmin ? <AddProducts /> : <Navigate to="/" />} />            
-                    </Routes>
-                {/*}<Footer />{*/}
+                    />
+                    <Route
+                        path="/admindash/products"
+                        element={user?.isAdmin ? (
+                            <>
+                                <AdminDash />
+                                <AddProducts />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
+                </Routes>
+                
             </div>
         </Router>
     );
