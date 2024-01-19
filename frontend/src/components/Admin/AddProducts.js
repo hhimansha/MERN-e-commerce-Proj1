@@ -1,22 +1,37 @@
-import React from "react";
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from "react";
-//import { BooksContext } from "../../context/BooksContext";
+import React, { useEffect, useState } from "react";
+import { Navigate } from 'react-router-dom';
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useBooksContext } from "../../hooks/useBooksContext";
 
-function AddProducts(){
-    const {dispatch} = useBooksContext()
-    const {user} = useAuthContext()
-    
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
-    const [publishYear, setPublishYear] = useState('')
-    const [imageSrc, setImageSrc] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
-    const [error, setError] = useState(null)
-    const [emptyFields, setEmptyFields] = useState([])
+function AddProducts() {
+    const [books, setBooks] = useState([]);
+    const { dispatch } = useBooksContext();
+    const { user } = useAuthContext();
+
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [publishYear, setPublishYear] = useState('');
+    const [imageSrc, setImageSrc] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [error, setError] = useState(null);
+    const [emptyFields, setEmptyFields] = useState([]);
+
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await fetch('http://localhost:9092/api/books/');
+                if (response.ok) {
+                    const json = await response.json();
+                    setBooks(json);
+                }
+            } catch (error) {
+                console.error('Error fetching books:', error);
+            }
+        };
+
+        fetchBooks();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -128,26 +143,35 @@ function AddProducts(){
                 </form>
             </div>
 
-            <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10 ">
-    <table className="w-full">
-        <thead>
-            <tr>
-                <th colSpan="6" className="text-lg text-primary font-semibold bg-grey mb-4 text-left">Add a New Book</th>
-            </tr>
-            <tr>
-                <th>Product ID</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            {/* Add your table body content here */}
-        </tbody>
-    </table>
-</div>
+            <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
+                <table className="w-full">
+                    <thead>
+                        <tr>
+                            <th colSpan="6" className="text-lg text-primary font-semibold bg-grey mb-4 text-left">Stored Books</th>
+                        </tr>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {books.map((book) => (
+                            <tr key={book._id}>
+                                <td>{book._id}</td>
+                                <td>{book.title}</td>
+                                <td>{book.author}</td>
+                                <td>{book.description}</td>
+                                <td><img src={book.imageSrc} alt={book.title} className="rounded-t-lg w-80 h-72 "/></td>
+                                <td>{book.price}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     )
