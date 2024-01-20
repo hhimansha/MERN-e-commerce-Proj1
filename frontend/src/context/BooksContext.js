@@ -16,6 +16,10 @@ export const booksReducer = (state, action) => {
       return {
         book: state.book.filter((b) => b._id !== action.payload)
       };
+    case 'UPDATE_BOOK_LIST':
+      return {
+        book: action.payload,
+      };
     default:
       return state;
   }

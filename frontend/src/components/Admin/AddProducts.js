@@ -49,6 +49,7 @@ function AddProducts() {
             setPrice('')
             setEmptyFields([])
             dispatch({type: 'CREATE_BOOK', payload: json})
+            
         }
 
         // Check if already authenticated and redirect
@@ -85,20 +86,22 @@ function AddProducts() {
 
         try {
             const response = await fetch(`http://localhost:9092/api/books/admindash/products/${bookId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${user.token}`
-                }
+              method: 'DELETE',
+              headers: {
+                'Authorization': `Bearer ${user.token}`
+              }
             });
-
+         
             const json = await response.json();
-
+        
             if (response.ok) {
-                dispatch({ type: 'DELETE_BOOK', payload: json });
+              dispatch({ type: 'DELETE_BOOK', payload: json });
+              // Dispatch the action to update the book list in other components
+              dispatch({ type: 'UPDATE_BOOK_LIST', payload: books.filter((b) => b._id !== bookId) });
             }
-        } catch (error) {
+          } catch (error) {
             console.error('Error deleting book:', error);
-        }
+          }
     };
 
     useEffect(() => {
