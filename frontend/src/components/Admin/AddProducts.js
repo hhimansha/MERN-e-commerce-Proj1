@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from 'react-router-dom';
+import { useNavigate, Navigate  } from 'react-router-dom';
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useBooksContext } from "../../hooks/useBooksContext";
 
@@ -7,12 +7,13 @@ function AddProducts() {
     const [books, setBooks] = useState([]);
     const { dispatch } = useBooksContext();
     const { user } = useAuthContext();
+    //const navigate  = useNavigate ();
 
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [publishYear, setPublishYear] = useState('');
-    const [imageSrc, setImageSrc] = useState('');
     const [description, setDescription] = useState('');
+    const [imageSrc, setImageSrc] = useState('');
     const [price, setPrice] = useState('');
     const [error, setError] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
@@ -35,17 +36,6 @@ function AddProducts() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        // Check if already authenticated and redirect
-        if (localStorage.getItem("user")) {
-            return <Navigate to="/admindash" />;
-        }
-
-        if(!user){
-            setError('You must be logged in')
-            return
-        }
-
 
         const book = {title, author, publishYear, imageSrc, description, price}
 
@@ -70,13 +60,24 @@ function AddProducts() {
             setTitle('')
             setAuthor('')
             setPublishYear('')
-            setImageSrc('')
             setDescription('')
+            setImageSrc('')
             setPrice('')
             setEmptyFields([])
             dispatch({type: 'CREATE_BOOK', payload: json})
         }
+
+        // Check if already authenticated and redirect
+        if (localStorage.getItem("user")) {
+            return <Navigate to="/admindash" />;
+        }
+
+        if(!user){
+            setError('You must be logged in')
+            return
+        }
     }
+    
     return(
         <div className="mx-auto max-w-fit">
             <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
