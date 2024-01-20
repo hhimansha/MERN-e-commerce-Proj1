@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link, Routes, Route, Navigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import img1 from '../images/headerLogoOrange.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useLogout } from '../../hooks/useLogout';
-import AddProducts from './AddProducts';
 
 const AdminDash = () => {
   const { Logout } = useLogout();
