@@ -18,22 +18,6 @@ function AddProducts() {
     const [error, setError] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const response = await fetch('http://localhost:9092/api/books/');
-                if (response.ok) {
-                    const json = await response.json();
-                    setBooks(json);
-                }
-            } catch (error) {
-                console.error('Error fetching books:', error);
-            }
-        };
-
-        fetchBooks();
-    }, []);
-
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -77,6 +61,64 @@ function AddProducts() {
             return
         }
     }
+    
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await fetch('http://localhost:9092/api/books/');
+                if (response.ok) {
+                    const json = await response.json();
+                    setBooks(json);
+                }
+            } catch (error) {
+                console.error('Error fetching books:', error);
+            }
+        };  
+
+        fetchBooks();
+    }, [dispatch]);
+
+    const handleClick = async (bookId) => {
+        if (!user) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:9092/api/books/admindash/products/${bookId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+
+            const json = await response.json();
+
+            if (response.ok) {
+                dispatch({ type: 'DELETE_BOOK', payload: json });
+            }
+        } catch (error) {
+            console.error('Error deleting book:', error);
+        }
+    };
+
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await fetch('http://localhost:9092/api/books/');
+                if (response.ok) {
+                    const json = await response.json();
+                    setBooks(json);
+                }
+            } catch (error) {
+                console.error('Error fetching books:', error);
+            }
+        };
+
+        fetchBooks();
+    }, [dispatch]); 
+    
+
+    
     
     return(
         <div className="mx-auto max-w-fit">
@@ -145,6 +187,7 @@ function AddProducts() {
             </div>
 
             <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
+                <form></form>
                 <table className="w-full">
                     <thead>
                         <tr>
@@ -170,8 +213,14 @@ function AddProducts() {
                                 <td>{book.price}</td>
                                 <td>
                                     <div className="grid">
-                                    <button className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-grey">Update</button>
-                                    <button className=" px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500">Delete</button>
+                                    <button className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-grey"
+                                    onClick={handleClick}>Update</button>
+                                    <button
+                                        className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
+                                        onClick={() => handleClick(book._id)}
+                                    >
+                                        Delete
+                                    </button>
 
                                     </div>
 
