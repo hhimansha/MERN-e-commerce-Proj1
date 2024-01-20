@@ -13,12 +13,11 @@ const ManageBooks = ({ books }) => {
     }
 
     try {
-      const response = await fetch(
-        `http://localhost:9092/api/books/admindash/products/${bookId}`,
+      const response = await fetch(`http://localhost:9092/api/books/admindash/products/${bookId}`,
         {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            'Authorization': `Bearer ${user.token}`,
           },
         }
       );
@@ -32,6 +31,9 @@ const ManageBooks = ({ books }) => {
       console.error("Error deleting book:", error);
     }
   };
+
+  
+ 
 
   return (
     <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
