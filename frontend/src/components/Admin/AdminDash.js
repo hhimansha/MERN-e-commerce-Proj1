@@ -61,13 +61,12 @@ const AdminDash = () => {
                     Log Out
                   </button>
                 </Link>
+                
               </>
             )}
           </div>
         </nav>
-        {/*}<div className='content ml-72'>
-          <AddProducts/>
-            </div>{*/}
+
       </div>
     </div>
   );

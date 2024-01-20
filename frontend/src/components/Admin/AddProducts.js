@@ -17,7 +17,7 @@ function AddProducts() {
     const [price, setPrice] = useState('');
     const [error, setError] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
-
+ 
     useEffect(() => {
         const fetchBooks = async () => {
             try {

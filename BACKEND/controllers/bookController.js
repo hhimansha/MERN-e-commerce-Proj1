@@ -6,7 +6,7 @@ const { error } = require("console");
 //@route GET /api/books
 //@access public
 const getBooks = asyncHandler(async(req,res) => {
-    const books = await Book.find();
+    const books = await Book.find(); 
     res.status(200).json(books);
 });
 
