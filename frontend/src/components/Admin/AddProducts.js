@@ -1,6 +1,6 @@
 // AddProducts.js
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useBooksContext } from "../../hooks/useBooksContext";
 import ManageBooks from "./ManageBooks"; // Import the ManageBooks component
@@ -8,7 +8,6 @@ import ManageBooks from "./ManageBooks"; // Import the ManageBooks component
 function AddProducts() {
   const { dispatch } = useBooksContext();
   const { user } = useAuthContext();
-  const navigate = useNavigate();
 
   const [books, setBooks] = useState([]); // Add the books state
 
@@ -22,27 +21,16 @@ function AddProducts() {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch("http://localhost:9092/api/books/");
-        if (response.ok) {
-          const json = await response.json();
-          setBooks(json); // Set the books state
-          dispatch({ type: "SET_BOOK", payload: json });
-        }
-      } catch (error) {
-        console.error("Error fetching books:", error);
-      }
-    };
-
-    fetchBooks();
-  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const book = { title, author, publishYear, imageSrc, description, price };
+    if (!user) {
+        setError("You must be logged in");
+        return;
+      }
+
+    const book = { title, author, publishYear, imageSrc, description, price };  
 
     const response = await fetch(
       "http://localhost:9092/api/books/admindash/products",
@@ -79,11 +67,27 @@ function AddProducts() {
       navigate("/admindash");
     }*/
 
-    if (!user) {
-      setError("You must be logged in");
-      return;
-    }
+    
   };
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch("http://localhost:9092/api/books/");
+        if (response.ok) {
+          const json = await response.json();
+          setBooks(json); // Set the books state
+          dispatch({ type: "SET_BOOK", payload: json });
+        }
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
+    fetchBooks();
+  }, [dispatch]);
+
+  
 
   return (
     <div className="mx-auto max-w-fit">
