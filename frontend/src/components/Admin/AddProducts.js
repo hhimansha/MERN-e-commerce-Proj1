@@ -1,5 +1,5 @@
 // AddProducts.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 //import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useBooksContext } from "../../hooks/useBooksContext";
@@ -10,6 +10,7 @@ function AddProducts() {
   const { user } = useAuthContext();
 
   const [books, setBooks] = useState([]); // Add the books state
+  const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
 
   const [title, setTitle] = useState("");
@@ -42,7 +43,9 @@ function AddProducts() {
           Authorization: `Bearer ${user.token}`,
         },
       }
+      
     );
+    forceUpdate()
 
     const json = await response.json();
 
@@ -74,10 +77,11 @@ function AddProducts() {
     const fetchBooks = async () => {
       try {
         const response = await fetch("http://localhost:9092/api/books/");
+        forceUpdate()
         if (response.ok) {
           const json = await response.json();
           setBooks(json); // Set the books state
-          dispatch({ type: "SET_BOOK", payload: json });
+          //dispatch({ type: "SET_BOOK", payload: json });
         }
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -85,7 +89,7 @@ function AddProducts() {
     };
 
     fetchBooks();
-  }, [dispatch]);
+  }, [reducerValue]);
 
   
 

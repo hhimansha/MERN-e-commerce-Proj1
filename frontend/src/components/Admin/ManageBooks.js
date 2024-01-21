@@ -1,11 +1,13 @@
 // ManageBooks.js
 import React from "react";
+import { useReducer } from "react";
 import { useBooksContext } from "../../hooks/useBooksContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 const ManageBooks = ({ books }) => {
   const { dispatch } = useBooksContext();
   const { user } = useAuthContext();
+  const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
   const handleClick = async (bookId) => {
     if (!user) {
@@ -21,6 +23,7 @@ const ManageBooks = ({ books }) => {
           },
         }
       );
+      forceUpdate()
 
       const json = await response.json();
 
