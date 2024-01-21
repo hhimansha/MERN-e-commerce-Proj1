@@ -23,7 +23,7 @@ export const booksReducer = (state, action) => {
 
 export const BooksContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(booksReducer, { 
-    book: null
+    book: []
   });
   
   

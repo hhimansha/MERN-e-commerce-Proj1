@@ -41,7 +41,7 @@ function App() {
                         )}
                     />
                     <Route
-                        path="/admindash/products/update"
+                        path="/admindash/products/update/:id"
                         element={user?.isAdmin ? (
                             <>
                                 <AdminDash />
@@ -50,7 +50,7 @@ function App() {
                         ) : (
                             <Navigate to="/" />
                         )}
-                    />
+                        />
                 </Routes>
                 
             </div>
