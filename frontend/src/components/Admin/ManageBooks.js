@@ -85,7 +85,11 @@ const ManageBooks = ({ books }) => {
                   </button>
                   <button
                     className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
-                    onClick={() => handleClick(book._id)}
+                    onClick={() => {
+                      if (window.confirm("Do you want to delete this book?")) {
+                        handleClick(book._id);
+                      }
+                    }}
                   >
                     Delete
                   </button>
