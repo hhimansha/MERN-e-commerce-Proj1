@@ -5,7 +5,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useBooksContext } from "../../hooks/useBooksContext";
 import ManageBooks from "./ManageBooks"; // Import the ManageBooks component
 
-function AddProducts() {
+function UpdateBook() {
   const { dispatch } = useBooksContext();
   const { user } = useAuthContext();
 
@@ -97,7 +97,7 @@ function AddProducts() {
     <div className="ml-80 max-w-fit">
       <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
         <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">
-          Add a New Book
+          Update Book
         </h3>
         <form className="grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-4" onSubmit={handleSubmit}>
 
@@ -156,14 +156,14 @@ function AddProducts() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28  ${emptyFields && emptyFields.includes('price') ? 'error' : ''}`}
         /></div>
 
-        <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Book</button>
+        <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">Update Book</button>
         {error && <div className="error ">{error}</div>}
     </form>
       </div>
 
-      <ManageBooks books={books} />
+      
     </div>
   );
 }
 
-export default AddProducts;
+export default UpdateBook;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useReducer, useContext } from "react";
 import img2 from './images/hero.jpg';
 import BookDetails from './BookDetails';
-import Productpage from './productPage';
 import { BooksContext } from "../context/BooksContext";
 
 

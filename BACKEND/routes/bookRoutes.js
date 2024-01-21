@@ -19,7 +19,7 @@ router.route("/admindash/products/:id").get(getBook);
 router.route("/admindash/products").post(createBook)
 
 //setup route for update a book
-router.route("/admindash/products/:id").put(updateBook)
+router.route("/admindash/products/update/:id").put(updateBook)
 
 //setup route for delete a book
 router.route("/admindash/products/:id").delete(deleteBook)
