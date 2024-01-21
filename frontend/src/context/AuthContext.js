@@ -1,3 +1,4 @@
+// AuthContext.js
 import { createContext, useReducer, useEffect } from 'react';
 
 export const AuthContext = createContext();
@@ -5,8 +6,11 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { user: action.payload, isAdmin: action.payload.isAdmin || false };
+      const user = action.payload;
+      localStorage.setItem('user', JSON.stringify(user));
+      return { user, isAdmin: user.isAdmin || false };
     case 'LOGOUT':
+      localStorage.removeItem('user');
       return { user: null, isAdmin: false };
     default:
       return state;

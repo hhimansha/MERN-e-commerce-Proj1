@@ -32,23 +32,23 @@ export const useLogin = () => {
 
       const json = await response.json();
 
-    // Check if the user is an admin and redirect to AdminDash
-    if (json.email === 'admin1@admin.com') {
-      navigate('/admindash');
-      dispatch({ type: 'LOGIN', payload: { ...json, isAdmin: true } });
-    } else {
-      dispatch({ type: 'LOGIN', payload: json });
+      // Save user to local storage
+      localStorage.setItem('user', JSON.stringify(json));
+
+      // Update auth context
+      if (json.email === 'admin1@admin.com') {
+        dispatch({ type: 'LOGIN', payload: { ...json, isAdmin: true } });
+        navigate('/admindash');
+      } else {
+        dispatch({ type: 'LOGIN', payload: json });
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setError(error.message);
     }
+  };
 
-    // Save user to local storage
-    localStorage.setItem('user', JSON.stringify(json));
-
-    // Update auth context
-    setIsLoading(false);
-  } catch (error) {
-    setIsLoading(false);
-    setError(error.message);
-  }
-};
   return { login, isLoading, error };
 };
