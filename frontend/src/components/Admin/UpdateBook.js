@@ -85,16 +85,16 @@ function UpdateBook() {
     }
   };
   return (
-    <div className="ml-80 max-w-fit">
+    <div className="ml-80 max-w-96">
       <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
         <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">
           Update Book
         </h3>
         <form
-          className="grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-4"
+          className="grid "
           onSubmit={handleSubmit}
         >
-          <div className="mr-5 grid">
+          <div className="grid">
             <label>Title : </label>
             <input
               type="text"
@@ -104,7 +104,7 @@ function UpdateBook() {
             />
           </div>
 
-          <div className="mr-5 grid">
+          <div className="grid">
         <label>Author : </label>
         <input
             type="text"
@@ -113,7 +113,7 @@ function UpdateBook() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
         /></div>
 
-        <div className="mr-5 grid">
+        <div className="grid">
         <label>Publish Year : </label>
         <input
             type="number"
@@ -122,7 +122,7 @@ function UpdateBook() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28`}
         /></div>
 
-        <div className="mr-5 grid">
+        <div className="grid">
         <label>Description : </label>
         <input
             type="text"
@@ -131,7 +131,7 @@ function UpdateBook() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
         /></div>
 
-        <div className="mr-5 grid">
+        <div className="grid">
         <label>Image Src : </label>
         <input
             type="text"
@@ -140,7 +140,7 @@ function UpdateBook() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
         /></div>
 
-        <div className="mr-5 grid">
+        <div className="grid">
         <label>Price : </label>
         <input
             type="number"
@@ -149,7 +149,7 @@ function UpdateBook() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28`}
         /></div>
 
-          <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">
+          <button className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">
             Update Book
           </button>
           {error && <div className="error ">{error}</div>}
