@@ -124,7 +124,7 @@ function Footer() {
         </div>
         <div className="text-right grid">
             <div className="footer-menu">
-                <ul className="flex-wrap space-x-4 justify-end">
+                <ul className="flex-wrap space-x-4 justify-end flex">
                 <li><span className="text-gray-500 hover:text-orange-500">Home</span></li>
                 <li><span className="text-gray-500 hover:text-orange-500">Terms</span></li>
                 <li><span className="text-gray-500 hover:text-orange-500">Privacy</span></li>
