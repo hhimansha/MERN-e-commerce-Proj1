@@ -43,8 +43,21 @@ const signUpUser = asyncHandler(async (req, res) => {
 //@route GET /api/books
 //@access public
 const getUsers = asyncHandler(async(req,res) => {
-  const users = await User.find(); 
+  // Exclude the password field from the query projection
+  const users = await User.find({}, { password: 0 });
   res.status(200).json(users);
+});
+
+//@desc Get a user
+//@route GET /api/user/:id
+//@access public
+const getUser = asyncHandler(async(req,res) => {
+  const user = await User.findById(req.params.id);
+  if(!user){
+      res.status(404);
+      throw new Error("User not found");
+  }
+  res.status(200).json(user);
 });
 
 //@desc login a user
@@ -82,4 +95,18 @@ const currentUser = asyncHandler(async (req, res) => {
   res.json({ message: "Current user" });
 });
 
-module.exports = { signUpUser, getUsers,loginUser, currentUser };
+//@desc Delete a user
+//@route DELETE /api/user/:id
+//@access public
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+  }
+
+  await user.deleteOne(); // Use deleteOne to remove the document
+  res.status(200).json(user);
+});
+
+module.exports = { signUpUser, getUsers, getUser,loginUser, currentUser, deleteUser };

@@ -41,7 +41,6 @@ const ManageBooks = ({ books }) => {
 
   return (
     <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
-  <form></form>
   <div className="overflow-x-auto">
     <table className="w-full">
       <thead>

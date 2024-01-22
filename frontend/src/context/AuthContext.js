@@ -8,10 +8,16 @@ export const authReducer = (state, action) => {
       return { user: action.payload, isAdmin: action.payload.isAdmin || false };
     case 'LOGOUT':
       return { user: null, isAdmin: false };
+    case 'DELETE_USER':
+      return {
+        ...state,
+        user: state.user.filter((u) => u._id !== action.payload._id)
+      };
     default:
       return state;
   }
 };
+
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user: null, isAdmin: false });
