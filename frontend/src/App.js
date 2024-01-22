@@ -9,6 +9,7 @@ import Productpage from './components/productPage';
 import AdminDash from './components/Admin/AdminDash';
 import AddProducts from './components/Admin/AddProducts'
 import UpdateBook from './components/Admin/UpdateBook';
+import ManageUsers from './components/Admin/ManageUsers';
 function App() {
     const { user } = useAuthContext();
 
@@ -35,6 +36,17 @@ function App() {
                             <>
                                 <AdminDash />
                                 <AddProducts />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
+                    <Route
+                        path="/admindash/users"
+                        element={user?.isAdmin ? (
+                            <>
+                                <AdminDash />
+                                <ManageUsers />
                             </>
                         ) : (
                             <Navigate to="/" />

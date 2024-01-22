@@ -39,6 +39,14 @@ const signUpUser = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc Get all users
+//@route GET /api/books
+//@access public
+const getUsers = asyncHandler(async(req,res) => {
+  const users = await User.find(); 
+  res.status(200).json(users);
+});
+
 //@desc login a user
 //@route POST /api/users/login
 //@access public
@@ -74,4 +82,4 @@ const currentUser = asyncHandler(async (req, res) => {
   res.json({ message: "Current user" });
 });
 
-module.exports = { signUpUser, loginUser, currentUser };
+module.exports = { signUpUser, getUsers,loginUser, currentUser };
