@@ -60,7 +60,7 @@ const ManageUsers = () => {
           <tbody>
             <tr>
                 <th
-                colSpan="4"
+                colSpan="6"
                 className="text-lg text-primary font-semibold bg-grey mb-4 text-center"
                 > 
                 Users
@@ -84,7 +84,7 @@ const ManageUsers = () => {
               <div className="grid gap-2">
                 
                 <button
-                  className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
+                  className=" py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
                   onClick={() => {
                     if (window.confirm("Do you want to delete this book?")) {
                       handleClick(user._id);
