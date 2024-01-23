@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add the user password"],
     },
+    Admin: {
+      type: Boolean,
+      default : false
+    },
   },
   {
     timestamps: true,

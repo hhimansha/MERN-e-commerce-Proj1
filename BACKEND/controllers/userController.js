@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 //@route POST /api/users/register
 //@access public
 const signUpUser = asyncHandler(async (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, Admin } = req.body;
   if (!firstname || !lastname || !email || !password) {
     res.status(400);
     throw new Error("All the fields are required!");
@@ -27,12 +27,13 @@ const signUpUser = asyncHandler(async (req, res) => {
     lastname,
     email,
     password: hashedPassword,
+    Admin,
   });
 
   console.log(`User created ${user}`);
 
   if (user) {
-    res.status(201).json({ _id: user._id, email: user.email });
+    res.status(201).json({ _id: user._id, email: user.email, Admin:user.Admin });
   } else {
     res.status(400);
     throw new Error("User data is not valid");
@@ -64,7 +65,7 @@ const getUser = asyncHandler(async(req,res) => {
 //@route POST /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, Admin } = req.body;
   if (!email || !password) {
     res.status(400);
     throw new Error("All the fields are required!");
@@ -85,7 +86,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   console.log(`User logged ${user}`);
-  res.status(200).json({ _id: user._id, email: user.email });
+  res.status(200).json({ _id: user._id, email: user.email, Admin:user.Admin });
 });
 
 //@desc current user info

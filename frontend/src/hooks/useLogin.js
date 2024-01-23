@@ -36,11 +36,13 @@ export const useLogin = () => {
       localStorage.setItem('user', JSON.stringify(json));
 
       // Update auth context
-      if (json.email === 'admin1@admin.com') {
-        dispatch({ type: 'LOGIN', payload: { ...json, isAdmin: true } });
+      dispatch({ type: 'LOGIN', payload: json });
+
+      // Redirect based on Admin property
+      if (json.Admin) {
         navigate('/admindash');
       } else {
-        dispatch({ type: 'LOGIN', payload: json });
+        navigate('/');
       }
 
       setIsLoading(false);

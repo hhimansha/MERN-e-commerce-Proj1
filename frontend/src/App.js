@@ -16,23 +16,21 @@ function App() {
     return (
         <Router>
             <div>
-                
-
                 <Routes>
                     <Route path="/" element={<><HeaderPart /><Home /><Footer /></>} />
                     <Route path="/signup" element={!user ? <><HeaderPart /><SignUp /><Footer /></> : <Navigate to="/" />} />
                     <Route path="/product" element={<><HeaderPart /><Productpage /><Footer /></>} />
                     <Route
                         path="/login"
-                        element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
+                        element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.Admin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admindash"
-                        element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
+                        element={user?.Admin ? <AdminDash /> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admindash/products"
-                        element={user?.isAdmin ? (
+                        element={user?.Admin ? (
                             <>
                                 <AdminDash />
                                 <AddProducts />
@@ -43,7 +41,7 @@ function App() {
                     />
                     <Route
                         path="/admindash/users"
-                        element={user?.isAdmin ? (
+                        element={user?.Admin ? (
                             <>
                                 <AdminDash />
                                 <ManageUsers />
@@ -54,7 +52,7 @@ function App() {
                     />
                     <Route
                         path="/admindash/products/update/:id"
-                        element={user?.isAdmin ? (
+                        element={user?.Admin ? (
                             <>
                                 <AdminDash />
                                 <UpdateBook />
@@ -62,9 +60,8 @@ function App() {
                         ) : (
                             <Navigate to="/" />
                         )}
-                        />
+                    />
                 </Routes>
-                
             </div>
         </Router>
     );

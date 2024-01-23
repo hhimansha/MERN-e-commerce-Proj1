@@ -5,9 +5,9 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { user: action.payload, isAdmin: action.payload.isAdmin || false };
+      return { user: action.payload };
     case 'LOGOUT':
-      return { user: null, isAdmin: false };
+      return { user: null };
     case 'DELETE_USER':
       return {
         ...state,
@@ -17,6 +17,8 @@ export const authReducer = (state, action) => {
       return state;
   }
 };
+
+
 
 
 export const AuthContextProvider = ({ children }) => {
