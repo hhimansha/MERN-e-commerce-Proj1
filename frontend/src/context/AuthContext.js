@@ -5,9 +5,7 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { user: action.payload, 
-        isAdmin: action.payload.isAdmin || false };
-
+      return { user: action.payload, isAdmin: action.payload.isAdmin || false };
     case 'LOGOUT':
       return { user: null, isAdmin: false };
     case 'DELETE_USER':
@@ -20,6 +18,7 @@ export const authReducer = (state, action) => {
   }
 };
 
+
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user: null, isAdmin: false });
 
@@ -29,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
     if (storedUser) {
       dispatch({ type: 'LOGIN', payload: storedUser });
     }
-  }, []); 
+  }, []);
 
   console.log('AuthContext state:', state);
 

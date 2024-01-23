@@ -9,7 +9,7 @@ export const useLogin = () => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
-  const login = async (email, password, isAdmin) => {
+  const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
@@ -17,7 +17,7 @@ export const useLogin = () => {
       const response = await fetch("http://localhost:9092/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, isAdmin }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
@@ -36,17 +36,12 @@ export const useLogin = () => {
       localStorage.setItem('user', JSON.stringify(json));
 
       // Update auth context
-    if (json.email === 'admin1@admin.com') {
-      dispatch({ type: 'LOGIN', payload: { ...json, isAdmin: true } });
-
-      // Check if the current route is not /admindash before navigating
-      if (navigate && window.location.pathname !== '/admindash') {
+      if (json.email === 'admin1@admin.com') {
+        dispatch({ type: 'LOGIN', payload: { ...json, isAdmin: true } });
         navigate('/admindash');
+      } else {
+        dispatch({ type: 'LOGIN', payload: json });
       }
-    } else {
-      dispatch({ type: 'LOGIN', payload: json });
-    }
-
 
       setIsLoading(false);
     } catch (error) {

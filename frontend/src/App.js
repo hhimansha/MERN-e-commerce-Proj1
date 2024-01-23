@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
-import { useContext } from 'react';
 import HeaderPart from './components/headerPart';
 import Home from './components/Home';
 import Footer from './components/footer';
@@ -11,10 +10,8 @@ import AdminDash from './components/Admin/AdminDash';
 import AddProducts from './components/Admin/AddProducts'
 import UpdateBook from './components/Admin/UpdateBook';
 import ManageUsers from './components/Admin/ManageUsers';
-import { AuthContext } from './context/AuthContext';
 function App() {
     const { user } = useAuthContext();
-    const { isAdmin } = useContext(AuthContext);
 
     return (
         <Router>
@@ -27,25 +24,15 @@ function App() {
                     <Route path="/product" element={<><HeaderPart /><Productpage /><Footer /></>} />
                     <Route
                         path="/login"
-                        element={!user ? (
-                            <>
-                                <HeaderPart />
-                                <LogIn />
-                                <Footer />
-                            </>
-                        ) : user.isAdmin ? (
-                            <Navigate to="/admindash" />
-                        ) : (
-                            <Navigate to="/" />
-                        )}
+                        element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.isAdmin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
                     />
-                   <Route
+                    <Route
                         path="/admindash"
-                        element={user && user.isAdmin ? <AdminDash /> : <Navigate to="/" />}
+                        element={user?.isAdmin ? <AdminDash /> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admindash/products"
-                        element={user && user.isAdmin ? (
+                        element={user?.isAdmin ? (
                             <>
                                 <AdminDash />
                                 <AddProducts />
@@ -56,7 +43,7 @@ function App() {
                     />
                     <Route
                         path="/admindash/users"
-                        element={user && user.isAdmin ? (
+                        element={user?.isAdmin ? (
                             <>
                                 <AdminDash />
                                 <ManageUsers />
@@ -67,7 +54,7 @@ function App() {
                     />
                     <Route
                         path="/admindash/products/update/:id"
-                        element={user && user.isAdmin ? (
+                        element={user?.isAdmin ? (
                             <>
                                 <AdminDash />
                                 <UpdateBook />
