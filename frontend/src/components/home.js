@@ -1,33 +1,22 @@
-import React, { useEffect, useState, useReducer, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import img2 from './images/hero.jpg';
 import BookDetails from './BookDetails';
-import { BooksContext } from "../context/BooksContext";
-
+import Productpage from './productPage';
 
 function Home() {
-    const { book } = useContext(BooksContext); // Access the book state from BooksContext
-
     const [books, setBooks] = useState(null);
-    const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
     useEffect(() => {
         const fetchBooks = async () => {
-          try {
-            const response = await fetch("http://localhost:9092/api/books/");
-            forceUpdate()
+            const response = await fetch('http://localhost:9092/api/books/');
+            const json = await response.json();
             if (response.ok) {
-              const json = await response.json();
-              setBooks(json); // Set the books state
-              //dispatch({ type: "SET_BOOK", payload: json });
+                setBooks(json);
             }
-          } catch (error) {
-            console.error("Error fetching books:", error);
-          }
         };
-    
+
         fetchBooks();
-      }, [reducerValue]);
-    
+    }, []);
 
     return (
         <>

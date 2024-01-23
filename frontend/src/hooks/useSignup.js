@@ -1,3 +1,4 @@
+// useSignup.js
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
@@ -18,7 +19,7 @@ export const useSignup = () => {
             });
 
             if (!response.ok) {
-                const errorMessage = await response.json(); // Parse JSON instead of text
+                const errorMessage = await response.json();
 
                 if (errorMessage && errorMessage.message) {
                     throw new Error(errorMessage.message);
@@ -33,7 +34,8 @@ export const useSignup = () => {
             localStorage.setItem('user', JSON.stringify(json));
 
             // Update auth context
-            dispatch({ type: 'LOGIN', payload: json });
+            const AdminRole = json.AdminRole || false; // Check if the logged-in user is an admin
+            dispatch({ type: 'LOGIN', payload: { ...json, AdminRole } });
 
             setIsLoading(false);
         } catch (error) {

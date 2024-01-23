@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const User = require("../models/userModel");
+const User = require("../models/userModel").default;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -7,30 +7,27 @@ const jwt = require('jsonwebtoken');
 //@route POST /api/users/register
 //@access public
 const signUpUser = asyncHandler(async (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, AdminRole } = req.body;
   if (!firstname || !lastname || !email || !password) {
     res.status(400);
     throw new Error("All the fields are required!");
   }
-
   const userAvailable = await User.findOne({ email });
   if (userAvailable) {
     res.status(400);
     throw new Error("User already registered!");
   }
-
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
-  console.log("Hashed password ", hashedPassword);
+  // Set isAdmin to false for new users
   const user = await User.create({
     firstname,
     lastname,
     email,
     password: hashedPassword,
-  });
-
+    AdminRole,  // Set AdminRole to false if not provided
+});
   console.log(`User created ${user}`);
-
   if (user) {
     res.status(201).json({ _id: user._id, email: user.email });
   } else {
@@ -38,6 +35,12 @@ const signUpUser = asyncHandler(async (req, res) => {
     throw new Error("User data is not valid");
   }
 });
+
+
+
+
+
+
 
 //@desc Get all users
 //@route GET /api/books
@@ -47,6 +50,11 @@ const getUsers = asyncHandler(async(req,res) => {
   const users = await User.find({}, { password: 0 });
   res.status(200).json(users);
 });
+
+
+
+
+
 
 //@desc Get a user
 //@route GET /api/user/:id
@@ -60,6 +68,11 @@ const getUser = asyncHandler(async(req,res) => {
   res.status(200).json(user);
 });
 
+
+
+
+
+
 //@desc login a user
 //@route POST /api/users/login
 //@access public
@@ -69,24 +82,25 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("All the fields are required!");
   }
-
   const user = await User.findOne({ email });
-
   if (!user) {
     res.status(401);
     throw new Error('Incorrect email');
   }
-
   const match = await bcrypt.compare(password, user.password);
-
   if (!match) {
     res.status(401);
     throw new Error('Incorrect password');
   }
-
   console.log(`User logged ${user}`);
-  res.status(200).json({ _id: user._id, email: user.email });
+  res.status(200).json({ _id: user._id, email: user.email, AdminRole: user.AdminRole });
 });
+
+
+
+
+
+
 
 //@desc current user info
 //@route GET /api/users/current
@@ -94,6 +108,11 @@ const loginUser = asyncHandler(async (req, res) => {
 const currentUser = asyncHandler(async (req, res) => {
   res.json({ message: "Current user" });
 });
+
+
+
+
+
 
 //@desc Delete a user
 //@route DELETE /api/user/:id
@@ -104,9 +123,13 @@ const deleteUser = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error("User not found");
   }
-
   await user.deleteOne(); // Use deleteOne to remove the document
   res.status(200).json(user);
 });
+
+
+
+
+
 
 module.exports = { signUpUser, getUsers, getUser,loginUser, currentUser, deleteUser };
