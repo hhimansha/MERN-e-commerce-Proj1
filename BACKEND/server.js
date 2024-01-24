@@ -29,7 +29,7 @@ app.use(express.json());
 // app.use(cors(corsOptions));
 
 app.use("/api/books", require("./routes/bookRoutes"));
-app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/users", require("./routes/userRoutes")); 
 app.use("/api/users", require("./routes/userAddressRoutes"));
 
 

@@ -16,7 +16,9 @@ const AdminDash = () => {
     <div>
       <div className="flex">
         <nav className="w-64 bg-grey min-h-screen fixed">
+          <Link to = "/">
           <img src={img1} className="max-w-full p-5" alt="logo" />
+          </Link>
           <ul className="text-center text-lg">
             <Link to="/admindash">
               <li className="py-5 px-6 text-white hover:bg-primary">
