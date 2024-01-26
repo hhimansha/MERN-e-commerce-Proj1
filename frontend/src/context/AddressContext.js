@@ -9,18 +9,17 @@ export const addressReducer = (state, action) => {
         userAddresses: action.payload 
       };
     case 'CREATE_ADDRESS':
-    return { 
-        userAddresses: [action.payload, ...state.userAddress] 
-    };
+      return { 
+        userAddresses: [action.payload, ...state.userAddresses]  // Fix the typo here
+      };
     case 'DELETE_ADDRESS':
-      return{
-        userAddresses : state.userAddress.filter((b) => b._id !== action.payload._id)
+      return {
+        userAddresses: state.userAddresses.filter((b) => b._id !== action.payload._id)
       };
     default:
       return state;
   }
 };
-
 export const AddressContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(addressReducer, { 
     userAddresses: []

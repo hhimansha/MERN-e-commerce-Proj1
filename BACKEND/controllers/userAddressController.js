@@ -4,39 +4,40 @@ const UserAddress = require("../models/userDeliveryAddress");
 
 
 const createUserAddress = asyncHandler(async (req, res) => {
-    const {userID,userName, address, phone } = req.body;
+    const { userID,userName, address, phone } = req.body;
   
     // Access the user ID from the request object (assuming it's attached by middleware)
     //const userID = req.user._id;
   
-    if (!userName || !address || !phone) {
+    if (!userID || !userName || !address || !phone) {
       res.status(400);
       throw new Error("All the fields are required!");
     }
-
-  try {
-    //const userID = req.user._id
+  
     const userAddress = await UserAddress.create({
       userID,
       userName,
       address,
       phone,
     });
-    res.status(200).json(userAddress)
   
-  }catch(error){
-    res.status(400).json({ error: error.message })
-  }
-   
-    
+    console.log(`User address created ${userAddress}`);
+  
+    if (userAddress) {
+      res.status(201).json({ _id: userAddress._id, userID: userID,userName: userAddress.userName, address: userAddress.address, 
+        phone: userAddress.phone });
+    } else {
+      res.status(400);
+      throw new Error("User data is not valid");
+    }
   });
   
 
 
 const getAllUserAddresses = asyncHandler(async(req,res) => {
   // Exclude the password field from the query projection
-  const userAddress = await UserAddress.find();
-  res.status(200).json(userAddress);
+  const users = await UserAddress.find();
+  res.status(200).json(users);
 });
 
 const getUserAddress = asyncHandler(async(req,res) => {
