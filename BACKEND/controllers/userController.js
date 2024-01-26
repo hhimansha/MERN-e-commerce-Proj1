@@ -33,7 +33,8 @@ const signUpUser = asyncHandler(async (req, res) => {
   console.log(`User created ${user}`);
 
   if (user) {
-    res.status(201).json({ _id: user._id, email: user.email, Admin:user.Admin });
+    res.status(201).json({ _id: user._id, email: user.email,firstname: user.firstname,
+    lastname: user.lastname,  Admin:user.Admin });
   } else {
     res.status(400);
     throw new Error("User data is not valid");
@@ -65,7 +66,7 @@ const getUser = asyncHandler(async(req,res) => {
 //@route POST /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password, Admin } = req.body;
+  const { email, password} = req.body;
   if (!email || !password) {
     res.status(400);
     throw new Error("All the fields are required!");
@@ -86,7 +87,8 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   console.log(`User logged ${user}`);
-  res.status(200).json({ _id: user._id, email: user.email, Admin:user.Admin });
+  res.status(200).json({ _id: user._id, email: user.email,firstname: user.firstname,
+  lastname: user.lastname,  Admin:user.Admin });
 });
 
 //@desc current user info
