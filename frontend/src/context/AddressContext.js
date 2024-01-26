@@ -6,15 +6,15 @@ export const addressReducer = (state, action) => {
   switch (action.type) {
     case 'SET_ADDRESS':
       return { 
-        userAddress: action.payload 
+        userAddresses: action.payload 
       };
     case 'CREATE_ADDRESS':
     return { 
-        userAddress: [action.payload, ...state.userAddress] 
+        userAddresses: [action.payload, ...state.userAddress] 
     };
     case 'DELETE_ADDRESS':
       return{
-        userAddress : state.userAddress.filter((b) => b._id !== action.payload._id)
+        userAddresses : state.userAddress.filter((b) => b._id !== action.payload._id)
       };
     default:
       return state;
@@ -23,7 +23,7 @@ export const addressReducer = (state, action) => {
 
 export const AddressContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(addressReducer, { 
-    userAddress: []
+    userAddresses: []
   });
   
   

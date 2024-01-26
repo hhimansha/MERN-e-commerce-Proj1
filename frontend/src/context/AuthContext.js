@@ -7,6 +7,7 @@ export const authReducer = (state, action) => {
     case 'LOGIN':
       return { user: action.payload, isAdmin: action.payload.isAdmin || false, loading: false };
     case 'LOGOUT':
+      localStorage.removeItem('userAddress');
       return { user: null, isAdmin: false, loading: false };
     case 'DELETE_USER':
       return {
