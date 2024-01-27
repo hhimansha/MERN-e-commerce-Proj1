@@ -8,7 +8,7 @@ const {
     deleteUser,
     createAddress,
     getUserAddresses,
-    updateUserAddress,
+    updateUser,
     deleteUserAddress,
     } = require("../controllers/userController")
 
@@ -21,6 +21,8 @@ router.route("/user/address/:id").get(getUserAddresses);
 // Setup route for creating or updating delivery address (protected route)
 router.route("/user/address/:id").post(createAddress);
 
+// Setup route for updating user details (protected route)
+router.route("/user/:id").put(updateUser);
 
 
 // setup route for get a specific book

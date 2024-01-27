@@ -152,38 +152,36 @@ const getUserAddresses = asyncHandler(async (req, res) => {
   res.status(200).json(addresses);
 });
 
-//@desc Update user address
-//@route PUT /api/users/:id/addresses
+//@desc Update user details
+//@route PUT /api/users/:id
 //@access public (you may change to private based on your logic)
-const updateUserAddress = asyncHandler(async (req, res) => {
-  const userId = req.params._id;
+const updateUser = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
 
-  const { street, city, state, zipCode } = req.body;
+  const { firstname, lastname, email, password, Admin, DelieryAddress: { street, city, state, zipCode } } = req.body;
 
-  if (!street || !city || !state || !zipCode) {
-    res.status(400);
-    throw new Error("All the fields are required for the delivery address!");
-  }
-
-  const user = await User.findById(userId);
+  // Find the user by ID
+  let user = await User.findById(userId);
 
   if (!user) {
     res.status(404);
     throw new Error("User not found");
   }
 
-  // Update the delivery address
-  user.DelieryAddress = {
-    street,
-    city,
-    state,
-    zipCode,
-  };
+  // Update user fields
+  user.firstname = firstname;
+  user.lastname = lastname;
+  user.email = email;
+  user.password = password; // Hash the password if needed before saving
+  user.Admin = Admin;
+  user.DelieryAddress = { street, city, state, zipCode };
 
-  await user.save();
+  // Save the updated user
+  const updatedUser = await user.save();
 
-  res.status(200).json({ message: 'Address updated successfully' });
+  res.status(200).json(updatedUser);
 });
+
 
 //@desc Delete user address
 //@route DELETE /api/users/:id/addresses
@@ -236,6 +234,6 @@ module.exports = {
   deleteUser,
   createAddress,
   getUserAddresses,
-  updateUserAddress,
+  updateUser,
   deleteUserAddress,
 };
