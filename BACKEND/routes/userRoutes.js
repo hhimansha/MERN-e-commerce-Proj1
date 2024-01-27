@@ -16,9 +16,12 @@ const {
 router.post("/signup", signUpUser);
 
 // Setup route for creating or updating delivery address (protected route)
-router.route("/user/address/all").get(getUserAddresses);
+router.route("/user/address/:id").get(getUserAddresses);
 
-router.route("/user/address").post(createAddress);
+// Setup route for creating or updating delivery address (protected route)
+router.route("/user/address/:id").post(createAddress);
+
+
 
 // setup route for get a specific book
 router.route("/admindash/users/").get(getUsers);

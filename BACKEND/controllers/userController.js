@@ -102,8 +102,8 @@ const loginUser = asyncHandler(async (req, res) => {
 //@route POST /api/users/create-address
 //@access public (you may change to private based on your logic)
 const createAddress = asyncHandler(async (req, res) => {
+  const userId = req.params.id; // Correct way to get the user ID from the URL
   console.log('Create Address Function Called');
-  const userId = req.user._id;
   console.log('User ID:', userId);
 
   const { street, city, state, zipCode } = req.body;
@@ -131,13 +131,15 @@ const createAddress = asyncHandler(async (req, res) => {
   await user.save();
 
   res.status(200).json({ message: 'Delivery address updated successfully' });
+  console.log(user.DelieryAddress);
 });
+
 
 //@desc Get user addresses
 //@route GET /api/users/:id/addresses
 //@access public (you may change to private based on your logic)
 const getUserAddresses = asyncHandler(async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params._id;
 
   const user = await User.findById(userId);
 
@@ -154,7 +156,7 @@ const getUserAddresses = asyncHandler(async (req, res) => {
 //@route PUT /api/users/:id/addresses
 //@access public (you may change to private based on your logic)
 const updateUserAddress = asyncHandler(async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params._id;
 
   const { street, city, state, zipCode } = req.body;
 
@@ -187,7 +189,7 @@ const updateUserAddress = asyncHandler(async (req, res) => {
 //@route DELETE /api/users/:id/addresses
 //@access public (you may change to private based on your logic)
 const deleteUserAddress = asyncHandler(async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params._id;
 
   const user = await User.findById(userId);
 

@@ -31,14 +31,16 @@ function UserAddress() {
       zipCode,
     };
 
-    const response = await fetch("http://localhost:9092/api/users/user/address", {
-        method: "POST",
-        body: JSON.stringify(DelieryAddress),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-        },
+    const response = await fetch(`http://localhost:9092/api/users/user/address/${user._id}`, {
+    method: "POST",
+    body: JSON.stringify(DelieryAddress),
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+    },
     });
+
+
 
 
     forceUpdate();
