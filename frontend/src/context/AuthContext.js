@@ -5,9 +5,13 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { user: action.payload, isAdmin: action.payload.isAdmin || false, loading: false };
+      return {
+        user: action.payload,
+        isAdmin: action.payload.isAdmin || false,
+        loading: false,
+      };
     case 'LOGOUT':
-      localStorage.removeItem('userAddress');
+      localStorage.removeItem('user');
       return { user: null, isAdmin: false, loading: false };
     case 'DELETE_USER':
       return {
@@ -16,20 +20,24 @@ export const authReducer = (state, action) => {
       };
     case 'LOADING_COMPLETE':
       return { ...state, loading: false }; // New action type
+    case 'UPDATE_DELIVERY_ADDRESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          deliveryAddress: action.payload,
+        },
+      };
     default:
       return state;
   }
 };
 
-
-
-
-
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
-    Admin: false,
-    loading: true, // Add loading state
+    isAdmin: false,
+    loading: true,
   });
 
   useEffect(() => {

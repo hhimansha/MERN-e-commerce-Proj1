@@ -2,16 +2,11 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useAddressContext } from "../hooks/useAddressContext";
 
 const User = () => {
   const { user } = useAuthContext();
-  const { userAddresses, loading } = useAddressContext();
 
-  useEffect(() => {
-    console.log('User details:', user);
-    console.log('User address:', userAddresses);
-  }, [user, userAddresses]);
+ 
 
   return (
     <div className="flex mx-auto justify-center my-10">
@@ -41,19 +36,19 @@ const User = () => {
           <Link to="/user/address">
             <h2 className="text-lg text-primary font-semibold mb-4 text-center">Delivery Address</h2>
           </Link>
-          {userAddresses && (
+          
             <div className="grid gap-2">
               <div>
-                <strong>Receiver Name:</strong> {userAddresses.userName}
+                <strong>Receiver Name:</strong> 
               </div>
               <div>
-                <strong>Address:</strong> {userAddresses.address}
+                <strong>Address:</strong>
               </div>
               <div>
-                <strong>Phone:</strong> {userAddresses.phone}
+                <strong>Phone:</strong>
               </div>
             </div>
-          )}
+         
         </div>
       </div>
     </div>

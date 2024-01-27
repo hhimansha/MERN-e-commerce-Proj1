@@ -3,43 +3,6 @@ const User = require("../models/userModel");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-//@desc register a user
-//@route POST /api/users/register
-//@access public
-const signUpUser = asyncHandler(async (req, res) => {
-  const { firstname, lastname, email, password, Admin } = req.body;
-  if (!firstname || !lastname || !email || !password) {
-    res.status(400);
-    throw new Error("All the fields are required!");
-  }
-
-  const userAvailable = await User.findOne({ email });
-  if (userAvailable) {
-    res.status(400);
-    throw new Error("User already registered!");
-  }
-
-  // Hash password
-  const hashedPassword = await bcrypt.hash(password, 10);
-  console.log("Hashed password ", hashedPassword);
-  const user = await User.create({
-    firstname,
-    lastname,
-    email,
-    password: hashedPassword,
-    Admin,
-  });
-
-  console.log(`User created ${user}`);
-
-  if (user) {
-    res.status(201).json({ _id: user._id, email: user.email,firstname: user.firstname,
-    lastname: user.lastname,  Admin:user.Admin });
-  } else {
-    res.status(400);
-    throw new Error("User data is not valid");
-  }
-});
 
 //@desc Get all users
 //@route GET /api/books
@@ -61,6 +24,48 @@ const getUser = asyncHandler(async(req,res) => {
   }
   res.status(200).json(user);
 });
+
+
+//@desc register a user
+//@route POST /api/users/register
+//@access public
+const signUpUser = asyncHandler(async (req, res) => {
+  const { firstname, lastname, email, password, Admin } = req.body;
+  if (!firstname || !lastname || !email || !password) {
+    res.status(400);
+    throw new Error("All the fields are required!");
+  }
+
+  const userAvailable = await User.findOne({ email });
+  if (userAvailable) {
+    res.status(400);
+    throw new Error("User already registered!");
+  }
+
+  // Hash password
+  const hashedPassword = await bcrypt.hash(password, 10);
+  console.log("Hashed password ", hashedPassword);
+
+  const user = await User.create({
+    firstname,
+    lastname,
+    email,
+    password: hashedPassword,
+    Admin,
+  });
+
+  console.log(`User created ${user}`);
+
+  if (user) {
+    res.status(201).json({ _id: user._id, email: user.email,firstname: user.firstname,
+    lastname: user.lastname,  Admin:user.Admin });
+  } else {
+    res.status(400);
+    throw new Error("User data is not valid");
+  }
+});
+
+
 
 //@desc login a user
 //@route POST /api/users/login
@@ -91,6 +96,115 @@ const loginUser = asyncHandler(async (req, res) => {
   lastname: user.lastname,  Admin:user.Admin });
 });
 
+
+
+//@desc Create or update delivery address for a user
+//@route POST /api/users/create-address
+//@access public (you may change to private based on your logic)
+const createAddress = asyncHandler(async (req, res) => {
+  console.log('Create Address Function Called');
+  const userId = req.user._id;
+  console.log('User ID:', userId);
+
+  const { street, city, state, zipCode } = req.body;
+
+  if (!street || !city || !state || !zipCode) {
+    res.status(400);
+    throw new Error("All the fields are required for the delivery address!");
+  }
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  // Update the delivery address
+  user.DelieryAddress = {
+    street,
+    city,
+    state,
+    zipCode,
+  };
+
+  await user.save();
+
+  res.status(200).json({ message: 'Delivery address updated successfully' });
+});
+
+//@desc Get user addresses
+//@route GET /api/users/:id/addresses
+//@access public (you may change to private based on your logic)
+const getUserAddresses = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  const addresses = user.DelieryAddress || {};
+  res.status(200).json(addresses);
+});
+
+//@desc Update user address
+//@route PUT /api/users/:id/addresses
+//@access public (you may change to private based on your logic)
+const updateUserAddress = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+
+  const { street, city, state, zipCode } = req.body;
+
+  if (!street || !city || !state || !zipCode) {
+    res.status(400);
+    throw new Error("All the fields are required for the delivery address!");
+  }
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  // Update the delivery address
+  user.DelieryAddress = {
+    street,
+    city,
+    state,
+    zipCode,
+  };
+
+  await user.save();
+
+  res.status(200).json({ message: 'Address updated successfully' });
+});
+
+//@desc Delete user address
+//@route DELETE /api/users/:id/addresses
+//@access public (you may change to private based on your logic)
+const deleteUserAddress = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  // Clear the delivery address
+  user.DelieryAddress = {};
+
+  await user.save();
+
+  res.status(200).json({ message: 'Address deleted successfully' });
+});
+
+
 //@desc current user info
 //@route GET /api/users/current
 //@access private
@@ -112,4 +226,14 @@ const deleteUser = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
-module.exports = { signUpUser, getUsers, getUser,loginUser, currentUser, deleteUser };
+module.exports = {
+  signUpUser,
+  getUsers,
+  getUser,
+  loginUser,
+  deleteUser,
+  createAddress,
+  getUserAddresses,
+  updateUserAddress,
+  deleteUserAddress,
+};

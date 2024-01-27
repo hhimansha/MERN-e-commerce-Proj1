@@ -23,6 +23,12 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default : false
     },
+    DelieryAddress: {
+      street: String,
+      city: String,
+      state: String,
+      zipCode: String,
+    },
   },
   {
     timestamps: true,
