@@ -6,7 +6,10 @@ export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        user: action.payload,
+        user: {
+          ...action.payload,
+          DeliveryAddress: action.payload.DeliveryAddress || {},
+        },
         isAdmin: action.payload.isAdmin || false,
         loading: false,
       };

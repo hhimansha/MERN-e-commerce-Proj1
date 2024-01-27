@@ -131,7 +131,6 @@ const createAddress = asyncHandler(async (req, res) => {
   await user.save();
 
   res.status(200).json({ message: 'Delivery address updated successfully' });
-  console.log(user.DelieryAddress);
 });
 
 

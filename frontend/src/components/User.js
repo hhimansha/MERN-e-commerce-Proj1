@@ -1,4 +1,3 @@
-// User.js
 import { Link } from 'react-router-dom';
 import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -6,7 +5,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const User = () => {
   const { user } = useAuthContext();
 
- 
+   useEffect(() => {
+    console.log("User object:", user);
+  }, [user]);
 
   return (
     <div className="flex mx-auto justify-center my-10">
@@ -36,19 +37,22 @@ const User = () => {
           <Link to="/user/address">
             <h2 className="text-lg text-primary font-semibold mb-4 text-center">Delivery Address</h2>
           </Link>
-          
+          {user && user.DeliveryAddress && Object.keys(user.DeliveryAddress).length > 0 && (
             <div className="grid gap-2">
               <div>
-                <strong>Receiver Name:</strong> 
+                <strong>Street:</strong> {user.DeliveryAddress.street}
               </div>
               <div>
-                <strong>Address:</strong>
+                <strong>City:</strong> {user.DeliveryAddress.city}
               </div>
               <div>
-                <strong>Phone:</strong>
+                <strong>State:</strong> {user.DeliveryAddress.state}
+              </div>
+              <div>
+                <strong>Zip Code:</strong> {user.DeliveryAddress.zipCode}
               </div>
             </div>
-         
+          )}
         </div>
       </div>
     </div>
