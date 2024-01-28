@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
+      localStorage.setItem('user', JSON.stringify(action.payload));
       return {
         user: {
           ...action.payload,
@@ -14,9 +15,11 @@ export const authReducer = (state, action) => {
         loading: false,
       };
 
+
     case 'LOGOUT':
       localStorage.removeItem('user');
       return { user: null, isAdmin: false, loading: false };
+      
 
     case 'DELETE_USER':
       return {

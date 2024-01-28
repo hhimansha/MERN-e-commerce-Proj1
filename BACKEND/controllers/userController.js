@@ -92,7 +92,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   console.log(`User logged ${user}`);
   res.status(200).json({ _id: user._id, email: user.email,firstname: user.firstname,
-  lastname: user.lastname,  Admin:user.Admin });
+  lastname: user.lastname,  Admin:user.Admin, DeliveryAddress: user.DeliveryAddress });
 });
 
 
