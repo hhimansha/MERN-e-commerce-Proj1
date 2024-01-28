@@ -71,7 +71,7 @@ function UserAddress() {
     <div className="ml-80 max-w-fit">
       <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
         <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">
-          Add a New Book
+          Update Address
         </h3>
         <form
           className="grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-4"
