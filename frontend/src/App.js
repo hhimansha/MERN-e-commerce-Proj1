@@ -12,6 +12,7 @@ import UpdateBook from './components/Admin/UpdateBook';
 import ManageUsers from './components/Admin/ManageUsers';
 import UserAddress from './components/UserAddress';
 import User from './components/User'
+import ProfileUpdate from './components/ProfileUpdate';
 function App() {
     const { user } = useAuthContext();
 
@@ -37,6 +38,10 @@ function App() {
                     <Route
                         path="/user/address"
                         element={user? <><HeaderPart /><UserAddress /><Footer /></> : <Navigate to="/" />}
+                    />
+                    <Route
+                        path="/user/update"
+                        element={user? <><HeaderPart /><ProfileUpdate /><Footer /></> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admindash/products"

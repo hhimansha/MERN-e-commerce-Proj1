@@ -13,7 +13,7 @@ const User = () => {
     <div className="flex mx-auto justify-center my-10">
       <div className=" bg-grey-light rounded-3xl p-8 drop-shadow-md ">
         <div>
-          <h2 className="text-lg text-primary font-semibold mb-4 text-center">User Profile</h2>
+          <Link to="/user/update"><h2 className="text-lg text-primary font-semibold mb-4 text-center">User Profile</h2></Link>
           {user && (
             <div className="grid gap-2">
               <div>

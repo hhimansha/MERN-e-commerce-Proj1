@@ -19,7 +19,16 @@ export const authReducer = (state, action) => {
     case 'LOGOUT':
       localStorage.removeItem('user');
       return { user: null, isAdmin: false, loading: false };
-      
+     /*case 'UPDATE_USER':
+      localStorage.setItem('user', JSON.stringify(action.payload));
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+          DeliveryAddress: action.payload.DeliveryAddress || {},
+        },
+      }; */
 
     case 'DELETE_USER':
       return {

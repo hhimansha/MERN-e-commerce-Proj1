@@ -157,7 +157,7 @@ const getUserAddresses = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const userId = req.params.id;
 
-  const { firstname, lastname, email, password, Admin, DeliveryAddress: { street, city, state, zipCode } } = req.body;
+  const { firstname, lastname, email, password} = req.body;
 
   // Find the user by ID
   let user = await User.findById(userId);
@@ -173,12 +173,19 @@ const updateUser = asyncHandler(async (req, res) => {
   user.email = email;
   user.password = password; // Hash the password if needed before saving
   user.Admin = Admin;
-  user.DeliveryAddress = { street, city, state, zipCode };
+  //user.DeliveryAddress = { street, city, state, zipCode };
 
+  // Update the password if provided
+  if (password) {
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
+  }
   // Save the updated user
   const updatedUser = await user.save();
 
   res.status(200).json(updatedUser);
+  res.status(200).json({ message: 'User updated successfully' });
 });
 
 

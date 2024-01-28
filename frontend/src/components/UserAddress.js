@@ -1,16 +1,20 @@
 import React, { useState, useReducer } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import { useAuthContext } from "../hooks/useAuthContext";
 
 function UserAddress() {
   const { user, dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   // New state variables
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [street, setStreet] = useState(user.DeliveryAddress ? user.DeliveryAddress.street : "");
+  const [city, setCity] = useState(user.DeliveryAddress ? user.DeliveryAddress.city : "");
+  const [state, setState] = useState(user.DeliveryAddress ? user.DeliveryAddress.state : "");
+  const [zipCode, setZipCode] = useState(user.DeliveryAddress ? user.DeliveryAddress.zipCode : "");
+
 
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
@@ -40,9 +44,6 @@ function UserAddress() {
     },
     });
 
-
-
-
     forceUpdate();
 
     const json = await response.json();
@@ -61,6 +62,7 @@ function UserAddress() {
       setZipCode("");
       setEmptyFields([]);
       dispatch({ type: "UPDATE_DELIVERY_ADDRESS", payload: json.DeliveryAddress });
+      navigate("/user");
 
     }
   };

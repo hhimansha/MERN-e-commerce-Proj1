@@ -21,8 +21,10 @@ router.route("/user/address/:id").get(getUserAddresses);
 // Setup route for creating or updating delivery address (protected route)
 router.route("/user/address/:id").post(createAddress);
 
+router.route("/user/address/:id").delete(deleteUserAddress);
+
 // Setup route for updating user details (protected route)
-router.route("/user/:id").put(updateUser);
+router.route("/user/update/:id").put(updateUser);
 
 
 // setup route for get a specific book
