@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default : false
     },
-    DelieryAddress: {
+    DeliveryAddress: {
       street: String,
       city: String,
       state: String,

@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 
 //@desc Get all users
@@ -121,7 +120,7 @@ const createAddress = asyncHandler(async (req, res) => {
   }
 
   // Update the delivery address
-  user.DelieryAddress = {
+  user.DeliveryAddress = {
     street,
     city,
     state,
@@ -130,7 +129,8 @@ const createAddress = asyncHandler(async (req, res) => {
 
   await user.save();
 
-  res.status(200).json({ message: 'Delivery address updated successfully' });
+  res.status(200).json(user);
+
 });
 
 
@@ -147,7 +147,7 @@ const getUserAddresses = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const addresses = user.DelieryAddress || {};
+  const addresses = user.DeliveryAddress || {};
   res.status(200).json(addresses);
 });
 
@@ -157,7 +157,7 @@ const getUserAddresses = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const userId = req.params.id;
 
-  const { firstname, lastname, email, password, Admin, DelieryAddress: { street, city, state, zipCode } } = req.body;
+  const { firstname, lastname, email, password, Admin, DeliveryAddress: { street, city, state, zipCode } } = req.body;
 
   // Find the user by ID
   let user = await User.findById(userId);
@@ -173,7 +173,7 @@ const updateUser = asyncHandler(async (req, res) => {
   user.email = email;
   user.password = password; // Hash the password if needed before saving
   user.Admin = Admin;
-  user.DelieryAddress = { street, city, state, zipCode };
+  user.DeliveryAddress = { street, city, state, zipCode };
 
   // Save the updated user
   const updatedUser = await user.save();
@@ -196,7 +196,7 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
   }
 
   // Clear the delivery address
-  user.DelieryAddress = {};
+  user.DeliveryAddress = {};
 
   await user.save();
 

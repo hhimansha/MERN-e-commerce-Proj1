@@ -13,24 +13,33 @@ export const authReducer = (state, action) => {
         isAdmin: action.payload.isAdmin || false,
         loading: false,
       };
+
     case 'LOGOUT':
       localStorage.removeItem('user');
       return { user: null, isAdmin: false, loading: false };
+
     case 'DELETE_USER':
       return {
         ...state,
         user: state.user.filter((u) => u._id !== action.payload._id),
       };
+
     case 'LOADING_COMPLETE':
       return { ...state, loading: false }; // New action type
+
     case 'UPDATE_DELIVERY_ADDRESS':
+      localStorage.setItem('user', JSON.stringify({
+        ...state.user,
+        DeliveryAddress: action.payload || {},
+      }));
       return {
         ...state,
         user: {
           ...state.user,
-          deliveryAddress: action.payload,
+          DeliveryAddress: action.payload || {},
         },
       };
+    
     default:
       return state;
   }
@@ -45,14 +54,18 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
-
+  
     if (storedUser) {
       dispatch({ type: 'LOGIN', payload: storedUser });
+    } else {
+      // Set user to null when there is no stored user
+      dispatch({ type: 'LOGOUT' });
     }
-
+  
     // Set loading to false after updating the state
     dispatch({ type: 'LOADING_COMPLETE' });
   }, []);
+  
 
   console.log('AuthContext state:', state);
 
@@ -67,3 +80,4 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+

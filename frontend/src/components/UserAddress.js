@@ -24,7 +24,7 @@ function UserAddress() {
     }
 
     // Update userAddress object with new variables
-    const DelieryAddress = {
+    const DeliveryAddress = {
       street,
       city,
       state,
@@ -33,7 +33,7 @@ function UserAddress() {
 
     const response = await fetch(`http://localhost:9092/api/users/user/address/${user._id}`, {
     method: "POST",
-    body: JSON.stringify(DelieryAddress),
+    body: JSON.stringify(DeliveryAddress),
     headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${user.token}`,
@@ -46,6 +46,7 @@ function UserAddress() {
     forceUpdate();
 
     const json = await response.json();
+    console.log('Backend Response:', json);
 
     if (!response.ok) {
       setError(json.error);
@@ -59,7 +60,8 @@ function UserAddress() {
       setState("");
       setZipCode("");
       setEmptyFields([]);
-      dispatch({ type: "UPDATE_DELIVERY_ADDRESS", payload: json });
+      dispatch({ type: "UPDATE_DELIVERY_ADDRESS", payload: json.DeliveryAddress });
+
     }
   };
 
