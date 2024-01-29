@@ -30,7 +30,7 @@ router.route("/user/update/:id").put(updateUser);
 // setup route for get a specific book
 router.route("/admindash/users/").get(getUsers);
 
-// setup route for get a specific book
+// setup route for get a specific
 router.route("/admindash/users/:id").get(getUser);
 
 router.post("/login", loginUser);

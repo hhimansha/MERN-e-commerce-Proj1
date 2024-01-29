@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
+
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
@@ -7,17 +8,19 @@ module.exports = {
         'primary': '#ff8400',
         'grey': 'rgb(40, 40, 40)',
         'grey-light': 'rgb(250, 248, 245)',
-
       },
       textColor: {
-        'primary': '#ff8400', // Use the same color code as the 'primary' background color
+        'primary': '#ff8400',
       },
       width: {
         '242': '242px',
-        'fit' : '1280px',
-        'wide' : '1800px'
+        'fit': '1280px',
+        'wide': '1800px',
       },
     },
   },
-  plugins: [],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+    // Add other plugins here if needed
+  ],
+};
