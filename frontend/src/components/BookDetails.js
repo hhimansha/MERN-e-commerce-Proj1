@@ -1,6 +1,52 @@
 import { Link } from "react-router-dom"
+import { useState } from "react";
 
 const BookDetails = ({ book }) => {
+    const [qty, setQty] = useState(1);
+    var calculatedTotPrice = 0;
+  
+    const addToCart = async () => {
+        try {
+          // Ensure book.price and qty are valid numbers
+          const bookPrice = parseFloat(book.price);
+          const quantity = parseInt(qty);
+      
+          // Calculate TotPrice once
+          calculatedTotPrice = bookPrice * quantity;
+          console.log('book.price:', book.price);
+    console.log('qty:', qty);
+    console.log('calculatedTotPrice:', calculatedTotPrice);
+      
+          const response = await fetch('http://localhost:9092/api/order/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              bookId: book._id,
+              bookName: book.title,
+              qty: quantity,
+              imageSrc: book.imageSrc,
+              price: book.price,
+              TotPrice: calculatedTotPrice, 
+            }),
+          });
+      
+          const data = await response.json();
+      
+          if (response.ok) {
+            console.log('Item added to cart:', data);
+            // You may want to add some UI feedback here
+          } else {
+            console.error('Error adding to cart:', data.error);
+            // Handle error and show appropriate UI feedback
+          }
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          // Handle error and show appropriate UI feedback
+        }
+      };
+
     return(
         <div className="fetchAllBooks w-242">
             <div className="books text-black m-5">
@@ -15,9 +61,9 @@ const BookDetails = ({ book }) => {
                         <p className="mb-1 font-normal text-gray-700 dark:text-gray-500">{book.author}</p>
                         <p className="mb-2 text-16 font-bold tracking-tight text-primary">{book.price}$</p>
                         <div className="btnSection grid items-center">
-                        <a href="#" class="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black text-center">
+                        <button onClick={addToCart} className="px-5 py-2 text-20 text-black-600 font-semibold rounded-full border border-black transition duration-1000 ease-in-out hover:text-white hover:bg-grey hover:border-black text-center">
                         Add to cart
-                        </a>
+                        </button>
 
 
                         <Link to={`/product/${book._id}`}>
