@@ -14,6 +14,7 @@ module.exports = {
       },
       width: {
         '242': '242px',
+        'mid' : '500px',
         'fit': '1280px',
         'wide': '1800px',
       },

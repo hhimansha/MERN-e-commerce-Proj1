@@ -5,13 +5,13 @@ const BookDetails = ({ book }) => {
         <div className="fetchAllBooks w-242">
             <div className="books text-black m-5">
                 <div className="max-w-sm bg-grey rounded-lg drop-shadow-md dark:bg-grey-light">
-                    <a href="#">
+                <Link to={`/product/${book._id}`}>
                         <img src={book.imageSrc} alt={book.title} className="rounded-t-lg w-80 h-72 "/>
-                    </a>
+                    </Link>
                     <div className="p-5">
-                        <a href="#">
+                    <Link to={`/product/${book._id}`}>
                         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-grey">{book.title}</h5>
-                        </a>
+                        </Link>
                         <p className="mb-1 font-normal text-gray-700 dark:text-gray-500">{book.author}</p>
                         <p className="mb-2 text-16 font-bold tracking-tight text-primary">{book.price}$</p>
                         <div className="btnSection grid items-center">
