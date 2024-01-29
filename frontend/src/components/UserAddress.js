@@ -131,7 +131,7 @@ function UserAddress() {
           <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">
             Add address
           </button>
-          {error && <div className="error ">{error}</div>}
+          {error && <div className="error text-red-600">{error}</div>}
         </form>
       </div>
     </div>

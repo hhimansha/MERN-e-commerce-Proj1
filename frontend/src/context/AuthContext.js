@@ -77,10 +77,8 @@ export const AuthContextProvider = ({ children }) => {
     // Set loading to false after updating the state
     dispatch({ type: 'LOADING_COMPLETE' });
   }, []);
-  
 
-  console.log('AuthContext state:', state);
-
+console.log('Auth context state :', state)
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
       {state.loading ? (

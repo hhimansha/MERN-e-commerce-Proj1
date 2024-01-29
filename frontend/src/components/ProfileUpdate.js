@@ -2,6 +2,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const ProfileUpdate = () => {
     const { user, dispatch } = useAuthContext();
   const [firstname, setFName] = useState(user.firstname || "");
@@ -12,18 +13,16 @@ const ProfileUpdate = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Set the initial password value when the component mounts
   useEffect(() => {
-    // You can set a default value or keep it as an empty string
     setPassword(user.password || "");
-  }, [user]); // Trigger when the user data changes
+  }, [user]); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check if the new password and confirm password match
     if (password !== confirmPassword) {
-        setError("Passwords do not match");
+        setError("Passwords do not match!");
       return;
     }
 
@@ -42,7 +41,7 @@ const ProfileUpdate = () => {
     );
 
     const json = await response.json();
-    console.log("Backend Response:", json);
+
 
     if (!response.ok) {
       setError(json.error);
@@ -51,7 +50,6 @@ const ProfileUpdate = () => {
     if (response.ok) {
       dispatch({ type: "UPDATE_USER", payload: json });
       navigate("/user")
-      alert("Profile updated!")
     }
   };
   
@@ -92,12 +90,13 @@ const ProfileUpdate = () => {
                     </button>
                 </div>
                 {error && (
-                <div className="text-red text-center m-2 text-2xl">
+                <div className="text-red-500 text-center m-2 text-2xl">
                     {error}
                 </div>
                 )}
                 
             </form>
+            
         </div>
     );
 }

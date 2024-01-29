@@ -2,12 +2,8 @@ import { Link } from 'react-router-dom';
 import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const User = () => {
+const User = ({ successMessage }) => {
   const { user } = useAuthContext();
-
-   useEffect(() => {
-    console.log("User object:", user);
-  }, [user]);
 
   return (
     <div className="flex mx-auto justify-center my-10">
