@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 //@access public
 const getUsers = asyncHandler(async(req,res) => {
   // Exclude the password field from the query projection
-  const users = await User.find({}, { password: 0 });
+  const users = await User.find({}, { password: 10 });
   res.status(200).json(users);
 });
 
@@ -157,7 +157,7 @@ const getUserAddresses = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const userId = req.params.id;
 
-  const { firstname, lastname, email, password} = req.body;
+  const { firstname, lastname, email, password } = req.body;
 
   // Find the user by ID
   let user = await User.findById(userId);
@@ -171,9 +171,6 @@ const updateUser = asyncHandler(async (req, res) => {
   user.firstname = firstname;
   user.lastname = lastname;
   user.email = email;
-  user.password = password; // Hash the password if needed before saving
-  user.Admin = Admin;
-  //user.DeliveryAddress = { street, city, state, zipCode };
 
   // Update the password if provided
   if (password) {
@@ -181,11 +178,17 @@ const updateUser = asyncHandler(async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     user.password = hashedPassword;
   }
+
   // Save the updated user
   const updatedUser = await user.save();
 
-  res.status(200).json(updatedUser);
-  res.status(200).json({ message: 'User updated successfully' });
+  // Populate the password field in the response
+  const userWithPassword = {
+    ...updatedUser.toObject(),
+    password: password || "", // Use the provided password or an empty string
+  };
+
+  res.status(200).json(userWithPassword);
 });
 
 
