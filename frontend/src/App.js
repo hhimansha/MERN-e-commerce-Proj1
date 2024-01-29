@@ -22,7 +22,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<><HeaderPart /><Home /><Footer /></>} />
                     <Route path="/signup" element={!user ? <><HeaderPart /><SignUp /><Footer /></> : <Navigate to="/" />} />
-                    <Route path="/product" element={<><HeaderPart /><Productpage /><Footer /></>} />
+                    <Route path="/product/:bookId" element={user? <><HeaderPart /><Productpage /><Footer /></> : <Navigate to="/" />} />
                     <Route
                         path="/login"
                         element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.Admin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
@@ -35,6 +35,7 @@ function App() {
                         path="/user"
                         element={user? <><HeaderPart /><User /><Footer /></> : <Navigate to="/" />}
                     />
+          
                     <Route
                         path="/user/address"
                         element={user? <><HeaderPart /><UserAddress /><Footer /></> : <Navigate to="/" />}

@@ -56,7 +56,6 @@ const ProfileUpdate = () => {
         setSuccess(true);
         setTimeout(() => {
           setSuccess(false);
-          navigate("/user");
         }, 3000);
       }
     };
@@ -116,7 +115,7 @@ const ProfileUpdate = () => {
             </form>
             
         </div>
-        {success && <SuccessAlert onClose={() => setSuccess(false)} />}
+        {success && <SuccessAlert onClose={() => navigate("/user")} />}
         </div>
     );
 }

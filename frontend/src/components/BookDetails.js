@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const BookDetails = ({ book }) => {
     return(
         <div className="fetchAllBooks w-242">
@@ -18,11 +20,12 @@ const BookDetails = ({ book }) => {
                         </a>
 
 
-
-                            <a href="#" className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary text-center mt-2">
+                        <Link to={`/product/${book._id}`}>
+                            <div className="px-5 py-2 text-20 text-white font-semibold rounded-full border focus:outline-none bg-primary text-center mt-2">
                             Buy now
 
-                            </a>
+                            </div>
+                            </Link>
                         </div>
                         
                 </div>
