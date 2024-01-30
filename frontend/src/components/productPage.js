@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 function ProductPage() {
     const { bookId } = useParams();
@@ -7,7 +8,7 @@ function ProductPage() {
     const [qty, setQty] = useState(1);
     var calculatedTotPrice = 0;
   
-    const addToCart = async () => {
+    const addToCart = () => {
       try {
         // Ensure book.price and qty are valid numbers
         const bookPrice = parseFloat(book.price);
@@ -16,9 +17,31 @@ function ProductPage() {
         // Calculate TotPrice once
         calculatedTotPrice = bookPrice * quantity;
 
-        console.log('calculatedTotPrice:', calculatedTotPrice);
+        // Generate a unique identifier for the cart item
+        const cartItemId = uuidv4();
   
-        // ... rest of your addToCart logic
+        // Retrieve existing cart items from local storage
+        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+        // Add the current item to the cart with a unique identifier
+        const updatedCart = [
+          ...existingCart,
+          {
+            id: cartItemId,  // Use the generated unique identifier
+            bookId: book._id,
+            bookName: book.title,
+            qty: quantity,
+            imageSrc: book.imageSrc,
+            price: book.price,
+            TotPrice: calculatedTotPrice,
+          },
+        ];
+  
+        // Save the updated cart back to local storage
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+  
+        // You may want to add some UI feedback here
+        console.log('Item added to cart:', updatedCart);
       } catch (error) {
         console.error('Error adding to cart:', error);
         // Handle error and show appropriate UI feedback
