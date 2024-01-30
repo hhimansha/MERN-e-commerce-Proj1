@@ -1,8 +1,8 @@
 const asyncHandler = require("express-async-handler");
-const Cart = require("../models/cartModel");
+const Cart = require("../models/orderModel");
 const { error } = require("console");
 
-const addToCart = asyncHandler(async (req, res) => {
+const placeOrder = asyncHandler(async (req, res) => {
     try {
         let totPrice = 0
         
@@ -11,7 +11,6 @@ const addToCart = asyncHandler(async (req, res) => {
   
       // Calculate total price
       totPrice = qty * price;
-      console.log(typeof(totPrice))
   
       // Create a new order in the database
       const newCart = await Cart.create({
@@ -43,5 +42,5 @@ const addToCart = asyncHandler(async (req, res) => {
     res.status(200).json(cart);
 });
   
-  module.exports = { addToCart,  getCarts, getCart};
+  module.exports = { placeOrder,  getCarts, getCart};
   

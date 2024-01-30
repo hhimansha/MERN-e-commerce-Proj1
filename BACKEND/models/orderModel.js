@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 
-const orderCartSchema = mongoose.Schema(
+const orderSchema = mongoose.Schema(
   {
     bookId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Book", // Reference to the Book collection
+      required: [true, "Please add the title"],
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Reference to the User collection
       required: [true, "Please add the title"],
     },
     bookName: {
@@ -18,10 +24,9 @@ const orderCartSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add the image"],
     },
-   
     TotPrice: {
       type: Number,
-      required: [true, "Please add the  price"],
+      required: [true, "Please add the price"],
     },
   },
   {
@@ -29,4 +34,4 @@ const orderCartSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Cart", orderCartSchema);
+module.exports = mongoose.model("Order", orderSchema);
