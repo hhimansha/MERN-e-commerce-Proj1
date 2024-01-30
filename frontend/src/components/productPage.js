@@ -3,50 +3,57 @@ import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 function ProductPage() {
-    const { bookId } = useParams();
-    const [book, setBook] = useState(null);
-    const [qty, setQty] = useState(1);
-    var calculatedTotPrice = 0;
-  
-    const addToCart = () => {
-      try {
-        // Ensure book.price and qty are valid numbers
-        const bookPrice = parseFloat(book.price);
-        const quantity = parseInt(qty);
-  
-        // Calculate TotPrice once
-        calculatedTotPrice = bookPrice * quantity;
+  const { bookId } = useParams();
+  const [book, setBook] = useState(null);
+  const [qty, setQty] = useState(1);
+  const [calculatedTotPrice, setCalculatedTotPrice] = useState(0);
 
-        // Generate a unique identifier for the cart item
-        const cartItemId = uuidv4();
-  
-        // Retrieve existing cart items from local storage
-        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-  
-        // Add the current item to the cart with a unique identifier
-        const updatedCart = [
-          ...existingCart,
-          {
-            id: cartItemId,  // Use the generated unique identifier
-            bookId: book._id,
-            bookName: book.title,
-            qty: quantity,
-            imageSrc: book.imageSrc,
-            price: book.price,
-            TotPrice: calculatedTotPrice,
-          },
-        ];
-  
-        // Save the updated cart back to local storage
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
-  
-        // You may want to add some UI feedback here
-        console.log('Item added to cart:', updatedCart);
-      } catch (error) {
-        console.error('Error adding to cart:', error);
-        // Handle error and show appropriate UI feedback
-      }
-    };
+  const addToCart = () => {
+    try {
+      // Ensure book.price is a valid number
+      const bookPrice = parseFloat(book.price);
+
+      // Calculate TotPrice using the captured quantity
+      const updatedCalculatedTotPrice = bookPrice * qty;
+
+      // Generate a unique identifier for the cart item
+      const cartItemId = uuidv4();
+
+      // Retrieve existing cart items from local storage
+      const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Add the current item to the cart with a unique identifier
+      const updatedCart = [
+        ...existingCart,
+        {
+          id: cartItemId,  // Use the generated unique identifier
+          bookId: book._id,
+          bookName: book.title,
+          qty: qty,  // Use the captured quantity
+          imageSrc: book.imageSrc,
+          price: book.price,
+          TotPrice: updatedCalculatedTotPrice,
+        },
+      ];
+
+      // Save the updated cart back to local storage
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      // Update the calculatedTotPrice state
+      setCalculatedTotPrice(updatedCalculatedTotPrice);
+
+      // You may want to add some UI feedback here
+      console.log('Item added to cart:', updatedCart);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      // Handle error and show appropriate UI feedback
+    }
+  };
+
+  useEffect(() => {
+    // Update calculatedTotPrice when qty changes
+    setCalculatedTotPrice(parseFloat(book?.price || 0) * qty);
+  }, [qty, book]);
   
     useEffect(() => {
       const fetchBook = async () => {
@@ -75,6 +82,7 @@ function ProductPage() {
     const decrementQty = () => {
       setQty((prevQty) => (prevQty > 1 ? prevQty - 1 : prevQty));
     };
+
 
   return (
     <div>
