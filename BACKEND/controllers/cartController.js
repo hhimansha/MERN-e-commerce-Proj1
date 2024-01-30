@@ -32,7 +32,16 @@ const addToCart = asyncHandler(async (req, res) => {
   const getCarts = asyncHandler(async(req,res) => {
     const carts = await Cart.find(); 
     res.status(200).json(carts);
+  });
+
+  const getCart = asyncHandler(async(req,res) => {
+    const cart = await Cart.findById(req.params.id);
+    if(!cart){
+        res.status(404);
+        throw new Error("Cart not found");
+    }
+    res.status(200).json(cart);
 });
   
-  module.exports = { addToCart,  getCarts};
+  module.exports = { addToCart,  getCarts, getCart};
   
