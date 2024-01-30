@@ -1,51 +1,44 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const BookDetails = ({ book }) => {
-    const [qty, setQty] = useState(1);
-    var calculatedTotPrice = 0;
-  
-    const addToCart = async () => {
-        try {
-          // Ensure book.price and qty are valid numbers
-          const bookPrice = parseFloat(book.price);
-          const quantity = parseInt(qty);
-      
-          // Calculate TotPrice once
-          calculatedTotPrice = bookPrice * quantity;
-          console.log('book.price:', book.price);
-    console.log('qty:', qty);
-    console.log('calculatedTotPrice:', calculatedTotPrice);
-      
-          const response = await fetch('http://localhost:9092/api/order/cart', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              bookId: book._id,
-              bookName: book.title,
-              qty: quantity,
-              imageSrc: book.imageSrc,
-              price: book.price,
-              TotPrice: calculatedTotPrice, 
-            }),
-          });
-      
-          const data = await response.json();
-      
-          if (response.ok) {
-            console.log('Item added to cart:', data);
-            // You may want to add some UI feedback here
-          } else {
-            console.error('Error adding to cart:', data.error);
-            // Handle error and show appropriate UI feedback
-          }
-        } catch (error) {
-          console.error('Error adding to cart:', error);
-          // Handle error and show appropriate UI feedback
-        }
-      };
+  const [qty, setQty] = useState(1);
+
+  const addToCart = () => {
+    try {
+      // Ensure book.price and qty are valid numbers
+      const bookPrice = parseFloat(book.price);
+      const quantity = parseInt(qty);
+
+      // Calculate TotPrice once
+      const calculatedTotPrice = bookPrice * quantity;
+
+      // Retrieve existing cart items from local storage
+      const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Add the current item to the cart
+      const updatedCart = [
+        ...existingCart,
+        {
+          bookId: book._id,
+          bookName: book.title,
+          qty: quantity,
+          imageSrc: book.imageSrc,
+          price: book.price,
+          TotPrice: calculatedTotPrice,
+        },
+      ];
+
+      // Save the updated cart back to local storage
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      // You may want to add some UI feedback here
+      console.log('Item added to cart:', updatedCart);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      // Handle error and show appropriate UI feedback
+    }
+  };
 
     return(
         <div className="fetchAllBooks w-242">
