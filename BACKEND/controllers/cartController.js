@@ -28,6 +28,11 @@ const addToCart = asyncHandler(async (req, res) => {
       res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
   });
+
+  const getCarts = asyncHandler(async(req,res) => {
+    const carts = await Cart.find(); 
+    res.status(200).json(carts);
+});
   
-  module.exports = { addToCart };
+  module.exports = { addToCart,  getCarts};
   

@@ -13,6 +13,7 @@ import ManageUsers from './components/Admin/ManageUsers';
 import UserAddress from './components/UserAddress';
 import User from './components/User'
 import ProfileUpdate from './components/ProfileUpdate';
+import Cart from './components/Cart';
 function App() {
     const { user } = useAuthContext();
 
@@ -22,7 +23,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<><HeaderPart /><Home /><Footer /></>} />
                     <Route path="/signup" element={!user ? <><HeaderPart /><SignUp /><Footer /></> : <Navigate to="/" />} />
-                    <Route path="/product/:bookId" element={user? <><HeaderPart /><Productpage /><Footer /></> : <Navigate to="/" />} />
+                    <Route path="/product/:bookId" element={<><HeaderPart /><Productpage /><Footer /></>} />
                     <Route
                         path="/login"
                         element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.Admin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
@@ -34,6 +35,10 @@ function App() {
                     <Route
                         path="/user"
                         element={user? <><HeaderPart /><User /><Footer /></> : <Navigate to="/" />}
+                    />
+                    <Route
+                        path="/cart"
+                        element={ <><HeaderPart /><Cart /><Footer /></>}
                     />
           
                     <Route

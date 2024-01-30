@@ -15,8 +15,7 @@ function ProductPage() {
   
         // Calculate TotPrice once
         calculatedTotPrice = bookPrice * quantity;
-        console.log('book.price:', book.price);
-        console.log('qty:', qty);
+
         console.log('calculatedTotPrice:', calculatedTotPrice);
   
         // ... rest of your addToCart logic
@@ -91,7 +90,8 @@ function ProductPage() {
                         <span className="w-full text-center text-50 font-semibold border-r-2 border-l-2 border-solid border-black opacity-20 cursor-not-allowed">
                         {qty < 10 ? `0${qty}` : qty}
                         </span>
-                        <span className="w-full text-center text-white font-semibold cursor-pointer select-none bg-grey" onClick={incrementQty}>
+                        <span className="w-full text-center text-white font-semibold cursor-pointer select-none bg-grey" 
+                        onClick={incrementQty}>
                         +
                         </span>
                     </div>
