@@ -14,6 +14,8 @@ const Order = () => {
   
     // Calculate total price
     const total = carts.reduce((acc, cart) => acc + cart.TotPrice, 0);
+    const discounted = total * 50/100;
+    const grandTotal = (total - discounted) + 8
 
     return(
         <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
@@ -23,21 +25,20 @@ const Order = () => {
               <p class="text-lg md:text-xl dark:text-black font-semibold leading-6 xl:leading-5 text-black">Customer’s Cart</p>
             {carts.map((cart) => (
               <div key={cart.id} class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
-                <div class="pb-4 md:pb-8 w-full md:w-40">
-                  <img class="w-full hidden md:block" src={cart.imageSrc} alt={cart.bookName} />
-                  <img class="w-full md:hidden" src={cart.imageSrc} alt={cart.bookName} />
+                <div class="pb-4 md:pb-8 w-full md:w-20">
+                  <img class="w-96 hidden md:block" src={cart.imageSrc} alt={cart.bookName} />
+                  <img class="w-96 md:hidden" src={cart.imageSrc} alt={cart.bookName} />
                 </div>
                 <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
                   <div class="w-full flex flex-col justify-start items-start space-y-8">
                     <h3 class="text-xl dark:text-black xl:text-2xl font-semibold leading-6 text-black">{cart.bookName}</h3>
                     <div class="flex justify-start items-start flex-col space-y-2">
-                      <p class="text-sm dark:text-gray-400 leading-none text-gray-800"><span class="dark:text-gray-400 text-gray-300">Author: </span> {cart.author}</p>
                     </div>
                   </div>
                   <div class="flex justify-between space-x-8 items-start w-full">
-                    <p class="text-base dark:text-black xl:text-lg leading-6">{cart.price}</p>
-                    <p class="text-base dark:text-black xl:text-lg leading-6 text-gray-800">{cart.qty}</p>
-                    <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">{cart.TotPrice}</p>
+                    <p class="text-base dark:text-black xl:text-lg leading-6">Unit price : {cart.price}</p>
+                    <p class="text-base dark:text-black xl:text-lg leading-6 text-gray-800">Qty : {cart.qty}</p>
+                    <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">${cart.TotPrice}</p>
                   </div>
                 </div>
               </div>
@@ -54,7 +55,7 @@ const Order = () => {
                   </div>
                   <div class="flex justify-between items-center w-full">
                     <p class="text-base text-black leading-4 ">Discount <span class="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">STUDENT</span></p>
-                    <p class="text-base text-black leading-4 ">-$28.00 (50%)</p>
+                    <p class="text-base text-black leading-4 ">-${discounted} (50%)</p>
                   </div>
                   <div class="flex justify-between items-center w-full">
                     <p class="text-base text-black leading-4 ">Shipping</p>
@@ -63,7 +64,7 @@ const Order = () => {
                 </div>
                 <div class="flex justify-between items-center w-full">
                   <p class="text-base text-black font-semibold leading-4 ">Total</p>
-                  <p class="text-base text-black font-semibold leading-4 ">$36.00</p>
+                  <p class="text-base text-black font-semibold leading-4 ">${grandTotal}</p>
                 </div>
               </div>
               <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-3xl drop-shadow-md space-y-6">
@@ -74,7 +75,7 @@ const Order = () => {
                       <img class="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
                     </div>
                     <div class="flex flex-col justify-start items-center">
-                      <p class="text-lg leading-6 text-black font-semibold ">DPD Delivery<br /><span class="font-normal">Delivery with 24 Hours</span></p>
+                      <p class="text-lg leading-6 text-black font-semibold ">Hima-Express Delivery<br /><span class="font-normal">Delivery with 24 Hours</span></p>
                     </div>
                   </div>
                   <p class="text-lg font-semibold leading-6 text-black">$8.00</p>
