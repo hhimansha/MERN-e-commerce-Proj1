@@ -8,6 +8,9 @@ const UserOrder = () => {
   const { user } = useAuthContext();
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
+  
+console.log('User object:', user._id);
+
   const handleClick = async (orderId) => {
     if (!user) {
       return;
@@ -38,8 +41,9 @@ const UserOrder = () => {
           return;
         }
 
-        const response = await fetch(`http://localhost:9092/api/order/orders/user/${user.userId}`);
+        const response = await fetch(`http://localhost:9092/api/order/orders/user/${user._id}`);
         const data = await response.json();
+        forceUpdate()
 
         console.log('Fetched orders:', data);
 
@@ -54,7 +58,7 @@ const UserOrder = () => {
     };
 
     fetchOrders();
-  }, [user]);
+  }, [reducerValue],[user]);
 
   console.log('User Orders:', orders); // Log user orders
 
