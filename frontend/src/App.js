@@ -15,6 +15,8 @@ import User from './components/User'
 import ProfileUpdate from './components/ProfileUpdate';
 import Cart from './components/Cart';
 import Order from './components/Order';
+import OrderHandler from './components/Admin/orderHandler';
+import UserOrder from './components/UserOrder';
 function App() {
     const { user } = useAuthContext();
 
@@ -71,6 +73,17 @@ function App() {
                             <>
                                 <AdminDash />
                                 <ManageUsers />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
+                    <Route
+                        path="/admindash/orders"
+                        element={user?.Admin ? (
+                            <>
+                                <AdminDash />
+                                <OrderHandler />
                             </>
                         ) : (
                             <Navigate to="/" />

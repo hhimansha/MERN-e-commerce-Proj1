@@ -5,15 +5,18 @@ import './index.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 import { BooksContextProvider } from './context/BooksContext';
+import { OrderContextProvider } from './context/OrderContext';
 
 const root = document.getElementById('root'); 
 
 const app = (
   <React.StrictMode>
     <AuthContextProvider>
+      <OrderContextProvider>
       <BooksContextProvider>
           <App />
       </BooksContextProvider>
+      </OrderContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

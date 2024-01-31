@@ -8,9 +8,10 @@ const bcrypt = require('bcryptjs');
 //@access public
 const getUsers = asyncHandler(async(req,res) => {
   // Exclude the password field from the query projection
-  const users = await User.find({}, { password: 10 });
+  const users = await User.find({}, { password: 0 });
   res.status(200).json(users);
 });
+
 
 //@desc Get a user
 //@route GET /api/user/:id

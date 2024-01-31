@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
+import UserOrder from './UserOrder';
 
 const User = ({ successMessage }) => {
   const { user } = useAuthContext();
@@ -51,6 +52,9 @@ const User = ({ successMessage }) => {
           )}
           
         </div>
+      </div>
+      <div className='My-orders'>
+        <UserOrder />
       </div>
     </div>
   );

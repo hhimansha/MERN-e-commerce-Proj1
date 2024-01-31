@@ -5,6 +5,34 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const Order = () => {
     const { user } = useAuthContext();
     const [carts, setCarts] = useState([]);
+
+    const handlePlaceOrder = async () => {
+        try {
+          const response = await fetch('http://localhost:9092/api/order/place', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId: user._id,
+              carts,
+            }),
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            console.log('Order placed successfully:', data);
+            // Handle success, e.g., redirect to a confirmation page
+          } else {
+            console.error('Error placing order:', data);
+            // Handle error, e.g., show an error message to the user
+          }
+        } catch (error) {
+          console.error('Error placing order:', error);
+          // Handle unexpected errors
+        }
+      };
   
     useEffect(() => {
       // Retrieve cart items from local storage
@@ -130,7 +158,11 @@ const Order = () => {
                         </div>
                     </div>
                     <div class="mt-8">
-                        <button type="submit" class="w-full bg-primary  text-white font-medium py-3 rounded-full focus:outline-none">Place order</button>
+                    <button
+                        type="button"
+                        onClick={handlePlaceOrder}
+                        className="w-full bg-primary text-white font-medium py-3 rounded-full focus:outline-none"
+                    >Place order</button>
                     </div>
                 </form>
             </div>

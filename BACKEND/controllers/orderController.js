@@ -1,46 +1,53 @@
 const asyncHandler = require("express-async-handler");
-const Cart = require("../models/orderModel");
-const { error } = require("console");
+const Order = require("../models/orderModel");
 
 const placeOrder = asyncHandler(async (req, res) => {
-    try {
-        let totPrice = 0
-        
-        const { bookId, bookName, qty, imageSrc, price } = req.body;
-        console.log('Received data:', req.body);
-  
-      // Calculate total price
-      totPrice = qty * price;
-  
-      // Create a new order in the database
-      const newCart = await Cart.create({
-        bookId,
-        bookName,
-        qty,
-        imageSrc,
-        TotPrice: totPrice, // Ensure that TotPrice is assigned the calculated totPrice
-      });
-  
-      res.status(201).json({ success: true, data: newCart });
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-      res.status(500).json({ success: false, error: 'Internal Server Error' });
-    }
-  });
+  try {
+    const { userId, carts } = req.body;
 
-  const getCarts = asyncHandler(async(req,res) => {
-    const carts = await Cart.find(); 
-    res.status(200).json(carts);
-  });
+    const newOrders = await Promise.all(
+      carts.map(async (cartItem) => {
+        const newOrder = await Order.create({
+          userId,
+          ...cartItem,
+        });
+        return newOrder;
+      })
+    );
 
-  const getCart = asyncHandler(async(req,res) => {
-    const cart = await Cart.findById(req.params.id);
-    if(!cart){
-        res.status(404);
-        throw new Error("Cart not found");
-    }
-    res.status(200).json(cart);
+    res.status(201).json({ success: true, data: newOrders });
+  } catch (error) {
+    console.error('Error creating order:', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
 });
-  
-  module.exports = { placeOrder,  getCarts, getCart};
-  
+
+const getOrders = asyncHandler(async(req,res) => {
+  const orders = await Order.find(); 
+  res.status(200).json(orders);
+});
+
+const getOrder = asyncHandler(async (req, res) => {
+  const userId = req.params.id; // Assuming the user ID is passed in the URL parameter
+  const orders = await Order.find({ userId });
+
+  if (!orders || orders.length === 0) {
+    res.status(404);
+    throw new Error("No orders found for the specified user");
+  }
+
+  res.status(200).json(orders);
+});
+
+const deleteOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  if (!order) {
+      res.status(404);
+      throw new Error("order not found");
+  }
+
+  await order.deleteOne(); // Use deleteOne to remove the document
+  res.status(200).json(order);
+});
+
+module.exports = { placeOrder, getOrders, getOrder, deleteOrder };
