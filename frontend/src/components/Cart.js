@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 import { v4 as uuidv4 } from 'uuid'; // Import uuid library
 
 const Cart = () => {
   const [carts, setCarts] = useState([]);
+  const { user } = useAuthContext();
 
   useEffect(() => {
     // Retrieve cart items from local storage
@@ -65,7 +69,10 @@ const Cart = () => {
     </div>
     <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10 max-w-4xl mx-auto flex justify-between items-center">
                 <div className="font-bold text-lg"><span className="text-gray-500">Total Price : Rs.</span> {total}</div>
-                <div><button className="bg-primary px-5 py-4 rounded-full text-white font-bold">Place Order</button></div>
+                <div><Link to='/place-order'>
+                  <button className="bg-primary px-5 py-4 rounded-full text-white font-bold">Place Order</button>
+                  </Link> 
+                  </div>
     </div>
     </div>
   );

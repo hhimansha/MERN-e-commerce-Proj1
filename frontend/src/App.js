@@ -14,6 +14,7 @@ import UserAddress from './components/UserAddress';
 import User from './components/User'
 import ProfileUpdate from './components/ProfileUpdate';
 import Cart from './components/Cart';
+import Order from './components/Order';
 function App() {
     const { user } = useAuthContext();
 
@@ -48,6 +49,10 @@ function App() {
                     <Route
                         path="/user/update"
                         element={user? <><HeaderPart /><ProfileUpdate /><Footer /></> : <Navigate to="/" />}
+                    />
+                    <Route
+                        path="/place-order"
+                        element={user? <><HeaderPart /><Order /><Footer /></> : <Navigate to="/login" />}
                     />
                     <Route
                         path="/admindash/products"
