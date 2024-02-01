@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import ItemAddedCart from './AlertBoxes/ItemAddedCart';
 
 function ProductPage() {
   const { bookId } = useParams();
   const [book, setBook] = useState(null);
   const [qty, setQty] = useState(1);
   const [calculatedTotPrice, setCalculatedTotPrice] = useState(0);
+  const [success, setSuccess] = useState(false);
 
   const addToCart = () => {
     try {
@@ -41,6 +43,10 @@ function ProductPage() {
 
       // Update the calculatedTotPrice state
       setCalculatedTotPrice(updatedCalculatedTotPrice);
+      setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 1500);
 
       // You may want to add some UI feedback here
       console.log('Item added to cart:', updatedCart);
@@ -137,14 +143,18 @@ function ProductPage() {
                       </button>
                     </div>
                     
+                    
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          {success && <ItemAddedCart />}
+
         </section>
       ) : (
         <p>Loading...</p>
+        
       )}
     </div>
   );
