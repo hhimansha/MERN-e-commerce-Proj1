@@ -102,7 +102,7 @@ function HeaderPart() {
 
                         <div className="logout">
                             <Link to="/" className="mx-2">
-                                <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-white  font-semibold rounded-full border border-primary transition duration-1000 ease-in-out hover:text-white hover:bg-primary hover:border-black">Log Out</button>
+                                <button type="button" onClick={handleClick} className="px-5 py-2 text-20 text-white  font-semibold rounded-lg border border-primary transition duration-1000 ease-in-out hover:text-white hover:bg-primary hover:border-black">Log Out</button>
                             </Link>
                         
                         </div>
@@ -111,7 +111,7 @@ function HeaderPart() {
    
    {!user && (
                     <Link to="/login" className="navbar-brand">
-                        <button type="button" className="px-5 py-2 sm: text-20  text-white font-semibold rounded-full bg-primary  transition duration-1000 ease-in-out hover:text-white ">Log In</button>
+                        <button type="button" className="px-5 py-2 sm: text-20  text-white font-semibold rounded-lg bg-primary  transition duration-1000 ease-in-out hover:text-white ">Log In</button>
                     </Link>
                             
                 )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import emptyCart from "./images/emptyCart.png"
 import { v4 as uuidv4 } from 'uuid'; // Import uuid library
 
 const Cart = () => {
@@ -27,56 +27,105 @@ const Cart = () => {
   const total = carts.reduce((acc, cart) => acc + cart.TotPrice, 0);
 
   return (
-    <div>
-      {carts.length > 0 ? (
-        carts.map((cart) => (
-    <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-4 max-w-4xl mx-auto flex flex-wrap" key={cart.id}>
-      <div className="overflow-x-auto w-full">
-        <table className="w-full flex flex-wrap">
-          <thead>
+    
 
-          </thead>
-          <tbody>
-            <tr className="my-10">
-              <td className="w-1/3 md:w-1/6 lg:w-1/6">
-                <div className="w-24 h-36">
-                  <img src={cart.imageSrc} alt={cart.bookName} className="rounded-t-lg w-32 h-36" />
-                </div>
-              </td>
-              <td className="px-4 w-1/2 md:w-1/6 lg:w-1/6">{cart.bookName}</td>
-              <td className="px-4 w-1/6 md:w-1/6 lg:w-1/6">Price: <span className="font-bold">Rs.{cart.price}</span></td>
-              <td className="px-4 w-1/6 md:w-1/6 lg:w-1/6">Qty: <span className="font-bold">{cart.qty}</span></td>
-              <td className="px-4 w-1/6 md:w-1/6 lg:w-1/6">Rs.{cart.TotPrice}</td>
-              <td className="w-1/6 md:w-1/6 lg:w-1/6">
-                <button onClick={() => handleClick(cart.id)}>
-                  <div className="p-4 bg-red-400 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
-                      <path d="M 21 0 C 19.355469 0 18 1.355469 18 3 L 18 5 L 10.1875 5 C 10.0625 4.976563 9.9375 4.976563 9.8125 5 L 8 5 C 7.96875 5 7.9375 5 7.90625 5 C 7.355469 5.027344 6.925781 5.496094 6.953125 6.046875 C 6.980469 6.597656 7.449219 7.027344 8 7 L 9.09375 7 L 12.6875 47.5 C 12.8125 48.898438 14.003906 50 15.40625 50 L 34.59375 50 C 35.996094 50 37.1875 48.898438 37.3125 47.5 L 40.90625 7 L 42 7 C 42.359375 7.003906 42.695313 6.816406 42.878906 6.503906 C 43.058594 6.191406 43.058594 5.808594 42.878906 5.496094 C 42.695313 5.183594 42.359375 4.996094 42 5 L 32 5 L 32 3 C 32 1.355469 30.644531 0 29 0 Z M 21 2 L 29 2 C 29.5625 2 30 2.4375 30 3 L 30 5 L 20 5 L 20 3 C 20 2.4375 20.4375 2 21 2 Z M 11.09375 7 L 38.90625 7 L 35.3125 47.34375 C 35.28125 47.691406 34.910156 48 34.59375 48 L 15.40625 48 C 15.089844 48 14.71875 47.691406 14.6875 47.34375 Z M 18.90625 9.96875 C 18.863281 9.976563 18.820313 9.988281 18.78125 10 C 18.316406 10.105469 17.988281 10.523438 18 11 L 18 44 C 17.996094 44.359375 18.183594 44.695313 18.496094 44.878906 C 18.808594 45.058594 19.191406 45.058594 19.503906 44.878906 C 19.816406 44.695313 20.003906 44.359375 20 44 L 20 11 C 20.011719 10.710938 19.894531 10.433594 19.6875 10.238281 C 19.476563 10.039063 19.191406 9.941406 18.90625 9.96875 Z M 24.90625 9.96875 C 24.863281 9.976563 24.820313 9.988281 24.78125 10 C 24.316406 10.105469 23.988281 10.523438 24 11 L 24 44 C 23.996094 44.359375 24.183594 44.695313 24.496094 44.878906 C 24.808594 45.058594 25.191406 45.058594 25.503906 44.878906 C 25.816406 44.695313 26.003906 44.359375 26 44 L 26 11 C 26.011719 10.710938 25.894531 10.433594 25.6875 10.238281 C 25.476563 10.039063 25.191406 9.941406 24.90625 9.96875 Z M 30.90625 9.96875 C 30.863281 9.976563 30.820313 9.988281 30.78125 10 C 30.316406 10.105469 29.988281 10.523438 30 11 L 30 44 C 29.996094 44.359375 30.183594 44.695313 30.496094 44.878906 C 30.808594 45.058594 31.191406 45.058594 31.503906 44.878906 C 31.816406 44.695313 32.003906 44.359375 32 44 L 32 11 C 32.011719 10.710938 31.894531 10.433594 31.6875 10.238281 C 31.476563 10.039063 31.191406 9.941406 30.90625 9.96875 Z"></path>
-                    </svg>
-                  </div>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  ))
-  ) : (
-    <p className="text-center font-semibold text-gray-500 text-7xl m-72 opacity-25">Cart is empty</p>
-  )}
+ <section class="py-10 ">
+  
+ 
+     <div class="px-4 py-6 mx-auto max-w-7xl lg:py-4 md:px-6">
+         <div>
+             
+             <div class="p-6 mb-8  shadow-md dark:bg-grey-light rounded-3xl ">
+                 <div class="flex-wrap items-center hidden mb-4 -mx-4 md:flex md:mb-4">
+                     <div class="w-full px-4 mb-6 md:w-4/6 lg:w-6/12 md:mb-0">
+                         <h2 class="font-bold text-gray-500 dark:text-gray-400 text-center -ml-10">Product name</h2>
+                     </div>
+                     <div class="hidden px-4 lg:block lg:w-2/12">
+                         <h2 class="font-bold text-gray-500 dark:text-gray-400">Price</h2>
+                     </div>
+                     <div class="w-auto px-4 md:w-1/6 lg:w-2/12 ">
+                         <h2 class="font-bold text-gray-500 dark:text-gray-400">Quantity</h2>
+                     </div>
+                     <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12 justify-center">
+                         <h2 class="font-bold text-gray-500 text-left dark:text-gray-400"> Subtotal</h2>
+                     </div>
+                 </div>
+                 
+                 <div class="py-1 mb-0 border-t dark:border-gray-400 " >
+                 {carts.length > 0 ? (
+                  carts.map((cart) => (
+                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center my-4 -mx-4 md:my-2 duration-500 hover:scale-105 hover:shadow-xl"  key={cart.id}>
+                         <div class="w-full px-4 mb-2 md:w-4/6 lg:w-6/12 md:mb-0">
+                             <div class="flex flex-wrap items-center -mx-4">
+                                 <div class="w-full px-4 mb-3 md:w-1/3">
+                                     <div class="w-full h-96 md:h-24 md:w-24">
+                                         <img src={cart.imageSrc} alt={cart.bookName}
+                                             class="object-cover w-full h-full"/>
+                                     </div>
+                                 </div>
+                                 <div class="w-2/3 px-4">
+                                     <h2 class=" text-xl font-semibold dark:text-grey">{cart.bookName}</h2>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="hidden px-4 lg:block lg:w-2/12">
+                             <p class="text-lg font-bold  dark:text-grey">Rs.{cart.price}</p>
+   
+                         </div>
+                         <div class="w-auto px-4 md:w-1/6 lg:w-2/12 ">
+                         <div className="px-4 w-1/6 md:w-1/6 lg:w-1/6"><span className="font-bold">{cart.qty}</span></div>
+                         </div>
+                         <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12 flex items-center">
+                             <p class="text-lg font-bold text-orange-400 dark:text-grey">Rs.{cart.TotPrice.toFixed(2)}</p>
+                             <button onClick={() => handleClick(cart.id)}>
+                                 <div className="p-2 bg-red-500 rounded-full ml-4">
+                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256">
+                                  <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none"><g transform="scale(5.33333,5.33333)"><path d="M20.5,4c-0.49034,-0.00628 -0.95279,0.22749 -1.23848,0.62606c-0.28569,0.39856 -0.35854,0.9116 -0.19511,1.37394h-2.92578c-1.83725,0 -3.5577,0.91945 -4.57617,2.44922l-2.36719,3.55078h-1.69727c-0.54095,-0.00765 -1.04412,0.27656 -1.31683,0.74381c-0.27271,0.46725 -0.27271,1.04514 0,1.51238c0.27271,0.46725 0.77588,0.75146 1.31683,0.74381h2.26367c0.14761,0.02215 0.2977,0.02215 0.44531,0h26.12109l-1.57227,14.67969c-0.07134,0.54019 0.15584,1.07659 0.59345,1.40123c0.43761,0.32464 1.01684,0.38647 1.51312,0.16152c0.49628,-0.22495 0.83156,-0.70131 0.87585,-1.24439l1.60742,-14.99805h1.15234c0.54095,0.00765 1.04412,-0.27656 1.31683,-0.74381c0.27271,-0.46725 0.27271,-1.04514 0,-1.51238c-0.27271,-0.46725 -0.77588,-0.75146 -1.31683,-0.74381h-1.69727l-2.36719,-3.55078c-1.01929,-1.52894 -2.73955,-2.44922 -4.57617,-2.44922h-2.92578c0.16343,-0.46234 0.09058,-0.97538 -0.19511,-1.37394c-0.28569,-0.39856 -0.74814,-0.63234 -1.23848,-0.62606zM16.14063,9h15.71875c0.83737,0 1.61537,0.41622 2.08008,1.11328l1.25781,1.88672h-22.39453l1.25781,-1.88672c0.00065,-0.00065 0.0013,-0.0013 0.00195,-0.00195c0.46348,-0.69619 1.23938,-1.11133 2.07813,-1.11133zM10.57227,17.65039c-0.42313,0.00966 -0.8225,0.19761 -1.09962,0.51752c-0.27712,0.3199 -0.40622,0.74198 -0.35546,1.16217l2.00781,18.75586c0.29835,2.78234 2.67084,4.91406 5.46875,4.91406h14.81055c2.79791,0 5.1704,-2.13172 5.46875,-4.91406l0.37305,-3.48047c0.07134,-0.54019 -0.15584,-1.07659 -0.59345,-1.40123c-0.43761,-0.32464 -1.01684,-0.38647 -1.51312,-0.16152c-0.49628,0.22495 -0.83156,0.70131 -0.87586,1.24438l-0.37305,3.47852c-0.13765,1.28366 -1.19624,2.23438 -2.48633,2.23438h-14.81055c-1.29009,0 -2.34673,-0.95071 -2.48437,-2.23437l-2.00977,-18.75391c-0.0727,-0.78442 -0.73976,-1.37897 -1.52734,-1.36133z"></path></g></g>
+                                  </svg>
+                                 </div>
+                             </button>
+                         </div>
+                     </div>
+                     ))
+                     ) : (
+                       <div className="flex items-center justify-center h-screen">
+                       <div className="text-center items-center justify-center">
+                         <img src={emptyCart} className="w-72 ml-10" alt="Empty Cart" />
+                         <p className="text-gray-500 text-7xl font-semibold opacity-25 mt-4">Cart is empty</p>
+                       </div>
+                     </div>
+                     
+                     )}
+                     
+                 </div>
+                 
+             </div>
+             
+         </div>
+     </div>
+     
+   
+   {carts.length > 0 && (
+     
+     <div className="bg-grey-light rounded-lg p-8 drop-shadow-md my-10 max-w-4xl mx-auto flex flex-wrap justify-between items-center">
+       
+       <div className="font-bold text-2xl w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0 "><span className="text-gray-500 text-2xl">
+        Total Price : </span>$ {total.toFixed(2)}</div>
+       <div className="w-full md:w-1/2 lg:w-1/3">
+         <Link to='/place-order'>
+         <button type="button" class="group inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-grey">
+           Place Order
+           <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+           </svg>
+         </button>
+           
+         </Link>
+       </div>
+     </div>
+     )}
+ </section>
 
-{carts.length > 0 && (
-  <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10 max-w-4xl mx-auto flex flex-wrap justify-between items-center">
-    <div className="font-bold text-lg w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0"><span className="text-gray-500">Total Price : Rs.</span> {total}</div>
-    <div className="w-full md:w-1/2 lg:w-1/3">
-      <Link to='/place-order'>
-        <button className="bg-primary px-5 py-4 rounded-full text-white font-bold w-full">Place Order</button>
-      </Link>
-    </div>
-  </div>
-  )}
-</div>
 
   );
 };
