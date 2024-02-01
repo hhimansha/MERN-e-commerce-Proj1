@@ -58,10 +58,10 @@ function HeaderPart() {
                 <a href="#" className="block py-2 px-3 text-gray-900 rounded  md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white  dark:hover:text-white dark:border-gray-700">Home</a>
             </li>
             <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white  dark:hover:text-white ">About</a>
+                <a href="#" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white  dark:hover:text-white ">Categories</a>
             </li>
             <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded   md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white dark:hover:text-primary  ">Services</a>
+                <a href="#" className="block py-2 px-3 text-gray-900 rounded   md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white dark:hover:text-primary  ">About</a>
             </li>
             <li>
                 <a href="#" className="block py-2 px-3 text-gray-900 rounded  md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white  ">Contact</a>
