@@ -77,11 +77,6 @@ function HeaderPart() {
             </Link>
             </li>
             
-                
-            
-            
-               
-            
         </ul>
         
         {user && (<>
