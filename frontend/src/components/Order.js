@@ -46,10 +46,10 @@ const Order = () => {
     const grandTotal = (total - discounted) + 8
 
     return(
-        <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+        <div class="py-6 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
         <div class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
           <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-            <div class="flex flex-col justify-start items-start px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-3xl drop-shadow-md">
+            <div class="flex flex-col justify-start items-start px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-2xl drop-shadow-md">
               <p class="text-lg md:text-xl dark:text-black font-semibold leading-6 xl:leading-5 text-black">Customer’s Cart</p>
             {carts.map((cart) => (
               <div key={cart.id} class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
@@ -66,7 +66,7 @@ const Order = () => {
                   <div class="flex justify-between space-x-8 items-start w-full">
                     <p class="text-base dark:text-black xl:text-lg leading-6">Unit price : {cart.price}</p>
                     <p class="text-base dark:text-black xl:text-lg leading-6 text-gray-800">Qty : {cart.qty}</p>
-                    <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">${cart.TotPrice}</p>
+                    <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">${cart.TotPrice.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@ const Order = () => {
               
             </div>
                 <div class="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                    <div class="flex flex-col px-4 md:p-6 xl:p-8 w-full  bg-grey-light rounded-3xl drop-shadow-md space-y-2">
+                    <div class="flex flex-col px-4 md:p-6 xl:p-8 w-full  bg-grey-light rounded-2xl drop-shadow-md space-y-2">
                         <h2 class="text-lg font-medium mb-4">Delivery Address</h2>
                         <div className="delivery info border-gray-200 flex ">
                             <p className="text-base text-black font-semibold leading-4">Street : </p>
@@ -93,7 +93,7 @@ const Order = () => {
                             <p className="text-base text-gray-400 font-semibold leading-4 "> {user?.DeliveryAddress?.zipCode || 'N/A'}</p>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-3xl drop-shadow-md space-y-6">
+                <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-2xl drop-shadow-md space-y-6">
                     <h3 class="text-xl  font-semibold leading-5 text-black">Shipping</h3>
                     <div class="flex justify-between items-start w-full">
                     <div class="flex justify-center items-center space-x-4">
@@ -110,17 +110,17 @@ const Order = () => {
                 </div>
                 </div>
             </div>
-          <div class="bg-grey-light rounded-3xl drop-shadow-md w-full xl:w-1/2 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+          <div class="bg-grey-light rounded-2xl drop-shadow-md w-full xl:w-1/2 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
             <div class="w-full max-w-lg mx-auto">
                     <h3 class="text-xl e font-semibold leading-5 text-black pb-6">Summary</h3>
                     <div class="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-6">
                     <div class="flex justify-between w-full">
                         <p class="text-base text-black leading-4 ">Subtotal</p>
-                        <p class="text-base text-black leading-4 ">${total}</p>
+                        <p class="text-base text-black leading-4 ">${total.toFixed(2)}</p>
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Discount <span class="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">STUDENT</span></p>
-                        <p class="text-base text-black leading-4 ">-${discounted} (50%)</p>
+                        <p class="text-base text-black leading-4 ">-${discounted.toFixed(2)} (50%)</p>
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Shipping</p>
@@ -129,7 +129,7 @@ const Order = () => {
                     </div>
                     <div class="flex justify-between items-center w-full pt-6 border-gray-200 border-b pb-6">
                         <p class="text-base text-black font-semibold leading-4 ">Total</p>
-                        <p class="text-base text-black font-semibold leading-4 ">${grandTotal}</p>
+                        <p class="text-base text-black font-semibold leading-4 ">${grandTotal.toFixed(2)}</p>
                     </div>
 
                 <h2 class="text-lg font-medium mb-6 mt-6">Payment Information</h2>
@@ -142,27 +142,31 @@ const Order = () => {
                     
                         <div class="col-span-2 sm:col-span-1">
                             <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                            <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="w-full py-3 px-4 border border-gray-400 rounded-full focus:outline-none focus:border-blue-500"/>
+                            <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="expiration-date" class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
-                            <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="w-full py-3 px-4 border border-gray-400 rounded-full focus:outline-none focus:border-blue-500"/>
+                            <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="cvv" class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
-                            <input type="text" name="cvv" id="cvv" placeholder="000" class="w-full py-3 px-4 border border-gray-400 rounded-full focus:outline-none focus:border-blue-500"/>
+                            <input type="text" name="cvv" id="cvv" placeholder="000" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="card-holder" class="block text-sm font-medium text-gray-700 mb-2">Card Holder</label>
-                            <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="w-full py-3 px-4 border border-gray-400 rounded-full focus:outline-none focus:border-blue-500"/>
+                            <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
                         </div>
                     </div>
                     <div class="mt-8">
-                    <button
-                        type="button"
-                        onClick={handlePlaceOrder}
-                        className="w-full bg-primary text-white font-medium py-3 rounded-full focus:outline-none"
-                    >Place order</button>
+                    <button 
+                     onClick={handlePlaceOrder}
+                     type="button" class="group inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-grey">
+                        Place order
+                        <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </button>
+                
                     </div>
                 </form>
             </div>
