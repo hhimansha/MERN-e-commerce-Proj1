@@ -20,7 +20,7 @@ function HeaderPart() {
     setIsNavVisible(!isNavVisible);
   };
   return (
-    <nav className="bg-white dark:bg-grey z-20 sticky top-0 w-full border-b border-gray-200 dark:border-gray-600">
+    <nav className="bg-white dark:bg-grey z-20 sticky fixed top-0 w-full border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-1">
       <Link to="/" className="navbar-brand">
                     <div>

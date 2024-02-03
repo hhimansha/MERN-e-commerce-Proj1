@@ -64,7 +64,7 @@ console.log('User object:', user._id);
 
   return (
     <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
-  <div className="overflow-x-auto">
+    <div className="overflow-x-auto">
     <table className="w-full">
       <thead>
         <tr>
@@ -72,7 +72,7 @@ console.log('User object:', user._id);
             colSpan="8"
             className="text-lg text-primary font-semibold bg-grey mb-4 text-left"
           >
-            Stored Books
+            My Orders
           </th>
         </tr>
         <tr>
@@ -111,7 +111,7 @@ console.log('User object:', user._id);
                   className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
                 
                 >
-                  Delete
+                  Cancel Order
                 </button>
               </div>
             </td>

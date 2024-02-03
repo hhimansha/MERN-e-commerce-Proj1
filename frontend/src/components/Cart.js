@@ -54,7 +54,7 @@ const Cart = () => {
                  <div class="py-1 mb-0 border-t dark:border-gray-400 " >
                  {carts.length > 0 ? (
                   carts.map((cart) => (
-                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center my-4 -mx-4 md:my-2 duration-500 hover:scale-105 hover:shadow-xl"  key={cart.id}>
+                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center my-4 -mx-4 md:my-2 duration-500 hover:shadow-xl"  key={cart.id}>
                          <div class="w-full px-4 mb-2 md:w-4/6 lg:w-6/12 md:mb-0">
                              <div class="flex flex-wrap items-center -mx-4">
                                  <div class="w-full px-4 mb-3 md:w-1/3">
