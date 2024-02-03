@@ -51,7 +51,7 @@ const Order = () => {
           <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
             <div class="flex flex-col justify-start items-start px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-2xl drop-shadow-md">
               <p class="text-lg md:text-xl dark:text-black font-semibold leading-6 xl:leading-5 text-black">Customer’s Cart</p>
-            {carts.map((cart) => (
+              {carts.map((cart) => (
               <div key={cart.id} class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
                 <div class="pb-4 md:pb-8 w-20 md:w-20">
                   <img class="w-96 hidden md:block" src={cart.imageSrc} alt={cart.bookName} />
@@ -59,7 +59,7 @@ const Order = () => {
                 </div>
                 <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
                   <div class="w-full flex flex-col justify-start items-start space-y-8">
-                    <h3 class="text-xl dark:text-black xl:text-2xl font-semibold leading-6 text-black">{cart.bookName}</h3>
+                    <h3 class="text-xl dark:text-black xl:text-xl font-semibold leading-6 text-black">{cart.bookName}</h3>
                     <div class="flex justify-start items-start flex-col space-y-2">
                     </div>
                   </div>
