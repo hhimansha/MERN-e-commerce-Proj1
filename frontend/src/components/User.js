@@ -7,66 +7,82 @@ const User = ({ successMessage }) => {
   const { user } = useAuthContext();
 
   return (
-    <div className='py-6 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto'>
-    <div className="flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
-      <div className="flex flex-col justify-start items-start px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-2xl drop-shadow-md">
-        <div>
-          <Link to="/user/update"><h2 className="text-lg text-primary font-semibold mb-4 text-center">User Profile</h2></Link>
-          {user && (
-            <div className="flex gap-56">
-              <div className='grid'>
-                <div className='flex'>
-                <strong>First Name:</strong> {user.firstname}
-                </div>
-                <div className='flex'>
-                <strong>Email:</strong> {user.email}
-                </div>
-                
-              </div>
-  
-              <div className='grid'>
-              <div className='flex'>
-              <strong>Last Name:</strong> {user.lastname}
-              </div>
-              <div className='flex'>
-                <strong>Password:</strong> ********
-                </div>
-              </div>
-
-            </div>
-          )}
+    <div className=''>
+    <main class="flex-1 md:p-0 lg:pt-8 lg:px-56  flex flex-col  mx-auto">
+  <section class="bg-grey-light p-10 shadow rounded-3xl shadow-lg mt-10">
+  <div class="md:flex">
+    <h2 class="text-lg text-primary font-semibold bg-grey mb-4 text-left w-full">User Profile Details</h2>
+  </div>
+  <form>
+    <div class="md:flex mb-8">
+      <div class="md:w-1/3">
+        <legend class="tracking-wide text-sm">Personal Details</legend>
+      </div>
+	  {user && (
+    <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
+      <div class="md:flex mb-4">
+        <div class="md:flex-1 md:pr-3">
+          <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">First Name</label>
+          <input class="w-full rounded-xl  p-2 border-0" type="text" readOnly  placeholder={user.firstname}/>
+        </div>
+        <div class="md:flex-1 md:pl-3">
+          <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">Last Name</label>
+          <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.lastname}/>
         </div>
       </div>
-      <div className="flex flex-col justify-start items-start px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-2xl drop-shadow-md">
-        <div>
-          <Link to="/user/address">
-            <h2 className="text-lg text-primary font-semibold mb-4 text-center">Delivery Address</h2>
-          </Link>
-          {user && user.DeliveryAddress && Object.keys(user.DeliveryAddress).length > 0 && (
-            <div className="grid gap-2">
-              <div>
-                <strong>Street:</strong> {user.DeliveryAddress.street}
-              </div>
-              <div>
-                <strong>City:</strong> {user.DeliveryAddress.city}
-              </div>
-              <div>
-                <strong>State:</strong> {user.DeliveryAddress.state}
-              </div>
-              <div>
-                <strong>Zip Code:</strong> {user.DeliveryAddress.zipCode}
-              </div>
-            </div>
-          )}
-          
+      <div class="md:flex mb-4">
+        <div class="md:flex-1 md:pr-3">
+            <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">Email Address</label>
+            <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.email}/>
+          </div>
+          <div class="md:flex-1 md:pl-3">
+            <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">Password</label>
+            <input class="w-full shadow-inner p-2 border-0" type="password" readOnly placeholder="********"/>
+          </div>
         </div>
       </div>
-      
+	  )}
     </div>
-    <div className='My-orders'>
+	
+    <div class="md:flex mb-8">
+      <div class="md:w-1/3">
+        <legend class=" tracking-wide text-sm">Delivery Address</legend>
+      </div>
+	  {user && user.DeliveryAddress && Object.keys(user.DeliveryAddress).length > 0 && (
+      <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
+        <div class="mb-4">
+          <label class="block  tracking-wide text-xs font-bold">Street Address</label>
+          <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.DeliveryAddress.street}/>
+        </div>
+        <div class="mb-4">
+          <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">City</label>
+          <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.DeliveryAddress.city}/>
+        </div>
+        <div class="mb-4">
+          <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">State</label>
+          <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.DeliveryAddress.state}/>
+        </div>
+		<div class="mb-4">
+          <label class="block  tracking-wide text-charcoal-darker text-xs font-bold">Zip Code</label>
+          <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.DeliveryAddress.zipCode}/>
+        </div>
+      </div>
+	  )}
+    </div>
+    
+    </form>
+  </section>
+  <div className='My-orders'>
         <UserOrder />
       </div>
-    </div>
+  </main>
+
+  </div>
+
+
+
+
+
   );
 };
 
