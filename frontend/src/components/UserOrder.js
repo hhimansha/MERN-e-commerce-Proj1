@@ -63,14 +63,14 @@ console.log('User object:', user._id);
   console.log('User Orders:', orders); // Log user orders
 
   return (
-    <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
+    <div className="bg-grey-light rounded-3xldrop-shadow-md my-10">
     <div className="overflow-x-auto">
     <table className="w-full">
       <thead>
         <tr>
           <th
             colSpan="8"
-            className="text-lg text-primary font-semibold bg-grey mb-4 text-left"
+            className="text-lg text-primary font-semibold bg-grey mb-4 text-left w-full py-2 pl-10 rounded-t-3xl"
           >
             My Orders
           </th>
