@@ -4,15 +4,15 @@ import img1 from './images/headerLogoOrange.png';
 
 function Footer() {
   return (
-    <footer className="footer-section bg-grey">
+    <footer className="footer-section bg-white-light border border-t">
   <div className="mx-auto items-center w-4/5">
-    <div className="footer-cta pt-5 pb-5 border-b border-gray-700">
+    <div className="footer-cta pt-5 pb-5 border-b ">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="mb-8">
           <div className="flex items-center">
             <i className="fas fa-map-marker-alt text-orange-500 text-3xl"></i>
             <div className="cta-text ml-4">
-              <h4 className="text-white text-lg font-semibold">Find us</h4>
+              <h4 className="text-grey text-lg font-semibold">Find us</h4>
               <span className="text-gray-500">Colombo, western province, sri lanka</span>
             </div>
           </div>
@@ -21,7 +21,7 @@ function Footer() {
           <div className="flex items-center">
             <i className="fas fa-phone text-orange-500 text-3xl"></i>
             <div className="cta-text ml-4">
-              <h4 className="text-white text-lg font-semibold">Call us</h4>
+              <h4 className="text-grey text-lg font-semibold">Call us</h4>
               <span className="text-gray-500">0712528831</span>
             </div>
           </div>
@@ -30,7 +30,7 @@ function Footer() {
           <div className="flex items-center">
             <i className="far fa-envelope-open text-orange-500 text-3xl"></i>
             <div className="cta-text ml-4">
-              <h4 className="text-white text-lg font-semibold">Mail us</h4>
+              <h4 className="text-grey text-lg font-semibold">Mail us</h4>
               <span className="text-gray-500">himansha.official@gmail.com</span>
             </div>
           </div>
@@ -44,7 +44,7 @@ function Footer() {
             <div className="footer-logo">
               <img
                 src={img1}
-                className="max-w-full"
+                className="max-w-56"
                 alt="logo"
               />
             </div>
@@ -55,7 +55,7 @@ function Footer() {
               </p>
             </div>
             <div className="footer-social-icon">
-              <span className="text-white">Follow us</span>
+              <span className="text-grey">Follow us</span>
               <i className="fab fa-facebook-f facebook-bg text-white"></i>
               <i className="fab fa-twitter twitter-bg text-white"></i>
               <i className="fab fa-google-plus-g google-bg text-white"></i>
@@ -65,7 +65,7 @@ function Footer() {
         <div className="mb-8">
           <div className="footer-widget">
             <div className="footer-widget-heading">
-              <h3 className="text-white text-lg font-semibold">Useful Links</h3>
+              <h3 className="text-grey text-lg font-semibold">Useful Links</h3>
             </div>
             <ul>
               <li>
@@ -92,7 +92,7 @@ function Footer() {
         <div className="mb-8">
           <div className="footer-widget">
             <div className="footer-widget-heading">
-              <h3 className="text-white text-lg font-semibold">Subscribe</h3>
+              <h3 className="text-grey text-lg font-semibold">Subscribe</h3>
             </div>
             <div className="footer-text mb-5">
               <p className="text-gray-500">
@@ -104,7 +104,7 @@ function Footer() {
                 <input
                   type="text"
                   placeholder="Email Address"
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 text-white rounded-full"
+                  className="w-full px-4 py-2 bg-white border border-gray-700 text-white rounded-full"
                 />
 
               </form>

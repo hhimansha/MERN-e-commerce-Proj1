@@ -37,7 +37,7 @@ function HeaderPart() {
     setIsNavVisible(!isNavVisible);
   };
   return (
-    <nav className={`bg-white dark:bg-grey-light z-20 sticky top-0 w-full border-b border-gray-200  ${isNavVisible ? 'h-screen md:h-16' : 'h-16'}`}>
+    <nav className={`bg-white  z-20 sticky top-0 w-full border-b border-gray-200  ${isNavVisible ? 'h-screen md:h-16' : 'h-16'}`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-1">
       <Link to="/" className="navbar-brand">
                     <div>
@@ -71,7 +71,7 @@ function HeaderPart() {
           className={`items-center w-full md:flex md:w-auto md:order-2 ${isNavVisible ? 'block text-center' : 'hidden'}`}
           id="navbar-sticky"
         >
-           <ul className="items-center flex flex-col p-4 md:p-0 mt-4 mx-2 font-medium -100 rounded-lg bg-grey-light md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-grey-light  md:dark:bg-grey-light ">
+           <ul className="items-center flex flex-col p-4 md:p-0 mt-4 mx-2 font-medium -100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
             <li>
                 <a href="/" className="block py-2 px-3 text-gray-900 rounded  md:hover:text-primary md:p-0 md:dark:hover:text-primary   dark:hover:text-white dark:border-gray-700">Home</a>
             </li>
@@ -132,7 +132,7 @@ function HeaderPart() {
    
    {!user && (
                     <Link to="/login" className="navbar-brand">
-                        <button type="button" className="px-5 py-2 sm: text-20  text-white font-semibold rounded-lg bg-primary  transition duration-1000 ease-in-out hover:text-white ">Log In</button>
+                        <button type="button" className="px-5 py-2 text-20 text-white bg-primary font-semibold rounded-lg border border-grey transition duration-1000 ease-in-out hover:text-white hover:bg-grey">Log In</button>
                     </Link>
                             
                 )}
