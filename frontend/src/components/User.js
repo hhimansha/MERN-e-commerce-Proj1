@@ -42,7 +42,7 @@ const User = ({ successMessage }) => {
             </div>
           </div>
           <Link to="/user/update" className="mx-2">
-              <button type="button" className="px-5 py-2 bg-grey text-20 text-white  font-semibold rounded-lg border border-primary transition duration-1000 ease-in-out hover:text-white hover:bg-primary -ml-2">Edit Details</button>
+              <button type="button" className="px-5 py-2 bg-primary text-20 text-white  font-semibold rounded-lg border border-primary transition duration-1000 ease-in-out hover:text-white hover:bg-grey -ml-2">Edit Details</button>
           </Link>
         </div>
       )}
@@ -71,7 +71,7 @@ const User = ({ successMessage }) => {
             <input class="w-full shadow-inner p-2 border-0" type="text" readOnly placeholder={user.DeliveryAddress.zipCode}/>
           </div>
           <Link to="/user/address" className="mx-2">
-              <button type="button" className="px-5 py-2 bg-grey text-20 text-white  font-semibold rounded-lg border border-primary transition duration-1000 ease-in-out hover:text-white hover:bg-primary -ml-2">Edit Address</button>
+              <button type="button" className="px-5 py-2 bg-primary text-20 text-white  font-semibold rounded-lg border border-primary transition duration-1000 ease-in-out hover:text-white hover:bg-grey -ml-2">Edit Address</button>
           </Link>
         </div>
       )}

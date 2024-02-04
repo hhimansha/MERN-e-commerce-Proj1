@@ -67,7 +67,9 @@ const BookDetails = ({ book, index }) => {
     animate="visible" 
     className="fetchAllBooks w-56 "
   >
+    
     <div className="books text-black m-5 duration-500 hover:scale-105 hover:shadow-xl">
+      
       <div className="max-w-sm bg-grey rounded-lg drop-shadow-md dark:bg-grey-light  hover:bg-white">
         <Link to={`/product/${book._id}`}>
           <img src={book.imageSrc} alt={book.title} className="rounded-t-lg w-56 h-72 " />
