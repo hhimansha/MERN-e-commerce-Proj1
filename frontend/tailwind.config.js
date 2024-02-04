@@ -13,6 +13,9 @@ module.exports = {
       textColor: {
         'primary': '#ff8400',
       },
+      screens: {
+        'xs': {'max': '412px'}
+      },
       width: {
         '242': '242px',
         'mid' : '500px',
