@@ -108,81 +108,67 @@ function ProductPage() {
 
   return (
     <div>
-      {protein ? (
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="overflow-hidden bg-white py-11 font-poppins mx-auto"
-        >
-          {/* Map through the fake array to use index */}
-          {fakeArray.map((item, index) => (
-            <div key={index}>
-          <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
-            <div className="flex flex-wrap -mx-4 justify-center">
-              <div className="w-full px-4 md:w-1/2 ">
-                <div className="sticky top-0  overflow-hidden ">
-                  <div className="flex lg:h-2/4 justify-center mx-auto">
-                    <img src={protein.imageSrc} alt="" className="object-cover w-96 lg:h-full  rounded-3xl" />
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-mid bg-grey-light p-10 rounded-3xl drop-shadow-md mt-10 sm:mt-10 md:mt-0">
-                <div className="">
-                  <div className="">
-                    <h2 className="max-w-xl mt-2 text-2xl font-bold dark:text-grey md:text-4xl">{protein.title}</h2>
-                    <div className="flex items-center mb-6">
-                      <p className="text-xs dark:text-gray-400 ">(2 customer reviews)</p>
+    {protein ? (
+      <motion.div variants={fadeIn} initial="hidden" animate="visible" className="overflow-hidden bg-white pb-11 font-poppins mx-auto">
+        {fakeArray.map((item, index) => (
+          <div key={index}>
+            <section className="text-gray-700 body-font overflow-hidden bg-white">
+              <div className="container px-5 py-14 mx-auto">
+                <div className="lg:w-4/5 mx-auto flex flex-wrap justify-center">
+                  <img alt="ecommerce" className="lg:w-5/12 w-full object-cover object-center rounded-2xl border border-gray-200"
+                   src={protein.imageSrc} />
+                  <div className="lg:w-1/2 w-full lg:pl-20 lg:py-6 mt-6 lg:mt-0">
+                    <h2 className="text-sm title-font text-gray-500 tracking-widest">{protein.company}</h2>
+                    <h1 className="text-grey text-3xl title-font font-medium mb-6">{protein.title}</h1>
+                    <div className="flex mb-4">
+                      {/* Your review stars and icons here */}
                     </div>
-                    <p className="max-w-md mb-8 text-grey dark:text-grey ">{protein.description}</p>
-                    <p className="inline-block mb-8 text-4xl font-bold text-grey dark:text-grey ">
-                      <span>${protein.price}</span>
-                    </p>
-                  </div>
-
-                    <div className="wrapper h-10 w-28 flex items-center justify-center bg-white rounded-full">
+                    <p className="leading-relaxed mb-10 text-grey">{protein.description}.</p>
+                    <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                      {/* Your quantity selector here */}
+                      <div className="wrapper h-10 w-28 flex items-center justify-center bg-white rounded-full">
                         <span
-                        className="w-full text-center text-black font-semibold cursor-pointer select-none bg-gray-200 hover:bg-gray-300 py-2 rounded-l-full"
-                        onClick={decrementQty}
+                          className="w-full text-center text-black font-semibold cursor-pointer select-none bg-gray-200 hover:bg-gray-300 py-2 rounded-l-full"
+                          onClick={decrementQty}
                         >
-                        -
+                          -
                         </span>
                         <span className="w-full text-center text-50 font-semibold   cursor-not-allowed">
-                        {qty < 10 ? `0${qty}` : qty}
+                          {qty < 10 ? `0${qty}` : qty}
                         </span>
-                        <span className="w-full text-center text-black font-semibold cursor-pointer select-none bg-gray-200 hover:bg-gray-300 py-2 rounded-r-full" 
-                        onClick={incrementQty}>
-                        +
+                        <span
+                          className="w-full text-center text-black font-semibold cursor-pointer select-none bg-gray-200 hover:bg-gray-300 py-2 rounded-r-full"
+                          onClick={incrementQty}
+                        >
+                          +
                         </span>
+                      </div>
                     </div>
-
-                  <div className="flex flex-wrap items-center -mx-4 mt-10">
-                    <div className="w-full px-4 mb-4 lg:w-full lg:mb-0">
-                     <button 
-                     onClick={addToCart}
-                     type="button" class="group inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-grey">
+                    <div className="grid">
+                      <span className="title-font font-medium text-2xl text-grey mb-10">${protein.price}</span>
+                      <button
+                        onClick={addToCart}
+                        type="button"
+                        className="group inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-grey"
+                      >
                         Add To Cart
-                        <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        <svg xmlns="http://www.w3.org/2000/svg" className="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </button>
-                      
                     </div>
-                    
-                    
                   </div>
                 </div>
               </div>
-            </div>
-            </div>
-          </div>))}
-          {success && <ItemAddedCart />}
-        </motion.div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+            </section>
+          </div>
+        ))}
+        {success && <ItemAddedCart />}
+      </motion.div>
+    ) : (
+      <p>Loading...</p>
+    )}
+  </div>
   );
 }
 

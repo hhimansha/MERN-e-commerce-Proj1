@@ -96,7 +96,7 @@ function HeaderPart() {
                 </Link>
               </div>
               {cart.length > 0 && (
-                    <span className="absolute top-0 -right-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+                    <span className="absolute top-0 -right-2 bg-grey text-white rounded-full px-2 py-1 text-xs">
                       {cart.length}
                     </span>
                   )}
