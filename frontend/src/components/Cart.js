@@ -38,24 +38,24 @@ const Cart = () => {
              <div class="p-6 mb-8  shadow-md dark:bg-grey-light rounded-3xl ">
                  <div class="flex-wrap items-center hidden mb-4 -mx-4 md:flex md:mb-4">
                      <div class="w-full px-4 mb-6 md:w-4/6 lg:w-6/12 md:mb-0">
-                         <h2 class="font-bold text-gray-500 dark:text-gray-400 text-center -ml-10">Product name</h2>
+                         <h2 class="font-semibold text-gray-500 dark:text-gray-400 text-center -ml-10">Product name</h2>
                      </div>
                      <div class="hidden px-4 lg:block lg:w-2/12">
-                         <h2 class="font-bold text-gray-500 dark:text-gray-400">Price</h2>
+                         <h2 class="font-semibold text-gray-500 dark:text-gray-400">Price</h2>
                      </div>
                      <div class="w-auto px-4 md:w-1/6 lg:w-2/12 ">
-                         <h2 class="font-bold text-gray-500 dark:text-gray-400">Quantity</h2>
+                         <h2 class="font-semibold text-gray-500 dark:text-gray-400">Quantity</h2>
                      </div>
                      <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12 justify-center">
-                         <h2 class="font-bold text-gray-500 text-left dark:text-gray-400"> Subtotal</h2>
+                         <h2 class="font-semibold text-gray-500 text-left dark:text-gray-400"> Subtotal</h2>
                      </div>
                  </div>
                  
                  <div class="py-1 mb-0 border-t dark:border-gray-400 " >
                  {carts.length > 0 ? (
                   carts.map((cart) => (
-                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center my-4 -mx-4 md:my-2 duration-500 hover:shadow-xl"  key={cart.id}>
-                         <div class="w-full px-4 mb-2 md:w-4/6 lg:w-6/12 md:mb-0">
+                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center py-4  my-4  -mx-4 md:my-2 duration-500 hover:shadow-xl"  key={cart.id}>
+                         <div class="w-full px-4 mb-4 md:w-4/6 lg:w-6/12 md:mb-0">
                              <div class="flex flex-wrap items-center -mx-4">
                                  <div class="w-full px-4 mb-3 md:w-1/3">
                                      <div class="w-full h-96 md:h-24 md:w-24">
@@ -64,7 +64,7 @@ const Cart = () => {
                                      </div>
                                  </div>
                                  <div class="w-2/3 px-4">
-                                     <h2 class=" text-xl font-semibold dark:text-grey">{cart.proteinName}</h2>
+                                     <h2 class=" text-lg font-semibold dark:text-grey">{cart.proteinName}</h2>
                                  </div>
                              </div>
                          </div>
