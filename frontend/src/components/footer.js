@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import img1 from './images/headerLogoOrange.png';
+import img1 from './images/headerLogoH.png';
 
 function Footer() {
   return (
-    <footer className="footer-section bg-white-light border border-t">
+    <footer className="footer-section bg-grey-light border border-t">
   <div className="mx-auto items-center w-4/5">
     <div className="footer-cta pt-5 pb-5 border-b ">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -44,7 +44,7 @@ function Footer() {
             <div className="footer-logo">
               <img
                 src={img1}
-                className="max-w-56"
+                className="max-w-56 pb-10"
                 alt="logo"
               />
             </div>
