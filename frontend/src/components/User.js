@@ -17,7 +17,7 @@ const User = ({ successMessage }) => {
     <form className='p-10'>
       <div class="md:flex mb-8 ">
         <div class="md:w-1/3">
-          <legend class="text-base font-bold tracking-tight text-gray-900 dark:text-grey">Personal Details</legend>
+          <legend class="text-base font-bold tracking-tight text-gray-900 dark:text-grey">Account Details</legend>
         </div>
       {user && (
       <div class="md:flex-1  mb:mt-0 md:px-3">

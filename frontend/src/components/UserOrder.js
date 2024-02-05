@@ -80,6 +80,7 @@ console.log('User object:', user._id);
   console.log('User Orders:', orders); // Log user orders
 
   return (
+    
     <div class="p-6 pt-0 my-8  shadow-md dark:bg-grey-light rounded-2xl ">
                  <div class="flex-wrap items-center hidden  -mx-4 md:flex">
                     <div class="w-full   md:w-1/6 lg:w-1/12 md:mb-0">

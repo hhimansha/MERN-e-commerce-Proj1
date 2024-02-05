@@ -68,73 +68,60 @@ function UserAddress() {
   };
 
   return (
-    <div className="ml-80 max-w-fit">
-      <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
-        <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">
-          Update Address
-        </h3>
-        <form
-          className="grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-4"
-          onSubmit={handleSubmit}
-        >
-         
+    <div>
+        <div className="grid justify-center bg-grey-light mx-auto mb-16 mt-12 p-5 rounded-xl max-w-lg drop-shadow-md">
+            <h1 className="text-2xl text-black text-center mb-4">Update Address</h1>
+            <form className="w-96 grid" onSubmit={handleSubmit}>
+                <label className="text-gray-500">Street</label>
+                <input type="text" className="rounded-lg p-2 px-5 mb-4 border border-gray-300"  onChange={(e) => setStreet(e.target.value)}
+              value={street}></input>
 
-          {/* New input fields */}
-          <div className="mr-5 grid">
-            <label>street : </label>
-            <input
-              type="text"
-              onChange={(e) => setStreet(e.target.value)}
-              value={street}
-              className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${
-                emptyFields && emptyFields.includes("street") ? "error" : ""
-              }`}
-            />
-          </div>
+                <label className="text-gray-500">City</label>
+                <input type="text" className="rounded-lg p-2 px-5 mb-4 border border-gray-300" onChange={(e) => setCity(e.target.value)}
+              value={city}></input>
+                
+                <label className="text-gray-500">State</label>
+                <input type="text" className="rounded-lg p-2 px-5 mb-4 border border-gray-300" onChange={(e) => setState(e.target.value)}
+              value={state}></input>
+                
+                <label className="text-gray-500">Zip code</label>
+                <input
+                    type="text"
+                    className="rounded-lg p-2 px-5 mb-4 border border-gray-300"
+                  
+                    onChange={(e) => setZipCode(e.target.value)}
+                    value={zipCode}
+                    /> 
+              
+                
+                              
+                <div className="btn section flex m-4 ml-0">
+                <button className="mx-auto px-5 py-2 px-10 text-20 text-white font-semibold rounded-lg border focus:outline-none bg-primary">
+                  Add address
+                </button>
+                </div>
 
-          <div className="mr-5 grid">
-            <label>city : </label>
-            <input
-              type="text"
-              onChange={(e) => setCity(e.target.value)}
-              value={city}
-              className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${
-                emptyFields && emptyFields.includes("city") ? "error" : ""
-              }`}
-            />
-          </div>
+                {error && (
+                    
+                    
+                    <div id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-full bg-red-50 dark:text-red-400 justify-center border-red-400 border-2 " role="alert">
+                        <svg class="flex-shrink-0 w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div class="ms-3 text-lg font-medium">
+                        {error}
+                        </div>
+                    </div>
+                )}
+            </form>
+            
+        </div>
+        {error && <div className="error text-red-600">{error}</div>}
+        </div>
 
-          <div className="mr-5 grid">
-            <label>state : </label>
-            <input
-              type="text"
-              onChange={(e) => setState(e.target.value)}
-              value={state}
-              className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28 ${
-                emptyFields && emptyFields.includes("state") ? "error" : ""
-              }`}
-            />
-          </div>
 
-          <div className="mr-5 grid">
-            <label>zipCode : </label>
-            <input
-              type="text"
-              onChange={(e) => setZipCode(e.target.value)}
-              value={zipCode}
-              className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28 ${
-                emptyFields && emptyFields.includes("zipCode") ? "error" : ""
-              }`}
-            />
-          </div>
 
-          <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">
-            Add address
-          </button>
-          {error && <div className="error text-red-600">{error}</div>}
-        </form>
-      </div>
-    </div>
   );
 }
 

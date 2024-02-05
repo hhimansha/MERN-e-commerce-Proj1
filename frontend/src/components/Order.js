@@ -77,19 +77,17 @@ const Order = () => {
                     <div class="flex flex-col px-4 md:p-6 xl:p-8 w-full  bg-grey-light rounded-2xl drop-shadow-md space-y-2">
                         <h2 class="text-lg font-medium mb-4">Delivery Address</h2>
                         <div className="delivery info border-gray-200 flex ">
-                            <p className="text-base text-black font-semibold leading-4">Street : </p>
+                           
                             <p className="text-base text-gray-400 font-semibold leading-4"> {user?.DeliveryAddress?.street || 'N/A'}</p>
                         </div>
                         <div className="delivery info border-gray-200 flex">
-                            <p className="text-base text-black font-semibold leading-4">City : </p>
+                         
                             <p className="text-base text-gray-400 font-semibold leading-4"> {user?.DeliveryAddress?.city || 'N/A'}</p>
                         </div>
                         <div className="delivery info border-gray-200 flex">
-                            <p className="text-base text-black font-semibold leading-4">State : </p>
                             <p className="text-base text-gray-400 font-semibold leading-4"> {user?.DeliveryAddress?.state || 'N/A'}</p>
                         </div>
                         <div className="delivery info border-gray-200  flex">
-                            <p className="text-base text-black font-semibold leading-4">Zip code : </p>
                             <p className="text-base text-gray-400 font-semibold leading-4 "> {user?.DeliveryAddress?.zipCode || 'N/A'}</p>
                     </div>
                 </div>
