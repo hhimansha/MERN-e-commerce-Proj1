@@ -38,16 +38,16 @@ const Cart = () => {
              <div class="p-6 mb-8  shadow-md dark:bg-grey-light rounded-3xl ">
                  <div class="flex-wrap items-center hidden mb-4 -mx-4 md:flex md:mb-4">
                      <div class="w-full px-4 mb-6 md:w-4/6 lg:w-6/12 md:mb-0">
-                         <h2 class="font-semibold text-gray-500 dark:text-gray-400 text-center -ml-10">Product name</h2>
+                         <h2 class="font-semibold text-gray-500 text-center -ml-10">Product name</h2>
                      </div>
                      <div class="hidden px-4 lg:block lg:w-2/12">
-                         <h2 class="font-semibold text-gray-500 dark:text-gray-400">Price</h2>
+                         <h2 class="font-semibold text-gray-500 ">Price</h2>
                      </div>
                      <div class="w-auto px-4 md:w-1/6 lg:w-2/12 ">
-                         <h2 class="font-semibold text-gray-500 dark:text-gray-400">Quantity</h2>
+                         <h2 class="font-semibold text-gray-500 ">Quantity</h2>
                      </div>
                      <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12 justify-center">
-                         <h2 class="font-semibold text-gray-500 text-left dark:text-gray-400"> Subtotal</h2>
+                         <h2 class="font-semibold text-gray-500 text-left "> Subtotal</h2>
                      </div>
                  </div>
                  

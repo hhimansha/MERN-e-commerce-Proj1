@@ -80,27 +80,27 @@ console.log('User object:', user._id);
   console.log('User Orders:', orders); // Log user orders
 
   return (
-    <div class="p-6 my-8  shadow-md dark:bg-grey-light rounded-3xl ">
-                 <div class="flex-wrap items-center hidden mb-4 -mx-4 md:flex md:mb-4">
-                    <div class="w-full  mb-6 md:w-1/6 lg:w-1/12 md:mb-0">
-                         <h2 class="text-lg text-primary font-semibold bg-grey mb-4 text-left w-full py-2 pl-10 rounded-tl-3xl">ID</h2>
+    <div class="p-6 pt-0 my-8  shadow-md dark:bg-grey-light rounded-2xl ">
+                 <div class="flex-wrap items-center hidden  -mx-4 md:flex">
+                    <div class="w-full   md:w-1/6 lg:w-1/12 md:mb-0">
+                         <h2 class="text-10  bg-grey-light font-semibold text-gray-500   text-left w-full py-2 pl-10 rounded-tl-3xl">ID</h2>
                      </div>
-                     <div class="w-full  mb-6 md:w-2/6 lg:w-6/12 md:mb-0">
-                         <h2 class="text-lg text-primary font-semibold bg-grey mb-4 text-left w-full py-2 pl-10 ">Order Details</h2>
+                     <div class="w-full   md:w-2/6 lg:w-6/12 md:mb-0">
+                         <h2 class="text-10  bg-grey-light font-semibold text-gray-500   text-left w-full py-2 pl-10 ">Order Details</h2>
                      </div>
 
                      <div class="w-auto md:w-1/6 lg:w-1/12 ">
-                         <h2 class="text-lg text-primary font-semibold bg-grey mb-4 text-left w-full py-2 pl-6">Qty</h2>
+                         <h2 class="text-10  bg-grey-light font-semibold text-gray-500  text-left w-full  pl-6">Qty</h2>
                      </div>
                      <div class="w-auto text-right md:w-2/6 lg:w-4/12 justify-center">
-                         <h2 class="text-lg text-primary font-semibold bg-grey mb-4 text-left w-full py-2 pl-4 rounded-tr-3xl"> Subtotal</h2>
+                         <h2 class="text-10  bg-grey-light font-semibold text-gray-500 text-left w-full py-2 pl-4 rounded-tr-3xl"> Subtotal</h2>
                      </div>
                  </div>
                  
                  <div class="py-1 mb-0 border-t dark:border-gray-400 " >
                  
                   {orders.map((order) => (
-                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center my-4 -mx-4 md:my-2 duration-500 hover:shadow-xl" key={order._id}>
+                  <div class="flex flex-wrap border-b dark:border-gray-400 items-center pb-4 my-4 -mx-4 md:my-2 duration-500 hover:shadow-xl" key={order._id}>
                          <div class="w-auto px-4 md:w-1/6 lg:w-1/12 ">
                           <div className="px-4 w-1/6 md:w-1/6 lg:w-1/6 flex items-center">
                             <span className="font-semibold mr-2">
@@ -144,7 +144,7 @@ console.log('User object:', user._id);
                          </div>
                          <button
                                   onClick={() => handleClick(order._id)}
-                                className="px-5 py-2 text-md text-white  rounded-full border focus:outline-none bg-red-500"
+                                className="px-5 py-2 text-md text-white  rounded-lg border focus:outline-none bg-grey"
                               
                               >
                                 Cancel Order
