@@ -70,7 +70,7 @@ const ProteinDetails = ({ protein, index }) => {
     
     <div className="protein text-black m-5 duration-500 hover:scale-105 hover:shadow-xl">
       
-      <div className="max-w-sm bg-grey rounded-lg drop-shadow-md dark:bg-grey-light  hover:bg-white">
+      <div className="max-w-sm bg-white rounded-lg drop-shadow-md ">
         <Link to={`/product/${protein._id}`}>
           <img src={protein.imageSrc} alt={protein.title} className="rounded-t-lg w-56 h-72 " />
         </Link>

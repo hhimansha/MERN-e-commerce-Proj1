@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
-import img1 from './images/headerLogo.png';
+import img1 from './images/headerLogoH.png';
 import { useCart } from '../hooks/useCart';
 
 function HeaderPart() {
@@ -37,11 +37,11 @@ function HeaderPart() {
     setIsNavVisible(!isNavVisible);
   };
   return (
-    <nav className={`bg-white  z-20 sticky top-0 w-full border-b border-gray-200  ${isNavVisible ? 'h-screen md:h-16' : 'h-16'}`}>
+    <nav className={`bg-white  z-20 sticky top-0 w-full border-b border-gray-200  ${isNavVisible ? 'h-screen md:h-14' : 'h-14'}`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-1">
       <Link to="/" className="navbar-brand">
                     <div>
-                        <img src={img1} alt="Logo" width="170" className="d-inline-block align-text-top" />
+                        <img src={img1} alt="Logo" width="130" className="d-inline-block align-text-top" />
                     </div>
                 </Link>
         <div className="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse items-center">

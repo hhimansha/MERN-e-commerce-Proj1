@@ -5,8 +5,8 @@ import ItemAddedCart from './AlertBoxes/ItemAddedCart';
 import { motion } from 'framer-motion';
 
 function ProductPage() {
-  const { bookId } = useParams();
-  const [book, setBook] = useState(null);
+  const { proteinId } = useParams();
+  const [protein, setProtein] = useState(null);
   const [qty, setQty] = useState(1);
   const [calculatedTotPrice, setCalculatedTotPrice] = useState(0);
   const [success, setSuccess] = useState(false);
@@ -16,11 +16,11 @@ function ProductPage() {
 
   const addToCart = () => {
     try {
-      // Ensure book.price is a valid number
-      const bookPrice = parseFloat(book.price);
+      // Ensure protein.price is a valid number
+      const proteinPrice = parseFloat(protein.price);
 
       // Calculate TotPrice using the captured quantity
-      const updatedCalculatedTotPrice = bookPrice * qty;
+      const updatedCalculatedTotPrice = proteinPrice * qty;
 
       // Generate a unique identifier for the cart item
       const cartItemId = uuidv4();
@@ -33,11 +33,11 @@ function ProductPage() {
         ...existingCart,
         {
           id: cartItemId,  // Use the generated unique identifier
-          bookId: book._id,
-          bookName: book.title,
+          proteinId: protein._id,
+          proteinName: protein.title,
           qty: qty,  // Use the captured quantity
-          imageSrc: book.imageSrc,
-          price: book.price,
+          imageSrc: protein.imageSrc,
+          price: protein.price,
           TotPrice: updatedCalculatedTotPrice,
         },
       ];
@@ -74,28 +74,28 @@ function ProductPage() {
 
   useEffect(() => {
     // Update calculatedTotPrice when qty changes
-    setCalculatedTotPrice(parseFloat(book?.price || 0) * qty);
-  }, [qty, book]);
+    setCalculatedTotPrice(parseFloat(protein?.price || 0) * qty);
+  }, [qty, protein]);
   
     useEffect(() => {
-      const fetchBook = async () => {
+      const fetchProtein = async () => {
         try {
-          const response = await fetch(`http://localhost:9092/api/books/admindash/products/${bookId}`);
+          const response = await fetch(`http://localhost:9092/api/proteins/admindash/products/${proteinId}`);
           const json = await response.json();
   
           if (response.ok) {
-            setBook(json);
+            setProtein(json);
           } else {
             // Handle error case, e.g., redirect to home or show an error message
-            console.error(`Error fetching book: ${response.status}`);
+            console.error(`Error fetching protein: ${response.status}`);
           }
         } catch (error) {
-          console.error('Error fetching book:', error);
+          console.error('Error fetching protein:', error);
         }
       };
   
-      fetchBook();
-    }, [bookId]);
+      fetchProtein();
+    }, [proteinId]);
   
     const incrementQty = () => {
       setQty((prevQty) => (prevQty < 10 ? prevQty + 1 : prevQty));
@@ -108,7 +108,7 @@ function ProductPage() {
 
   return (
     <div>
-      {book ? (
+      {protein ? (
         <motion.div
           variants={fadeIn}
           initial="hidden"
@@ -123,7 +123,7 @@ function ProductPage() {
               <div className="w-full px-4 md:w-1/2 ">
                 <div className="sticky top-0  overflow-hidden ">
                   <div className="flex lg:h-2/4 justify-center mx-auto">
-                    <img src={book.imageSrc} alt="" className="object-cover w-96 lg:h-full" />
+                    <img src={protein.imageSrc} alt="" className="object-cover w-96 lg:h-full  rounded-3xl" />
                   </div>
                 </div>
               </div>
@@ -131,13 +131,13 @@ function ProductPage() {
               <div className=" w-mid bg-grey-light p-10 rounded-3xl drop-shadow-md mt-10 sm:mt-10 md:mt-0">
                 <div className="">
                   <div className="">
-                    <h2 className="max-w-xl mt-2 text-2xl font-bold dark:text-grey md:text-4xl">{book.title}</h2>
+                    <h2 className="max-w-xl mt-2 text-2xl font-bold dark:text-grey md:text-4xl">{protein.title}</h2>
                     <div className="flex items-center mb-6">
                       <p className="text-xs dark:text-gray-400 ">(2 customer reviews)</p>
                     </div>
-                    <p className="max-w-md mb-8 text-grey dark:text-grey ">{book.description}</p>
+                    <p className="max-w-md mb-8 text-grey dark:text-grey ">{protein.description}</p>
                     <p className="inline-block mb-8 text-4xl font-bold text-grey dark:text-grey ">
-                      <span>${book.price}</span>
+                      <span>${protein.price}</span>
                     </p>
                   </div>
 

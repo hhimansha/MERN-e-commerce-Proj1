@@ -59,12 +59,12 @@ const Cart = () => {
                              <div class="flex flex-wrap items-center -mx-4">
                                  <div class="w-full px-4 mb-3 md:w-1/3">
                                      <div class="w-full h-96 md:h-24 md:w-24">
-                                         <img src={cart.imageSrc} alt={cart.bookName}
+                                         <img src={cart.imageSrc} alt={cart.proteinName}
                                              class="object-cover w-full h-full"/>
                                      </div>
                                  </div>
                                  <div class="w-2/3 px-4">
-                                     <h2 class=" text-xl font-semibold dark:text-grey">{cart.bookName}</h2>
+                                     <h2 class=" text-xl font-semibold dark:text-grey">{cart.proteinName}</h2>
                                  </div>
                              </div>
                          </div>

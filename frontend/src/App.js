@@ -26,7 +26,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<><Home /><Footer /></>} />
                     <Route path="/signup" element={!user ? <><HeaderPart /><SignUp /><Footer /></> : <Navigate to="/" />} />
-                    <Route path="/product/:bookId" element={<><HeaderPart /><Productpage /><Footer /></>} />
+                    <Route path="/product/:proteinId" element={<><HeaderPart /><Productpage /><Footer /></>} />
                     <Route
                         path="/login"
                         element={!user ? <><HeaderPart /><LogIn /><Footer /></> : user.Admin ? <Navigate to="/admindash" /> : <Navigate to="/" />}
