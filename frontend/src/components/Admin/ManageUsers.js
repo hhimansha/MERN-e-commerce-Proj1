@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useReducer } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useBooksContext } from "../../hooks/useBooksContext";
+import { useProteinsContext } from "../../hooks/useProteinsContext";
 import { Link } from "react-router-dom";
 
 const ManageUsers = () => {
-    const { dispatch } = useBooksContext();
+    const { dispatch } = useProteinsContext();
   const { user } = useAuthContext();
   const [usersList, setUsersList] = useState(null);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);

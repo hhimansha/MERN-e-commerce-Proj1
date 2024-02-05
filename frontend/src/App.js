@@ -8,7 +8,7 @@ import LogIn from './components/login';
 import Productpage from './components/productPage';
 import AdminDash from './components/Admin/AdminDash';
 import AddProducts from './components/Admin/AddProducts'
-import UpdateBook from './components/Admin/UpdateBook';
+import UpdateProtein from './components/Admin/UpdateProtein';
 import ManageUsers from './components/Admin/ManageUsers';
 import UserAddress from './components/UserAddress';
 import User from './components/User'
@@ -94,7 +94,7 @@ function App() {
                         element={user?.Admin ? (
                             <>
                                 <AdminDash />
-                                <UpdateBook />
+                                <UpdateProtein />
                             </>
                         ) : (
                             <Navigate to="/" />

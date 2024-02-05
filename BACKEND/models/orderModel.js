@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
   {
-    bookId: {
+    proteinId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Book", // Reference to the Book collection
       required: [true, "Please add the title"],
@@ -12,7 +12,7 @@ const orderSchema = mongoose.Schema(
       ref: "User", // Reference to the User collection
       required: [true, "Please add the title"],
     },
-    bookName: {
+    proteinName: {
       type: String,
       required: [true, "Please add the author"],
     },

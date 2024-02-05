@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import bookSet from './images/bookSet.png';
-import BookDetails from './BookDetails';
+import bookSet from './images/bookSet1.png';
+import ProteinDetails from './ProteinDetails';
 import Productpage from './productPage';
 import HeaderPart from "./headerPart";
 
 function Home() {
-    const [books, setBooks] = useState(null);
+    const [proteins, setProteins] = useState(null);
 
     useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await fetch('http://localhost:9092/api/books/');
+        const fetchProteins = async () => {
+            const response = await fetch('http://localhost:9092/api/proteins/');
             const json = await response.json();
             if (response.ok) {
-                setBooks(json);
+                setProteins(json);
             }
         };
 
-        fetchBooks();
+        fetchProteins();
     }, []);
 
     return (
@@ -24,7 +24,7 @@ function Home() {
             <section class="bg-grey-light ">
                 
                 <div class="grid max-w-screen-xl mb-10 px-10 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-                    <div class="mr-auto place-self-center lg:col-span-7">
+                    <div class="mr-auto place-self-center lg:col-span-6">
                         <h3 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-4xl text-grey">Back To School</h3>
                         <h3 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-6xl xl:text-6xl text-grey">SPECIAL <span className="text-primary"> 50% OFF</span></h3>
                         <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-500">The biggest discount for our student community</p>
@@ -36,15 +36,15 @@ function Home() {
                             Explore Now
                         </a> 
                     </div>
-                    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+                    <div class="hidden lg:mt-0 lg:col-span-6 lg:flex">
                         <img src={bookSet} alt="mockup"/>
                     </div>                
                 </div>
             </section>
             <div className="justify-center">
-                <div className="books flex justify-center flex-wrap w-4/5 mx-auto">
-                    {books && books.map((book, index) => (
-                        <BookDetails key={book._id} book={book} index={index} />
+                <div className="proteins flex justify-center flex-wrap w-4/5 mx-auto">
+                    {proteins && proteins.map((protein, index) => (
+                        <ProteinDetails key={protein._id} protein={protein} index={index} />
                     ))}
                 </div>
             </div>

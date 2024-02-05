@@ -2,20 +2,19 @@
 import React, { useEffect, useState, useReducer } from "react";
 //import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useBooksContext } from "../../hooks/useBooksContext";
-import ManageBooks from "./ManageBooks"; // Import the ManageBooks component
+import { useProteinsContext } from "../../hooks/useProteinsContext";
+import ManageProteins from "./ManageProteins"; 
 
 function AddProducts() {
-  const { dispatch } = useBooksContext();
+  const { dispatch } = useProteinsContext();
   const { user } = useAuthContext();
 
-  const [books, setBooks] = useState([]); // Add the books state
+  const [proteins, setProteins] = useState([]);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
 
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [publishYear, setPublishYear] = useState("");
+  const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
   const [imageSrc, setImageSrc] = useState("");
   const [price, setPrice] = useState("");
@@ -31,13 +30,13 @@ function AddProducts() {
         return;
       }
 
-    const book = { title, author, publishYear, imageSrc, description, price };  
+    const protein = { title, company, imageSrc, description, price };  
 
     const response = await fetch(
-      "http://localhost:9092/api/books/admindash/products",
+      "http://localhost:9092/api/proteins/admindash/products",
       {
         method: "POST",
-        body: JSON.stringify(book),
+        body: JSON.stringify(protein),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
@@ -56,13 +55,12 @@ function AddProducts() {
     if (response.ok) {
       setError(null);
       setTitle("");
-      setAuthor("");
-      setPublishYear("");
+      setCompany("");
       setDescription("");
       setImageSrc("");
       setPrice("");
       setEmptyFields([]);
-      dispatch({ type: "CREATE_BOOK", payload: json });
+      dispatch({ type: "CREATE_PROTEIN", payload: json });
     }
 
     // Check if already authenticated and redirect
@@ -74,21 +72,20 @@ function AddProducts() {
   };
 
   useEffect(() => {
-    const fetchBooks = async () => {
+    const fetchProteins = async () => {
       try {
-        const response = await fetch("http://localhost:9092/api/books/");
+        const response = await fetch("http://localhost:9092/api/proteins/");
         forceUpdate()
         if (response.ok) {
           const json = await response.json();
-          setBooks(json); // Set the books state
-          //dispatch({ type: "SET_BOOK", payload: json });
+          setProteins(json);
         }
       } catch (error) {
         console.error("Error fetching books:", error);
       }
     };
 
-    fetchBooks();
+    fetchProteins();
   }, [reducerValue]);
 
   
@@ -112,22 +109,14 @@ function AddProducts() {
         </div>
 
         <div className="mr-5 grid">
-        <label>Author : </label>
+        <label>Company : </label>
         <input
             type="text"
-            onChange={(e) => setAuthor(e.target.value)}
-            value={author}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('author') ? 'error' : ''}`}
+            onChange={(e) => setCompany(e.target.value)}
+            value={company}
+            className={`rounded-full p-2 px-5 mb-4 border border-gray-300 ${emptyFields && emptyFields.includes('company') ? 'error' : ''}`}
         /></div>
 
-        <div className="mr-5 grid">
-        <label>Publish Year : </label>
-        <input
-            type="number"
-            onChange={(e) => setPublishYear(e.target.value)}
-            value={publishYear}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28 ${emptyFields && emptyFields.includes('publishYear') ? 'error' : ''}`}
-        /></div>
 
         <div className="mr-5 grid">
         <label>Description : </label>
@@ -156,12 +145,12 @@ function AddProducts() {
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28  ${emptyFields && emptyFields.includes('price') ? 'error' : ''}`}
         /></div>
 
-        <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Book</button>
+        <button className="col-span-1 px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">Add Protein</button>
         {error && <div className="error ">{error}</div>}
     </form>
       </div>
 
-      <ManageBooks books={books} />
+      <ManageProteins proteins={proteins} />
     </div>
   );
 }

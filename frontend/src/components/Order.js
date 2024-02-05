@@ -54,12 +54,12 @@ const Order = () => {
               {carts.map((cart) => (
               <div key={cart.id} class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
                 <div class="pb-4 md:pb-8 w-20 md:w-20">
-                  <img class="w-96 hidden md:block" src={cart.imageSrc} alt={cart.bookName} />
-                  <img class="w-96 md:hidden" src={cart.imageSrc} alt={cart.bookName} />
+                  <img class="w-96 hidden md:block" src={cart.imageSrc} alt={cart.proteinName} />
+                  <img class="w-96 md:hidden" src={cart.imageSrc} alt={cart.proteinName} />
                 </div>
                 <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
                   <div class="w-full flex flex-col justify-start items-start space-y-8">
-                    <h3 class="text-xl dark:text-black xl:text-xl font-semibold leading-6 text-black">{cart.bookName}</h3>
+                    <h3 class="text-xl dark:text-black xl:text-xl font-semibold leading-6 text-black">{cart.proteinName}</h3>
                     <div class="flex justify-start items-start flex-col space-y-2">
                     </div>
                   </div>

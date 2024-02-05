@@ -1,19 +1,16 @@
 const mongoose = require("mongoose");
 
-const bookSchema = mongoose.Schema(
+const proteinSchema = mongoose.Schema(
   {
     title: {
       type: String,
       required: [true, "Please add the title"],
     },
-    author: {
+    company: {
       type: String,
       required: [true, "Please add the author"],
     },
-    publishYear: {
-      type: Number,
-      required: [true, "Please add the publish year"],
-    },
+
     imageSrc: {
       type: String,
       required: [true, "Please add the image"],
@@ -32,4 +29,4 @@ const bookSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Protein", proteinSchema);

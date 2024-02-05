@@ -2,42 +2,39 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-function UpdateBook() {
+function UpdateProtein() {
   const { user } = useAuthContext();
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [publishYear, setPublishYear] = useState("");
+  const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
   const [imageSrc, setImageSrc] = useState("");
   const [price, setPrice] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchBookDetails = async () => {
+    const fetchProteinDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:9092/api/books/admindash/products/${id}`);
+        const response = await fetch(`http://localhost:9092/api/proteins/admindash/products/${id}`);
         if (response.ok) {
           const json = await response.json();
-          // Set the state with book details
           setTitle(json.title);
-          setAuthor(json.author);
-          setPublishYear(json.publishYear);
+          setCompany(json.company);
           setDescription(json.description);
           setImageSrc(json.imageSrc);
           setPrice(json.price);
         } else {
-          setError("Error fetching book details");
+          setError("Error fetching Protein details");
         }
       } catch (error) {
-        console.error("Error fetching book details:", error);
-        setError("Error fetching book details");
+        console.error("Error fetching Protein details:", error);
+        setError("Error fetching Protein details");
       }
     };
 
-    fetchBookDetails();
+    fetchProteinDetails();
   }, [id]);
 
   const handleSubmit = async (e) => {
@@ -48,10 +45,9 @@ function UpdateBook() {
       return;
     }
 
-    const updatedBook = {
+    const updatedProtein = {
       title,
-      author,
-      publishYear,
+      company,
       description,
       imageSrc,
       price,
@@ -59,10 +55,10 @@ function UpdateBook() {
 
     try {
       const response = await fetch(
-        `http://localhost:9092/api/books/admindash/products/update/${id}`,
+        `http://localhost:9092/api/proteins/admindash/products/update/${id}`,
         {
           method: "PUT",
-          body: JSON.stringify(updatedBook),
+          body: JSON.stringify(updatedProtein),
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
@@ -80,15 +76,15 @@ function UpdateBook() {
         navigate("/admindash/products");
       }
     } catch (error) {
-      console.error("Error updating book:", error);
-      setError("Error updating book");
+      console.error("Error updating Protein:", error);
+      setError("Error updating Protein");
     }
   };
   return (
     <div className="ml-80 max-w-96">
       <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
         <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">
-          Update Book
+          Update Protein
         </h3>
         <form
           className="grid "
@@ -105,22 +101,14 @@ function UpdateBook() {
           </div>
 
           <div className="grid">
-        <label>Author : </label>
+        <label>Company : </label>
         <input
             type="text"
-            onChange={(e) => setAuthor(e.target.value)}
-            value={author}
+            onChange={(e) => setCompany(e.target.value)}
+            value={company}
             className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
         /></div>
 
-        <div className="grid">
-        <label>Publish Year : </label>
-        <input
-            type="number"
-            onChange={(e) => setPublishYear(e.target.value)}
-            value={publishYear}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28`}
-        /></div>
 
         <div className="grid">
         <label>Description : </label>
@@ -150,7 +138,7 @@ function UpdateBook() {
         /></div>
 
           <button className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">
-            Update Book
+            Update Protein
           </button>
           {error && <div className="error ">{error}</div>}
         </form>
@@ -159,4 +147,4 @@ function UpdateBook() {
   );
 }
 
-export default UpdateBook;
+export default UpdateProtein;

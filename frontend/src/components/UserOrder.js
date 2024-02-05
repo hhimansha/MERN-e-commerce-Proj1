@@ -124,12 +124,12 @@ console.log('User object:', user._id);
                              <div class="flex flex-wrap items-center -mx-4">
                                  <div class="w-full px-4 mb-3 md:w-1/3">
                                      <div class="w-full h-96 md:h-24 md:w-24">
-                                         <img src={order.imageSrc} alt={order.bookName}
+                                         <img src={order.imageSrc} alt={order.proteinName}
                                              class="object-cover w-full h-full"/>
                                      </div>
                                  </div>
                                  <div class="w-2/3 px-4">
-                                     <h2 class=" text-md font-semibold dark:text-grey">{order.bookName}</h2>
+                                     <h2 class=" text-md font-semibold dark:text-grey">{order.proteinName}</h2>
                                  </div>
                              </div>
                          </div>

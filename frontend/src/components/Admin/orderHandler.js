@@ -66,14 +66,14 @@ const OrderHandler = () => {
             colSpan="8"
             className="text-lg text-primary font-semibold bg-grey mb-4 text-left"
           >
-            Stored Books
+            Stored Proteins
           </th>
         </tr>
         <tr>
           <th className="w-1/8">Order ID</th>
           <th className="w-1/8">User ID</th>
           <th className="w-1/8">Image</th>
-          <th className="w-1/8">Book Title</th>
+          <th className="w-1/8">Protein Title</th>
           <th className="w-1/8">Qty</th>
           <th className="w-1/8">Total Price</th>
 

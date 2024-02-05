@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 // Corrected import statements
 import { motion } from 'framer-motion';
 
-const BookDetails = ({ book, index }) => {
+const ProteinDetails = ({ protein, index }) => {
   const [qty, setQty] = useState(1);
 
   const fadeIn = {
@@ -22,12 +22,12 @@ const BookDetails = ({ book, index }) => {
 
   const addToCart = () => {
     try {
-      // Ensure book.price and qty are valid numbers
-      const bookPrice = parseFloat(book.price);
+      // Ensure protein.price and qty are valid numbers
+      const proteinPrice = parseFloat(protein.price);
       const quantity = parseInt(qty);
 
       // Calculate TotPrice once
-      const calculatedTotPrice = bookPrice * quantity;
+      const calculatedTotPrice = proteinPrice * quantity;
 
       // Generate a unique identifier for the cart item
       const cartItemId = uuidv4();
@@ -40,11 +40,11 @@ const BookDetails = ({ book, index }) => {
         ...existingCart,
         {
           id: cartItemId,  // Use the generated unique identifier
-          bookId: book._id,
-          bookName: book.title,
+          proteinId: protein._id,
+          proteinName: protein.title,
           qty: quantity,
-          imageSrc: book.imageSrc,
-          price: book.price,
+          imageSrc: protein.imageSrc,
+          price: protein.price,
           TotPrice: calculatedTotPrice,
         },
       ];
@@ -65,21 +65,21 @@ const BookDetails = ({ book, index }) => {
     variants={fadeIn} 
     initial="hidden"
     animate="visible" 
-    className="fetchAllBooks w-56 "
+    className="fetchAllproteins w-64 "
   >
     
-    <div className="books text-black m-5 duration-500 hover:scale-105 hover:shadow-xl">
+    <div className="protein text-black m-5 duration-500 hover:scale-105 hover:shadow-xl">
       
       <div className="max-w-sm bg-grey rounded-lg drop-shadow-md dark:bg-grey-light  hover:bg-white">
-        <Link to={`/product/${book._id}`}>
-          <img src={book.imageSrc} alt={book.title} className="rounded-t-lg w-56 h-72 " />
+        <Link to={`/product/${protein._id}`}>
+          <img src={protein.imageSrc} alt={protein.title} className="rounded-t-lg w-56 h-72 " />
         </Link>
         <div className="px-5 py-2">
-          <Link to={`/product/${book._id}`}>
-            <h5 className="text-base font-bold tracking-tight text-gray-900 dark:text-grey">{book.title}</h5>
+          <Link to={`/product/${protein._id}`}>
+            <h5 className="text-base font-bold tracking-tight text-gray-900 dark:text-grey">{protein.title}</h5>
           </Link>
-          <p className="mb-1 text-sm font-normal text-gray-700 dark:text-gray-500">{book.author}</p>
-          <p className="mb-2 text-16 font-bold tracking-tight text-primary">${book.price}</p>
+          <p className="mb-1 text-sm font-normal text-gray-700 dark:text-gray-500">{protein.company}</p>
+          <p className="mb-2 text-16 font-bold tracking-tight text-primary">${protein.price}</p>
           
         </div>
       </div>
@@ -89,4 +89,4 @@ const BookDetails = ({ book, index }) => {
   );
 }
 
-export default BookDetails;
+export default ProteinDetails;

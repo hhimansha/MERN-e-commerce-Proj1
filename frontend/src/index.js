@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
-import { BooksContextProvider } from './context/BooksContext';
+import { ProteinsContextProvider } from './context/ProteinsContext';
 import { OrderContextProvider } from './context/OrderContext';
 import { CartProvider } from './context/CartContext';
 
@@ -14,11 +14,11 @@ const app = (
   <React.StrictMode>
     <AuthContextProvider>
       <OrderContextProvider>
-        <BooksContextProvider>
+        <ProteinsContextProvider>
           <CartProvider>
             <App />
           </CartProvider>
-        </BooksContextProvider>
+        </ProteinsContextProvider>
       </OrderContextProvider>
     </AuthContextProvider>
   </React.StrictMode>

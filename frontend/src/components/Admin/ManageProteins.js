@@ -1,22 +1,21 @@
-// ManageBooks.js
 import React from "react";
 import { useReducer } from "react";
-import { useBooksContext } from "../../hooks/useBooksContext";
+import { useProteinsContext } from "../../hooks/useProteinsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Link } from "react-router-dom";
 
-const ManageBooks = ({ books }) => {
-  const { dispatch } = useBooksContext();
+const ManageProteins = ({ proteins }) => {
+  const { dispatch } = useProteinsContext();
   const { user } = useAuthContext();
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
-  const handleClick = async (bookId) => {
+  const handleClick = async (proteinId) => {
     if (!user) {
       return;
     }
 
     try {
-      const response = await fetch(`http://localhost:9092/api/books/admindash/products/${bookId}`,
+      const response = await fetch(`http://localhost:9092/api/proteins/admindash/products/${proteinId}`,
         {
           method: "DELETE",
           headers: {
@@ -29,10 +28,10 @@ const ManageBooks = ({ books }) => {
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({ type: "DELETE_BOOK", payload: json });
+        dispatch({ type: "DELETE_PROTEIN", payload: json });
       }
     } catch (error) {
-      console.error("Error deleting book:", error);
+      console.error("Error deleting protein:", error);
     }
   };
 
@@ -49,41 +48,39 @@ const ManageBooks = ({ books }) => {
             colSpan="8"
             className="text-lg text-primary font-semibold bg-grey mb-4 text-left"
           >
-            Stored Books
+            Stored proteins
           </th>
         </tr>
         <tr>
           <th className="w-1/8">Product ID</th>
           <th className="w-1/8">Image</th>
           <th className="w-1/8">Title</th>
-          <th className="w-1/8">Author</th>
-          <th className="w-1/8">Publish Year</th>
+          <th className="w-1/8">Company</th>
           <th className="w-1/8">Description</th>
           <th className="w-1/8">Price</th>
           <th className="w-1/8">Action</th>
         </tr>
       </thead>
       <tbody>
-        {books.map((book) => (
-          <tr key={book._id} className="my-10">
-            <td>{book._id}</td>
+        {proteins.map((protein) => (
+          <tr key={protein._id} className="my-10">
+            <td>{protein._id}</td>
             <td>
               <div className="w-32 h-36">
                 <img
-                  src={book.imageSrc}
-                  alt={book.title}
+                  src={protein.imageSrc}
+                  alt={protein.title}
                   className="rounded-t-lg w-32 h-36"
                 />
               </div>
             </td>
-            <td>{book.title}</td>
-            <td>{book.author}</td>
-            <td>{book.publishYear}</td>
-            <td className="w-80">{book.description}</td>
-            <td>{book.price}</td>
+            <td>{protein.title}</td>
+            <td>{protein.company}</td>
+            <td className="w-80">{protein.description}</td>
+            <td>{protein.price}</td>
             <td>
               <div className="grid gap-2">
-                <Link to={`/admindash/products/update/${book._id}`}>
+                <Link to={`/admindash/products/update/${protein._id}`}>
                 <button className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-grey">
                   Update
                 </button>
@@ -91,8 +88,8 @@ const ManageBooks = ({ books }) => {
                 <button
                   className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
                   onClick={() => {
-                    if (window.confirm("Do you want to delete this book?")) {
-                      handleClick(book._id);
+                    if (window.confirm("Do you want to delete this protein?")) {
+                      handleClick(protein._id);
                     }
                   }}
                 >
@@ -112,4 +109,4 @@ const ManageBooks = ({ books }) => {
   );
 };
 
-export default ManageBooks;
+export default ManageProteins;
