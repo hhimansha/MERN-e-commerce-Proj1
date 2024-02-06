@@ -42,7 +42,7 @@ const Order = () => {
   
     // Calculate total price
     const total = carts.reduce((acc, cart) => acc + cart.TotPrice, 0);
-    const discounted = total * 50/100;
+    const discounted = total * 40/100;
     const grandTotal = (total - discounted) + 8
 
     return(
@@ -59,7 +59,7 @@ const Order = () => {
                 </div>
                 <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
                   <div class="w-full flex flex-col justify-start items-start space-y-8">
-                    <h3 class="text-xl dark:text-black xl:text-xl font-semibold leading-6 text-black">{cart.proteinName}</h3>
+                    <h3 class="text-md dark:text-black xl:text-md font-semibold leading-6 text-black">{cart.proteinName}</h3>
                     <div class="flex justify-start items-start flex-col space-y-2">
                     </div>
                   </div>
@@ -117,8 +117,8 @@ const Order = () => {
                         <p class="text-base text-black leading-4 ">${total.toFixed(2)}</p>
                     </div>
                     <div class="flex justify-between items-center w-full">
-                        <p class="text-base text-black leading-4 ">Discount <span class="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">STUDENT</span></p>
-                        <p class="text-base text-black leading-4 ">-${discounted.toFixed(2)} (50%)</p>
+                        <p class="text-base text-black leading-4 ">Discount <span class="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">PROTEIN</span></p>
+                        <p class="text-base text-black leading-4 ">-${discounted.toFixed(2)} (40%)</p>
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Shipping</p>
