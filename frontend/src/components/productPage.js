@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../hooks/useCart';
 import { v4 as uuidv4 } from 'uuid';
 import ItemAddedCart from './AlertBoxes/ItemAddedCart';
 import { motion } from 'framer-motion';
@@ -13,6 +14,7 @@ function ProductPage() {
 
   // Add a fake array for demonstration
   const fakeArray = [1];
+  const { updateCart } = useCart();
 
   const addToCart = () => {
     try {
@@ -44,6 +46,7 @@ function ProductPage() {
 
       // Save the updated cart back to local storage
       localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateCart(updatedCart);
 
       // Update the calculatedTotPrice state
       setCalculatedTotPrice(updatedCalculatedTotPrice);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useCart } from '../hooks/useCart';
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import emptyCart from "./images/emptyCart.png"
@@ -6,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'; // Import uuid library
 
 const Cart = () => {
   const [carts, setCarts] = useState([]);
+  const { cart, updateCart } = useCart();
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -15,11 +17,13 @@ const Cart = () => {
   }, []);
 
   const handleClick = (cartId) => {
+
     // Remove the specific cart item from state
     const updatedCarts = carts.filter((cart) => cart.id !== cartId);
     
     // Update the state and local storage
     setCarts(updatedCarts);
+    updateCart(updatedCarts);
     localStorage.setItem("cart", JSON.stringify(updatedCarts));
   };
 
