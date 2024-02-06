@@ -7,6 +7,13 @@ const Order = () => {
     const [carts, setCarts] = useState([]);
 
     const handlePlaceOrder = async () => {
+      const form = document.forms["orderForm"];
+      if (!form.checkValidity()) {
+        // If the form is not valid, display an error message or handle it accordingly
+        alert("Please fill in all required fields with valid information.");
+        return;
+      }
+
         try {
           const response = await fetch('http://localhost:9092/api/order/place', {
             method: 'POST',
@@ -131,7 +138,7 @@ const Order = () => {
                     </div>
 
                 <h2 class="text-lg font-medium mb-6 mt-6">Payment Information</h2>
-                <form>
+                <form name="orderForm">
                 <div class="mb-8">
                             <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3"/>
                         </div>
@@ -140,7 +147,15 @@ const Order = () => {
                     
                         <div class="col-span-2 sm:col-span-1">
                             <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                            <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
+                            <input
+                              type="text"
+                              name="card-number"
+                              id="card-number"
+                              placeholder="0000 0000 0000 0000"
+                              className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                              pattern="\d{4} \d{4} \d{4} \d{4}"
+                              required
+                            />                        
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="expiration-date" class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
@@ -148,8 +163,16 @@ const Order = () => {
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="cvv" class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
-                            <input type="text" name="cvv" id="cvv" placeholder="000" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
-                        </div>
+                            <input
+                              type="text"
+                              name="cvv"
+                              id="cvv"
+                              placeholder="000"
+                              className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                              pattern="\d{3}"
+                              required
+                            />                        
+                            </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="card-holder" class="block text-sm font-medium text-gray-700 mb-2">Card Holder</label>
                             <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
