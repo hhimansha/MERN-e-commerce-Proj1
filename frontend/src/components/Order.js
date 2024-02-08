@@ -3,49 +3,97 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const Order = () => {
-    const { user } = useAuthContext();
-    const [carts, setCarts] = useState([]);
+  const { user } = useAuthContext();
+  const [carts, setCarts] = useState([]);
+  const [cardNumber, setCardNumber] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
+  const [cvv, setCVV] = useState("");
+  const [cardHolder, setCardHolder] = useState("");
+  const [isValidCardNumber, setIsValidCardNumber] = useState(true);
+  const [isValidExpirationDate, setIsValidExpirationDate] = useState(true);
+  const [isValidCVV, setIsValidCVV] = useState(true);
+  const [isValidCardHolder, setIsValidCardHolder] = useState(true);
 
-    const handlePlaceOrder = async () => {
-      const form = document.forms["orderForm"];
-      if (!form.checkValidity()) {
-        // If the form is not valid, display an error message or handle it accordingly
-        alert("Please fill in all required fields with valid information.");
-        return;
-      }
+  const handlePlaceOrder = async () => {
+    // Check the validity of all input fields
+    if (
+      !isValidCardNumber ||
+      !isValidExpirationDate ||
+      !isValidCVV ||
+      !isValidCardHolder
+    ) {
+      alert("Please fill in all required fields with valid information.");
+      return;
+    }
+  
+    // Check if any of the card details is empty
+    if (!cardNumber || !expirationDate || !cvv || !cardHolder) {
+      alert("Please enter all card details.");
+      return;
+    }
 
-        try {
-          const response = await fetch('http://localhost:9092/api/order/place', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              userId: user._id,
-              carts,
-            }),
-          });
-    
-          const data = await response.json();
-    
-          if (response.ok) {
-            console.log('Order placed successfully:', data);
-            // Handle success, e.g., redirect to a confirmation page
-          } else {
-            console.error('Error placing order:', data);
-            // Handle error, e.g., show an error message to the user
-          }
-        } catch (error) {
-          console.error('Error placing order:', error);
-          // Handle unexpected errors
-        }
-      };
+    // Formatting card number and expiration date
+  const formattedCardNumber = cardNumber.replace(/\D/g, "");
+  const formattedExpirationDate = expirationDate.replace(/\D/g, "");
+
+  // Rest of your code for placing the order
+  try {
+    const response = await fetch("http://localhost:9092/api/order/place", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: user._id,
+        carts,
+        cardNumber: formattedCardNumber,
+        expirationDate: formattedExpirationDate,
+        cvv,
+        cardHolder,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log("Order placed successfully:", data);
+      // Handle success, e.g., redirect to a confirmation page
+    } else {
+      console.error("Error placing order:", data);
+      // Handle error, e.g., show an error message to the user
+    }
+  } catch (error) {
+    console.error("Error placing order:", error);
+    // Handle unexpected errors
+  }
+};
   
     useEffect(() => {
       // Retrieve cart items from local storage
       const storedCarts = JSON.parse(localStorage.getItem("cart")) || [];
       setCarts(storedCarts);
     }, []);
+
+    const formatCardNumber = (input) => {
+      // Remove non-numeric characters
+      const numericValue = input.replace(/\D/g, "");
+  
+      // Insert space every 4 digits
+      const formattedValue = numericValue.replace(/(\d{4})/g, "$1 ").trim();
+  
+      return formattedValue;
+    };
+  
+    const formatExpirationDate = (input) => {
+      // Remove non-numeric characters
+      const numericValue = input.replace(/\D/g, "");
+  
+      // Insert "/" after the first 2 digits
+      const formattedValue = numericValue.replace(/^(\d{2})/, "$1 /");
+  
+      return formattedValue;
+    };
+  
   
     // Calculate total price
     const total = carts.reduce((acc, cart) => acc + cart.TotPrice, 0);
@@ -145,38 +193,110 @@ const Order = () => {
                     <div class="grid grid-cols-2 gap-6">
                         
                     
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                    <div class="col-span-2 sm:col-span-1">
+                      <label for="card-number" class="block text-sm font-medium text-gray-700 mb-2">
+                        Card Number
+                      </label>
+                      <input
+                          type="text"
+                          name="card-number"
+                          id="card-number"
+                          placeholder="0000 0000 0000 0000"
+                          className={`w-full py-3 px-4 border ${isValidCardNumber ? 'border-gray-400' : 'border-red-500'} rounded-lg focus:outline-none focus:border-blue-500`}
+                          value={formatCardNumber(cardNumber)}
+                          onChange={(e) => {
+                            setCardNumber(e.target.value);
+                            setIsValidCardNumber(true);
+                          }}
+                          onBlur={() => setIsValidCardNumber(/\d{4} \d{4} \d{4} \d{4}/.test(cardNumber))}
+                          required
+                        />
+                        {!isValidCardNumber && (
+                          <p class="text-xs text-red-500 mt-1">Please enter a valid card number.</p>
+                        )}
+                      </div>
+
+                      <div class="col-span-2 sm:col-span-1">
+                            <label for="expiration-date" class="block text-sm font-medium text-gray-700 mb-2">
+                              Expiration Date
+                            </label>
                             <input
                               type="text"
-                              name="card-number"
-                              id="card-number"
-                              placeholder="0000 0000 0000 0000"
-                              className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
-                              pattern="\d{4} \d{4} \d{4} \d{4}"
+                              name="expiration-date"
+                              id="expiration-date"
+                              placeholder="MM / YY"
+                              className={`w-full py-3 px-4 border ${isValidExpirationDate ? 'border-gray-400' : 'border-red-500'} rounded-lg focus:outline-none focus:border-blue-500`}
+                              onChange={(e) => {
+                                const formattedValue = e.target.value
+                                  .replace(/\D/g, '') // Remove non-numeric characters
+                                  .replace(/(\d{2})(\d{0,2})/, "$1 / $2"); // Add "/" between month and year
+                                setExpirationDate(formattedValue);
+                                setIsValidExpirationDate(true);
+                              }}
+                              onBlur={() => {
+                                setIsValidExpirationDate(/^(0[1-9]|1[0-2]) \/ (24|25|26|27|28)$/.test(expirationDate));
+                              }}
+                              maxLength="7" // Set the maximum length of the input to 7 characters (MM / YY)
+                              value={expirationDate}
                               required
-                            />                        
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="expiration-date" class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
-                            <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="cvv" class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
+                            />
+                            {!isValidExpirationDate && (
+                              <p class="text-xs text-red-500 mt-1">
+                                Please enter a valid expiration date (MM / YY), with the month between 01 and 12 and the year between 22 and 24.
+                              </p>
+                            )}
+                          </div>
+
+
+                          <div class="col-span-2 sm:col-span-1">
+                            <label for="cvv" class="block text-sm font-medium text-gray-700 mb-2">
+                              CVV
+                            </label>
                             <input
                               type="text"
                               name="cvv"
                               id="cvv"
                               placeholder="000"
-                              className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                              className={`w-full py-3 px-4 border ${isValidCVV ? 'border-gray-400' : 'border-red-500'} rounded-lg focus:outline-none focus:border-blue-500`}
                               pattern="\d{3}"
+                              onChange={(e) => {
+                                const numericValue = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+                                setCVV(numericValue);
+                                setIsValidCVV(true);
+                              }}
+                              onBlur={() => {
+                                setIsValidCVV(/^\d{3}$/.test(cvv));
+                              }}
+                              value={cvv}  // Ensure the displayed value is the state value
                               required
-                            />                        
-                            </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="card-holder" class="block text-sm font-medium text-gray-700 mb-2">Card Holder</label>
-                            <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"/>
-                        </div>
+                            />
+                            {!isValidCVV && (
+                              <p class="text-xs text-red-500 mt-1">Please enter a valid CVV (3 digits).</p>
+                            )}
+                          </div>
+
+                    <div class="col-span-2 sm:col-span-1">
+                      <label for="card-holder" class="block text-sm font-medium text-gray-700 mb-2">
+                        Card Holder
+                      </label>
+                      <input
+                        type="text"
+                        name="card-holder"
+                        id="card-holder"
+                        placeholder="Full Name"
+                        className={`w-full py-3 px-4 border ${isValidCardHolder ? 'border-gray-400' : 'border-red-500'} rounded-lg focus:outline-none focus:border-blue-500`}
+                        onChange={(e) => {
+                          setCardHolder(e.target.value);
+                          setIsValidCardHolder(true);
+                        }}
+                        onBlur={() => setIsValidCardHolder(/^[a-zA-Z\s]+/.test(cardHolder))}
+                        required
+                      />
+                      {!isValidCardHolder && (
+                        <p class="text-xs text-red-500 mt-1">Please enter a valid card holder name.</p>
+                      )}
+                    </div>
+                    
                     </div>
                     <div class="mt-8">
                     <button 
@@ -194,6 +314,7 @@ const Order = () => {
           </div>
         </div>
       </div>
+      
     )
 }
 
