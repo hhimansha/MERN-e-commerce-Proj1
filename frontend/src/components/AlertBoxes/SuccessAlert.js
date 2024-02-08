@@ -21,10 +21,10 @@ const SuccessAlert = ({ onClose }) => (
         </div>
       </div>
       <h3 className="my-4 text-center text-3xl font-semibold text-gray-700">
-        Profile Updated !!!
+        Order Placed !!!
       </h3>
       <p className="w-[230px] text-center font-normal text-gray-600">
-        Your profile details have been updated
+        Your order has been placed.
       </p>
       <button
         onClick={onClose}

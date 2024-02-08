@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import SuccessAlert from "./AlertBoxes/SuccessAlert";
 
 const Order = () => {
   const { user } = useAuthContext();
@@ -13,6 +14,12 @@ const Order = () => {
   const [isValidExpirationDate, setIsValidExpirationDate] = useState(true);
   const [isValidCVV, setIsValidCVV] = useState(true);
   const [isValidCardHolder, setIsValidCardHolder] = useState(true);
+  const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      console.log("Success:", success); // Log success when it's true
+    }, [success]);
 
   const handlePlaceOrder = async () => {
     // Check if the user has a delivery address
@@ -63,7 +70,10 @@ const Order = () => {
   
       if (response.ok) {
         console.log("Order placed successfully:", data);
-        // Handle success, e.g., redirect to a confirmation page
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
       } else {
         console.error("Error placing order:", data);
         // Handle error, e.g., show an error message to the user
@@ -338,6 +348,7 @@ const Order = () => {
             </div>
           </div>
         </div>
+        {success && <SuccessAlert onClose={() => navigate("/user")} />}
       </div>
       
     )
