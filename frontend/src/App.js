@@ -17,6 +17,7 @@ import Cart from './components/Cart';
 import Order from './components/Order';
 import OrderHandler from './components/Admin/orderHandler';
 import UserOrder from './components/UserOrder';
+import UpdateAddressinOrder from './components/UpdateAddressinOrder';
 function App() {
     const { user } = useAuthContext();
 
@@ -47,6 +48,10 @@ function App() {
                     <Route
                         path="/user/address"
                         element={user? <><HeaderPart /><UserAddress /><Footer /></> : <Navigate to="/" />}
+                    />
+                    <Route
+                        path="/user/order-address"
+                        element={user? <><HeaderPart /><UpdateAddressinOrder /><Footer /></> : <Navigate to="/" />}
                     />
                     <Route
                         path="/user/update"
