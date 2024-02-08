@@ -132,7 +132,7 @@ function HeaderPart() {
    
    {!user && (
                     <Link to="/login" className="navbar-brand">
-                        <button type="button" className="px-5 py-2 text-20 text-white bg-primary font-semibold rounded-lg border border-grey transition duration-1000 ease-in-out hover:text-white hover:bg-grey">Log In</button>
+                        <button type="button" className="px-5 py-2 mx-6  text-20 text-white bg-primary font-semibold rounded-lg border border-grey transition duration-1000 ease-in-out hover:text-white hover:bg-grey">Log In</button>
                     </Link>
                             
                 )}
