@@ -92,10 +92,10 @@ const Cart = () => {
                      </div>
                      ))
                      ) : (
-                       <div className="flex items-center justify-center h-screen">
+                       <div className="flex items-center justify-center h-96">
                        <div className="text-center items-center justify-center">
-                         <img src={emptyCart} className="w-72 ml-10" alt="Empty Cart" />
-                         <p className="text-gray-500 text-7xl font-semibold opacity-25 mt-4">Cart is empty</p>
+                         <img src={emptyCart} className="w-40  mx-auto" alt="Empty Cart" />
+                         <p className="text-gray-500 text-5xl font-semibold opacity-25 mt-4">Cart is empty</p>
                        </div>
                      </div>
                      
