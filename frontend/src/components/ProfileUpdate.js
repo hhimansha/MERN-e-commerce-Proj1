@@ -114,7 +114,7 @@ const ProfileUpdate = () => {
             </form>
             
         </div>
-        {success && <SuccessAlert onClose={() => navigate("/user")} />}
+        {navigate("/user")}
         </div>
     );
 }

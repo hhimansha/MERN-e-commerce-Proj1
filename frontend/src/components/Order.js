@@ -70,6 +70,9 @@ const Order = () => {
   
       if (response.ok) {
         console.log("Order placed successfully:", data);
+        // Remove cart details from local storage
+        localStorage.removeItem("cart");
+
         setSuccess(true);
         setTimeout(() => {
           setSuccess(false);
