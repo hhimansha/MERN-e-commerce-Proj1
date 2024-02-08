@@ -57,6 +57,7 @@ const Order = () => {
 
     if (response.ok) {
       console.log("Order placed successfully:", data);
+      console.log(user.DeliveryAddress)
       // Handle success, e.g., redirect to a confirmation page
     } else {
       console.error("Error placing order:", data);
@@ -128,23 +129,41 @@ const Order = () => {
           ))}
               
             </div>
-                <div class="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                    <div class="flex flex-col px-4 md:p-6 xl:p-8 w-full  bg-grey-light rounded-2xl drop-shadow-md space-y-2">
-                        <h2 class="text-lg font-medium mb-4">Delivery Address</h2>
-                        <div className="delivery info border-gray-200 flex ">
-                           
-                            <p className="text-base text-gray-400 font-semibold leading-4"> {user?.DeliveryAddress?.street || 'N/A'}</p>
-                        </div>
-                        <div className="delivery info border-gray-200 flex">
-                         
-                            <p className="text-base text-gray-400 font-semibold leading-4"> {user?.DeliveryAddress?.city || 'N/A'}</p>
-                        </div>
-                        <div className="delivery info border-gray-200 flex">
-                            <p className="text-base text-gray-400 font-semibold leading-4"> {user?.DeliveryAddress?.state || 'N/A'}</p>
-                        </div>
-                        <div className="delivery info border-gray-200  flex">
-                            <p className="text-base text-gray-400 font-semibold leading-4 "> {user?.DeliveryAddress?.zipCode || 'N/A'}</p>
-                    </div>
+            <div class="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+                  <div class="flex flex-col px-4 md:p-6 xl:p-8 w-full py-4 bg-grey-light rounded-2xl drop-shadow-md space-y-2">
+                    <h2 class="text-lg font-medium mb-4">Delivery Address</h2>
+                    
+                    {/* Check if user has a delivery address */}
+                    {(user?.DeliveryAddress && Object.keys(user.DeliveryAddress).length > 0) ? (
+                    <>
+                      <div className="delivery info border-gray-200 flex">
+                        <p className="text-base text-gray-400 font-semibold leading-4">
+                          {user.DeliveryAddress.street}
+                        </p>
+                      </div>
+                      <div className="delivery info border-gray-200 flex">
+                        <p className="text-base text-gray-400 font-semibold leading-4">
+                          {user.DeliveryAddress.city}
+                        </p>
+                      </div>
+                      <div className="delivery info border-gray-200 flex">
+                        <p className="text-base text-gray-400 font-semibold leading-4">
+                          {user.DeliveryAddress.state}
+                        </p>
+                      </div>
+                      <div className="delivery info border-gray-200  flex">
+                        <p className="text-base text-gray-400 font-semibold leading-4 ">
+                          {user.DeliveryAddress.zipCode}
+                        </p>
+                      </div>
+                    </>
+                    ) : (
+                    <Link to="/user/address"> 
+                    <button
+                        className="bg-grey text-white px-4 py-2 rounded-md mb-4">
+                        Add Delivery Address
+                      </button></Link>
+                    )}
                 </div>
                 <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-grey-light rounded-2xl drop-shadow-md space-y-6">
                     <h3 class="text-xl  font-semibold leading-5 text-black">Shipping</h3>
@@ -242,7 +261,7 @@ const Order = () => {
                             />
                             {!isValidExpirationDate && (
                               <p class="text-xs text-red-500 mt-1">
-                                Please enter a valid expiration date (MM / YY), with the month between 01 and 12 and the year between 22 and 24.
+                                Please enter a valid expiration date (MM / YY).
                               </p>
                             )}
                           </div>
