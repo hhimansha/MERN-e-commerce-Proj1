@@ -15,6 +15,12 @@ const Order = () => {
   const [isValidCardHolder, setIsValidCardHolder] = useState(true);
 
   const handlePlaceOrder = async () => {
+    // Check if the user has a delivery address
+    if (!user?.DeliveryAddress || Object.keys(user.DeliveryAddress).length === 0) {
+      alert("Please provide a delivery address.");
+      return;
+    }
+  
     // Check the validity of all input fields
     if (
       !isValidCardNumber ||
@@ -31,43 +37,43 @@ const Order = () => {
       alert("Please enter all card details.");
       return;
     }
-
+  
     // Formatting card number and expiration date
-  const formattedCardNumber = cardNumber.replace(/\D/g, "");
-  const formattedExpirationDate = expirationDate.replace(/\D/g, "");
-
-  // Rest of your code for placing the order
-  try {
-    const response = await fetch("http://localhost:9092/api/order/place", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: user._id,
-        carts,
-        cardNumber: formattedCardNumber,
-        expirationDate: formattedExpirationDate,
-        cvv,
-        cardHolder,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      console.log("Order placed successfully:", data);
-      console.log(user.DeliveryAddress)
-      // Handle success, e.g., redirect to a confirmation page
-    } else {
-      console.error("Error placing order:", data);
-      // Handle error, e.g., show an error message to the user
+    const formattedCardNumber = cardNumber.replace(/\D/g, "");
+    const formattedExpirationDate = expirationDate.replace(/\D/g, "");
+  
+    // Rest of your code for placing the order
+    try {
+      const response = await fetch("http://localhost:9092/api/order/place", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user._id,
+          carts,
+          cardNumber: formattedCardNumber,
+          expirationDate: formattedExpirationDate,
+          cvv,
+          cardHolder,
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Order placed successfully:", data);
+        // Handle success, e.g., redirect to a confirmation page
+      } else {
+        console.error("Error placing order:", data);
+        // Handle error, e.g., show an error message to the user
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+      // Handle unexpected errors
     }
-  } catch (error) {
-    console.error("Error placing order:", error);
-    // Handle unexpected errors
-  }
-};
+  };
+  
   
     useEffect(() => {
       // Retrieve cart items from local storage
