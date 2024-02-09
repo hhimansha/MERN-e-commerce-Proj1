@@ -3,12 +3,12 @@ import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import UserOrder from './UserOrder';
 
-const User = ({ successMessage }) => {
+const User = () => {
   const { user } = useAuthContext();
 
   return (
     <div className=''>
-    <main class="flex-1 md:px-20 px-4 sm:px-8 lg:pt-4 lg:px-56  flex flex-col  mx-auto">
+    <main class="flex-1 md:px-20 px-4 sm:px-8 lg:pt-4 lg:px-56  flex flex-col  mx-auto mb-10">
   <section class="bg-grey-light shadow rounded-2xl shadow-lg mt-10">
 
     <div class="md:flex border-b dark:border-gray-300 ">
@@ -79,6 +79,7 @@ const User = ({ successMessage }) => {
       
       </form>
   </section>
+  
   <div className='My-orders'>
         <UserOrder />
       </div>

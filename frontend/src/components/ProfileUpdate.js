@@ -1,7 +1,6 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import SuccessAlert from "./AlertBoxes/SuccessAlert";
 
 
 const ProfileUpdate = () => {
@@ -12,16 +11,13 @@ const ProfileUpdate = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+    
     const navigate = useNavigate();
+
   
     useEffect(() => {
       setPassword(user.password || "");
     }, [user]);
-  
-    useEffect(() => {
-      console.log("Success:", success); // Log success when it's true
-    }, [success]);
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -53,10 +49,8 @@ const ProfileUpdate = () => {
   
       if (response.ok) {
         dispatch({ type: "UPDATE_USER", payload: json });
-        setSuccess(true);
-        setTimeout(() => {
-          setSuccess(false);
-        }, 3000);
+        navigate("/user");
+
       }
     };
   
@@ -114,7 +108,7 @@ const ProfileUpdate = () => {
             </form>
             
         </div>
-        {navigate("/user")}
+
         </div>
     );
 }

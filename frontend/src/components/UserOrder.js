@@ -8,8 +8,7 @@ const UserOrder = () => {
   const { user } = useAuthContext();
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
-  
-console.log('User object:', user._id);
+  console.log('User object:', user._id);
 
   const handleClick = async (orderId) => {
     if (!user) {
@@ -38,7 +37,6 @@ console.log('User object:', user._id);
     const truncatedId = "..." + orderId.slice(-3);
     return truncatedId;
   };
-  
 
   const copyToClipboard = (text) => {
     const el = document.createElement("textarea");
@@ -50,7 +48,6 @@ console.log('User object:', user._id);
     alert("Order ID copied to clipboard: " + text);
   };
 
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -60,7 +57,7 @@ console.log('User object:', user._id);
 
         const response = await fetch(`http://localhost:9092/api/order/orders/user/${user._id}`);
         const data = await response.json();
-        forceUpdate()
+        forceUpdate();
 
         console.log('Fetched orders:', data);
 
@@ -75,9 +72,15 @@ console.log('User object:', user._id);
     };
 
     fetchOrders();
-  }, [reducerValue],[user]);
+  }, [reducerValue, user]);
 
   console.log('User Orders:', orders); // Log user orders
+
+  // Check if there are orders before rendering
+  if (orders.length === 0) {
+    return <div></div>;
+  }
+
 
   return (
     
