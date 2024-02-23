@@ -89,7 +89,7 @@ const AdminDash = () => {
             </Link>
             <Link to="/admindash/products">
               <li className="py-5 px-6 text-grey ">
-                <a href="#" className="block">
+                <a href="#" className="block font-bold">
                   Products
                 </a>
               </li>
