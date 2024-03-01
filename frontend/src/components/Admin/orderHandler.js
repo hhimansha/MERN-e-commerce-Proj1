@@ -5,9 +5,10 @@ import {useOrderContext} from '../../hooks/useOrderContext'
 
 const OrderHandler = () => {
   const [orders, setOrders] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
   const { dispatch } = useOrderContext();
   const { user } = useAuthContext();
-  const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const handleClick = async (orderId) => {
     if (!user) {
@@ -39,8 +40,10 @@ const OrderHandler = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://localhost:9092/api/order/admindash/orders');
-        forceUpdate()
+        const response = await fetch(
+          'http://localhost:9092/api/order/admindash/orders'
+        );
+        forceUpdate();
         const data = await response.json();
 
         if (response.ok) {
@@ -55,6 +58,12 @@ const OrderHandler = () => {
 
     fetchOrders();
   }, [reducerValue]);
+
+  useEffect(() => {
+    // Calculate the total price when orders change
+    const total = orders.reduce((acc, order) => acc + order.TotPrice, 0);
+    setTotalPrice(total);
+  }, [orders]);
 
   return (
     <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
@@ -113,6 +122,10 @@ const OrderHandler = () => {
       </tbody>
     </table>
   </div>
+
+  <div className="mt-4 text-lg font-semibold text-primary">
+        Total: ${totalPrice}
+      </div>
 </div>
 
   );

@@ -34,4 +34,24 @@ const orderSchema = mongoose.Schema(
   }
 );
 
+// Add a static method to the schema to calculate the grand total
+orderSchema.statics.calculateGrandTotal = async function () {
+  try {
+    const result = await this.aggregate([
+      {
+        $group: {
+          _id: null,
+          grandTotal: { $sum: "$TotPrice" },
+        },
+      },
+    ]);
+
+    return result.length > 0 ? result[0].grandTotal : 0;
+  } catch (error) {
+    console.error("Error calculating grand total:", error);
+    throw error;
+  }
+};
+
+
 module.exports = mongoose.model("Order", orderSchema);

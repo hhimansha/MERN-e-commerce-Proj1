@@ -50,4 +50,23 @@ const deleteOrder = asyncHandler(async (req, res) => {
   res.status(200).json(order);
 });
 
-module.exports = { placeOrder, getOrders, getOrder, deleteOrder };
+const getGrandTotal = asyncHandler(async (req, res) => {
+  try {
+    const result = await Order.aggregate([
+      {
+        $group: {
+          _id: null,
+          grandTotal: { $sum: '$TotPrice' },
+        },
+      },
+    ]);
+
+    res.status(200).json({ grandTotal: result.length > 0 ? result[0].grandTotal : 0 });
+  } catch (error) {
+    console.error('Error calculating grand total:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+module.exports = { placeOrder, getOrders, getOrder, deleteOrder, getGrandTotal };
