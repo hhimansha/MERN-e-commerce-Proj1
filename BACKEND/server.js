@@ -20,14 +20,6 @@ if (dotenv.error) {
 app.use(cors());
 app.use(express.json());
 
-// Add your CORS options if needed
-// const corsOptions = {
-//   origin: "http://yourfrontenddomain.com",
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
-
 app.use("/api/proteins", require("./routes/proteinRoutes"));
 app.use("/api/users", require("./routes/userRoutes")); 
 app.use("/api/order", require("./routes/orderRoutes")); 
