@@ -75,11 +75,11 @@ const Dashboard = () => {
         </div>
       </div>
       <div className='flex gap-10 mt-14'>
-      <div className="bg-white p-4 rounded shadow mb-8 w-[600px]">
+      <div className="bg-white p-4 rounded  mb-8 w-[600px]">
         <h2 className="text-xl font-semibold mb-4">Users vs Orders</h2>
         <Bar data={userOrderChartData} />
       </div>
-      <div className="bg-white p-4 rounded shadow  w-[600px]">
+      <div className="bg-white p-4 rounded   w-[600px]">
         <h2 className="text-xl font-semibold mb-4">Sales vs Orders</h2>
         <Bar data={salesOrderChartData} />
       </div>

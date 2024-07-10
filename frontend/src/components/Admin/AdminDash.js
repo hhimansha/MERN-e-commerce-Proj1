@@ -20,7 +20,7 @@ const AdminDash = () => {
           <img src={img1} className="w-48 p-5 mx-auto" alt="logo" />
           </Link>
           <ul className="text-left text-lg">
-            <Link to="/admindash">
+            <Link to="/admindash/dashboard">
               <li className="py-5 px-6 text-grey ">
                 <a href="#" className="flex font-semibold gap-4">
                   <span className=''>
@@ -61,7 +61,7 @@ const AdminDash = () => {
                   <button
                     type="button"
                     onClick={handleClick}
-                    className="px-5 py-2 text-20 text-white font-semibold rounded-full border border-black transition duration-1000 ease-in-out bg-primary"
+                    className="px-5 py-2 text-20 text-white font-semibold rounded-xl border hover:bg-black hover:text-white  hover:border-black transition duration-1000 ease-in-out bg-primary"
                   >
                     Log Out
                   </button>

@@ -117,10 +117,10 @@ function ProductPage() {
           <div key={index}>
             <section className="text-gray-700 body-font overflow-hidden bg-white">
               <div className="container px-5 py-14 mx-auto">
-                <div className="lg:w-4/5 mx-auto flex flex-wrap justify-center">
-                  <img alt="ecommerce" className="lg:w-5/12 w-full h-fit mt-10 rounded-2xl border border-gray-200"
+                <div className="lg:w-4/5 mx-auto flex gap-10 rounded-xl  flex-wrap justify-center ">
+                  <img alt="ecommerce" className="lg:w-5/12 w-full h-fit  rounded-2xl border border-gray-200"
                    src={protein.imageSrc} />
-                  <div className="lg:w-1/2 w-full lg:pl-20 lg:py-6 mt-6 lg:mt-0">
+                  <div className="lg:w-1/2 w-full p-10 lg:mt-0 rounded-xl bg-grey-light">
                     <h2 className="text-sm title-font text-gray-500 tracking-widest">{protein.company}</h2>
                     <h1 className="text-grey text-3xl title-font font-medium mb-6">{protein.title}</h1>
                     <div className="flex mb-4">

@@ -80,67 +80,75 @@ function UpdateProtein() {
       setError("Error updating Protein");
     }
   };
+
   return (
-    <div className="ml-80 max-w-96">
+    <div className="ml-[280px] max-w-screen-xl mt-6">
       <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md">
-        <h3 className="text-lg text-primary mb-4 font-semibold bg-grey">
+        <h3 className="text-lg text-grey-light mb-4 font-semibold border-b">
           Update Protein
         </h3>
-        <form
-          className="grid "
-          onSubmit={handleSubmit}
-        >
+        <form className="grid" onSubmit={handleSubmit}>
           <div className="grid">
-            <label>Title : </label>
+            <label>Title:</label>
             <input
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
-              className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
+              className="rounded-xl p-2 px-5 mb-4 border border-gray-300"
             />
           </div>
 
           <div className="grid">
-        <label>Company : </label>
-        <input
-            type="text"
-            onChange={(e) => setCompany(e.target.value)}
-            value={company}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
-        /></div>
+            <label>Company:</label>
+            <input
+              type="text"
+              onChange={(e) => setCompany(e.target.value)}
+              value={company}
+              className="rounded-xl p-2 px-5 mb-4 border border-gray-300"
+            />
+          </div>
 
+          <div className="grid">
+            <label>Description:</label>
+            <input
+              type="text"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+              className="rounded-xl p-2 px-5 mb-4 border border-gray-300"
+            />
+          </div>
 
-        <div className="grid">
-        <label>Description : </label>
-        <input
-            type="text"
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
-        /></div>
+          <div className="grid">
+            <label>Image Src:</label>
+            <input
+              type="text"
+              onChange={(e) => setImageSrc(e.target.value)}
+              value={imageSrc}
+              className="rounded-xl p-2 px-5 mb-4 border border-gray-300"
+            />
+            {imageSrc && (
+              <img
+                src={imageSrc}
+                alt="Protein"
+                className="mt-4 w-48 h-48 object-cover rounded-xl border border-gray-300"
+              />
+            )}
+          </div>
 
-        <div className="grid">
-        <label>Image Src : </label>
-        <input
-            type="text"
-            onChange={(e) => setImageSrc(e.target.value)}
-            value={imageSrc}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300`}
-        /></div>
+          <div className="grid">
+            <label>Price:</label>
+            <input
+              type="number"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+              className="rounded-xl p-2 px-5 mb-4 border border-gray-300 w-28"
+            />
+          </div>
 
-        <div className="grid">
-        <label>Price : </label>
-        <input
-            type="number"
-            onChange={(e) => setPrice(e.target.value)}
-            value={price}
-            className={`rounded-full p-2 px-5 mb-4 border border-gray-300 w-28`}
-        /></div>
-
-          <button className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-primary">
+          <button className="px-5 w-60 py-2 text-lg text-white font-semibold rounded-xl border focus:outline-none bg-primary">
             Update Protein
           </button>
-          {error && <div className="error ">{error}</div>}
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     </div>

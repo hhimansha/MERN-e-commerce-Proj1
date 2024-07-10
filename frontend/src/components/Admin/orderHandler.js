@@ -137,9 +137,8 @@ const OrderHandler = () => {
                       Rs.{order.TotPrice}
                     </td>
                     <td class="  grid gap-4 py-4 text-left text-sm text-gray-600 sm:px-3 ">
-                      <button className="py-1 px-2 text-grey-light border border-gray-500 font-semibold rounded-full bg-grey-light">Edit</button>
 
-                      <button className="py-1 px-2 text-white  font-semibold rounded-full bg-black" 
+                      <button className="py-1 px-2 text-white  font-semibold rounded-xl bg-black" 
                         onClick={() => {
                           if (window.confirm("Do you want to delete this Order?")) {
                             handleClick(order._id);

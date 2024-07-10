@@ -58,7 +58,7 @@ const ManageProteins = ({ proteins }) => {
                 <input type="name" name="search" class="h-12 w-full border-b-gray-400 bg-transparent py-4 pl-12 text-sm outline-none focus:border-b-2" placeholder="Search by Order ID, Date, Customer" />
               </form>
 
-              <Link to="/admindash/products/add"><button type="button" class="relative mr-auto inline-flex cursor-pointer items-center rounded-full border border-gray-200 bg-primary px-5 py-2 text-center text-sm font-medium text-white hover:bg-black focus:shadow sm:mr-0">
+              <Link to="/admindash/products/add"><button type="button" class="relative mr-auto inline-flex cursor-pointer items-center rounded-xl border border-gray-200 bg-primary px-5 py-2 text-center text-sm font-medium text-white hover:bg-black focus:shadow sm:mr-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
                 Add Products
               </button></Link>
@@ -107,9 +107,10 @@ const ManageProteins = ({ proteins }) => {
                       Rs.{protein.price}
                     </td>
                     <td class="  grid gap-4 py-4 text-left text-sm text-gray-600 sm:px-3 ">
-                      <button className="py-1 px-2 text-grey-light border border-gray-500 font-semibold rounded-full bg-grey-light">Edit</button>
-
-                      <button className="py-1 px-2 text-white  font-semibold rounded-full bg-black" 
+                    <Link to={`/admindash/products/update/${protein._id}`}>
+                      <button className="py-1 px-2 text-grey-light border border-gray-500 font-semibold rounded-xl bg-grey-light">Edit</button>
+                    </Link>
+                      <button className="py-1 px-2 text-white  font-semibold rounded-xl bg-black" 
                         onClick={() => {
                           if (window.confirm("Do you want to delete this protein?")) {
                             handleClick(protein._id);
