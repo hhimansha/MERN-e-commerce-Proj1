@@ -42,7 +42,7 @@ function Home() {
                 </div>
             </section>
             <div className="justify-center">
-                <div className="proteins flex justify-center flex-wrap w-11/12 mx-auto">
+                <div className="proteins flex justify-center flex-wrap w-11/12 mx-auto py-10">
                     {proteins && proteins.map((protein, index) => (
                         <ProteinDetails key={protein._id} protein={protein} index={index} />
                     ))}

@@ -118,7 +118,7 @@ function ProductPage() {
             <section className="text-gray-700 body-font overflow-hidden bg-white">
               <div className="container px-5 py-14 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap justify-center">
-                  <img alt="ecommerce" className="lg:w-5/12 w-full object-cover object-center rounded-2xl border border-gray-200"
+                  <img alt="ecommerce" className="lg:w-5/12 w-full h-fit mt-10 rounded-2xl border border-gray-200"
                    src={protein.imageSrc} />
                   <div className="lg:w-1/2 w-full lg:pl-20 lg:py-6 mt-6 lg:mt-0">
                     <h2 className="text-sm title-font text-gray-500 tracking-widest">{protein.company}</h2>
@@ -148,7 +148,7 @@ function ProductPage() {
                       </div>
                     </div>
                     <div className="grid">
-                      <span className="title-font font-medium text-2xl text-grey mb-10">${protein.price}</span>
+                      <span className="title-font font-medium text-2xl text-grey mb-10">Rs.{protein.price}</span>
                       <button
                         onClick={addToCart}
                         type="button"
