@@ -83,7 +83,7 @@ function ProductPage() {
     useEffect(() => {
       const fetchProtein = async () => {
         try {
-          const response = await fetch(`http://localhost:9092/api/proteins/admindash/products/${proteinId}`);
+          const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/proteins/admindash/products/${proteinId}`);
           const json = await response.json();
   
           if (response.ok) {

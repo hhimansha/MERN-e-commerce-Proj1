@@ -16,7 +16,7 @@ const OrderHandler = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:9092/api/order/admindash/orders/${orderId}`,
+      const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/order/admindash/orders/${orderId}`,
         {
           method: "DELETE",
           headers: {
@@ -41,7 +41,7 @@ const OrderHandler = () => {
     const fetchOrders = async () => {
       try {
         const response = await fetch(
-          'http://localhost:9092/api/order/admindash/orders'
+          'https://mern-e-commerce-proj1.onrender.com/api/order/admindash/orders'
         );
         forceUpdate();
         const data = await response.json();

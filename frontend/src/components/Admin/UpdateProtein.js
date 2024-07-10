@@ -17,7 +17,7 @@ function UpdateProtein() {
   useEffect(() => {
     const fetchProteinDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:9092/api/proteins/admindash/products/${id}`);
+        const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/proteins/admindash/products/${id}`);
         if (response.ok) {
           const json = await response.json();
           setTitle(json.title);
@@ -55,7 +55,7 @@ function UpdateProtein() {
 
     try {
       const response = await fetch(
-        `http://localhost:9092/api/proteins/admindash/products/update/${id}`,
+        `https://mern-e-commerce-proj1.onrender.com/api/proteins/admindash/products/update/${id}`,
         {
           method: "PUT",
           body: JSON.stringify(updatedProtein),

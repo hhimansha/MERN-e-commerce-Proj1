@@ -16,7 +16,7 @@ const UserOrder = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:9092/api/order/admindash/orders/${orderId}`, {
+      const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/order/admindash/orders/${orderId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -55,7 +55,7 @@ const UserOrder = () => {
           return;
         }
 
-        const response = await fetch(`http://localhost:9092/api/order/orders/user/${user._id}`);
+        const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/order/orders/user/${user._id}`);
         const data = await response.json();
         forceUpdate();
 

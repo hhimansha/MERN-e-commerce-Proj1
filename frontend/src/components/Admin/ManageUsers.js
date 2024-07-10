@@ -15,7 +15,7 @@ const ManageUsers = () => {
     }
   
     try {
-      const response = await fetch(`http://localhost:9092/api/users/admindash/users/${userId}`, {
+      const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/users/admindash/users/${userId}`, {
         method: "DELETE",
         headers: {
           'Authorization': `Bearer ${user.token}`,
@@ -39,7 +39,7 @@ const ManageUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:9092/api/users/admindash/users/");
+        const response = await fetch("https://mern-e-commerce-proj1.onrender.com/api/users/admindash/users/");
         forceUpdate();
         if (response.ok) {
           const json = await response.json();

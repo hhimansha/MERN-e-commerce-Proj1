@@ -51,7 +51,7 @@ const Order = () => {
   
     // Rest of your code for placing the order
     try {
-      const response = await fetch("http://localhost:9092/api/order/place", {
+      const response = await fetch("https://mern-e-commerce-proj1.onrender.com/api/order/place", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

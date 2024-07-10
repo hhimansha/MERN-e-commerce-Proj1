@@ -35,7 +35,7 @@ function UpdateAddressinOrder() {
       zipCode,
     };
 
-    const response = await fetch(`http://localhost:9092/api/users/user/address/${user._id}`, {
+    const response = await fetch(`https://mern-e-commerce-proj1.onrender.com/api/users/user/address/${user._id}`, {
     method: "POST",
     body: JSON.stringify(DeliveryAddress),
     headers: {

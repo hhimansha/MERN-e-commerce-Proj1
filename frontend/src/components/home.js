@@ -9,7 +9,7 @@ function Home() {
 
     useEffect(() => {
         const fetchProteins = async () => {
-            const response = await fetch('http://localhost:9092/api/proteins/');
+            const response = await fetch('https://mern-e-commerce-proj1.onrender.com/api/proteins/');
             const json = await response.json();
             if (response.ok) {
                 setProteins(json);

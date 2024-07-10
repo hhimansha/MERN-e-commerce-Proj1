@@ -30,7 +30,7 @@ const ProfileUpdate = () => {
       const updatedUser = { firstname, lastname, email };
   
       const response = await fetch(
-        `http://localhost:9092/api/users/user/update/${user._id}`,
+        `https://mern-e-commerce-proj1.onrender.com/api/users/user/update/${user._id}`,
         {
           method: "PUT",
           headers: {

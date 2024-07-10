@@ -33,7 +33,7 @@ function AddProducts() {
     const protein = { title, company, imageSrc, description, price };  
 
     const response = await fetch(
-      "http://localhost:9092/api/proteins/admindash/products",
+      "https://mern-e-commerce-proj1.onrender.com/api/proteins/admindash/products",
       {
         method: "POST",
         body: JSON.stringify(protein),
@@ -74,7 +74,7 @@ function AddProducts() {
   useEffect(() => {
     const fetchProteins = async () => {
       try {
-        const response = await fetch("http://localhost:9092/api/proteins/");
+        const response = await fetch("https://mern-e-commerce-proj1.onrender.com/api/proteins/");
         forceUpdate()
         if (response.ok) {
           const json = await response.json();
