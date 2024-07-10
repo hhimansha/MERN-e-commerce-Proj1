@@ -9,6 +9,7 @@ import Productpage from './components/productPage';
 import AdminDash from './components/Admin/AdminDash';
 import AddProducts from './components/Admin/AddProducts'
 import UpdateProtein from './components/Admin/UpdateProtein';
+import AddProductsNew from './components/Admin/AddProductsNew';
 import ManageUsers from './components/Admin/ManageUsers';
 import UserAddress from './components/UserAddress';
 import User from './components/User'
@@ -18,6 +19,7 @@ import Order from './components/Order';
 import OrderHandler from './components/Admin/orderHandler';
 import UserOrder from './components/UserOrder';
 import UpdateAddressinOrder from './components/UpdateAddressinOrder';
+import Dashboard from './components/Admin/Dashboard';
 function App() {
     const { user } = useAuthContext();
 
@@ -62,11 +64,33 @@ function App() {
                         element={user? <><HeaderPart /><Order /><Footer /></> : <Navigate to="/login" />}
                     />
                     <Route
+                        path="/admindash/dashboard"
+                        element={user?.Admin ? (
+                            <>
+                                <AdminDash />
+                                <Dashboard />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
+                    <Route
                         path="/admindash/products"
                         element={user?.Admin ? (
                             <>
                                 <AdminDash />
                                 <AddProducts />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
+                    <Route
+                        path="/admindash/products/add"
+                        element={user?.Admin ? (
+                            <>
+                                <AdminDash />
+                                <AddProductsNew />
                             </>
                         ) : (
                             <Navigate to="/" />

@@ -23,6 +23,7 @@ app.use(express.json());
 app.use("/api/proteins", require("./routes/proteinRoutes"));
 app.use("/api/users", require("./routes/userRoutes")); 
 app.use("/api/order", require("./routes/orderRoutes")); 
+app.use("/api/dashboard", require("./routes/dashboardRoutes"))
 
 
 

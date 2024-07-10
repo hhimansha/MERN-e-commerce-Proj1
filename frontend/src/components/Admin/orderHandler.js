@@ -66,68 +66,99 @@ const OrderHandler = () => {
   }, [orders]);
 
   return (
-    <div className="bg-grey-light rounded-3xl p-8 drop-shadow-md my-10">
-  <div className="overflow-x-auto">
-    <table className="w-full">
-      <thead>
-        <tr>
-          <th
-            colSpan="8"
-            className="text-lg text-primary font-semibold bg-grey mb-4 text-left"
-          >
-            Stored Proteins
-          </th>
-        </tr>
-        <tr>
-          <th className="w-1/8">Order ID</th>
-          <th className="w-1/8">User ID</th>
-          <th className="w-1/8">Image</th>
-          <th className="w-1/8">Protein Title</th>
-          <th className="w-1/8">Qty</th>
-          <th className="w-1/8">Total Price</th>
+    <div className="ml-[250px]">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap" rel="stylesheet" />
 
-        </tr>
-      </thead>
-      <tbody>
-        {orders.map((order) => (
-          <tr key={order._id} className="my-10">
-            <td>{order._id}</td>
-            <td>{order.userId}</td>
-            <td>
-              <div className="w-32 h-36">
-                <img
-                  src={order.imageSrc}
-                  alt={order.bookName}
-                  className="rounded-t-lg w-32 h-36"
-                />
-              </div>
-            </td>
-            <td>{order.bookName}</td>
-            <td>{order.qty}</td>
-            <td>{order.TotPrice}</td>
-            <td>
-              <div className="grid gap-2">
-    
-                <button
-                    onClick={() => handleClick(order._id)}
-                  className="px-5 py-2 text-lg text-white font-semibold rounded-full border focus:outline-none bg-red-500"
-                
-                >
-                  Delete
-                </button>
-              </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
+      <div class="mx-auto  max-w-screen-xl bg-white">
+        <h1 class="mt-8  ml-4 text-2xl font-bold text-gray-900">Order Management</h1>
 
-  <div className="mt-4 text-lg font-semibold text-primary">
-        Total: ${totalPrice}
       </div>
-</div>
+      <div class=" bg-gray-50">
+        <div class="mx-auto max-w-screen-xl px-2 py-4">
+          <div class="mt-4 w-full">
+            <div class="flex w-full flex-col items-center justify-between space-y-2 sm:flex-row sm:space-y-0">
+              <form class="relative flex w-full max-w-2xl items-center">
+                <svg class="absolute left-2 block h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" class=""></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" class=""></line>
+                </svg>
+                <input type="name" name="search" class="h-12 w-full border-b-gray-400 bg-transparent py-4 pl-12 text-sm outline-none focus:border-b-2" placeholder="Search by Order ID, Date, Customer" />
+              </form>
 
+              
+            </div>
+          </div>
+
+          <div class="mt-6 overflow-hidden rounded-xl bg-grey-light px-6 shadow lg:px-4">
+            <table class="min-w-full border-collapse border-spacing-y-2 border-spacing-x-2">
+              <thead class="hidden border-b lg:table-header-group">
+                <tr class="">
+                  <td class="whitespace-normal py-4 text-sm font-semibold text-gray-800 sm:px-3">
+                    Order ID
+
+                  </td>
+
+                  <td class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3">User ID</td>
+                  <td class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3">Image</td>
+                  <td class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3">Item Title</td>
+                  <td class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3">Qty</td>
+                  <td class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3">Total Price</td>
+                  <td class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3">Action</td>
+
+                </tr>
+              </thead>
+
+              <tbody class="bg-grey-light lg:border-gray-300">
+              {orders.map((order) => (
+          <tr key={order._id} className="">
+
+
+                    <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
+                    {order._id}
+
+                    </td>
+                    <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
+                    {order.userId}
+
+                    </td>
+
+                    <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell"><div className="w-32 h-36">
+                      <img
+                        src={order.imageSrc}
+                        className="rounded-t-lg w-24 h-auto rounded-xl"
+                      />
+                    </div></td>
+
+                    <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{order.proteinName}</td>
+                    <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{order.qty}</td>
+
+
+                    <td class="whitespace-no-wrap hidden py-4 text-sm  text-primary font-semibold sm:px-3 lg:table-cell">
+                      Rs.{order.TotPrice}
+                    </td>
+                    <td class="  grid gap-4 py-4 text-left text-sm text-gray-600 sm:px-3 ">
+                      <button className="py-1 px-2 text-grey-light border border-gray-500 font-semibold rounded-full bg-grey-light">Edit</button>
+
+                      <button className="py-1 px-2 text-white  font-semibold rounded-full bg-black" 
+                        onClick={() => {
+                          if (window.confirm("Do you want to delete this Order?")) {
+                            handleClick(order._id);
+                          }
+                        }}
+                        >Delete
+                      </button>
+                    </td>
+
+                  </tr>
+                ))}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
   );
 };
 
