@@ -141,7 +141,7 @@ const Order = () => {
                   <div class="flex justify-between space-x-8 items-start w-full">
                     <p class="text-base dark:text-black xl:text-lg leading-6">Unit price : {cart.price}</p>
                     <p class="text-base dark:text-black xl:text-lg leading-6 text-gray-800">Qty : {cart.qty}</p>
-                    <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">${cart.TotPrice.toFixed(2)}</p>
+                    <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">Rs.{cart.TotPrice.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -195,7 +195,7 @@ const Order = () => {
                         <p class="text-lg leading-6 text-black font-semibold ">Hima-Express Delivery<br /><span class="font-normal">Delivery with 24 Hours</span></p>
                         </div>
                     </div>
-                    <p class="text-lg font-semibold leading-6 text-black">$8.00</p>
+                    <p class="text-lg font-semibold leading-6 text-black">Rs.350</p>
                     </div>
             
                 </div>
@@ -207,7 +207,7 @@ const Order = () => {
                     <div class="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-6">
                     <div class="flex justify-between w-full">
                         <p class="text-base text-black leading-4 ">Subtotal</p>
-                        <p class="text-base text-black leading-4 ">${total.toFixed(2)}</p>
+                        <p class="text-base text-black leading-4 ">Rs.{total.toFixed(2)}</p>
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Discount <span class="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">PROTEIN</span></p>
@@ -215,12 +215,12 @@ const Order = () => {
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Shipping</p>
-                        <p class="text-base text-black leading-4 ">$8.00</p>
+                        <p class="text-base text-black leading-4 ">Rs.350</p>
                     </div>
                     </div>
                     <div class="flex justify-between items-center w-full pt-6 border-gray-200 border-b pb-6">
                         <p class="text-base text-black font-semibold leading-4 ">Total</p>
-                        <p class="text-base text-black font-semibold leading-4 ">${grandTotal.toFixed(2)}</p>
+                        <p class="text-base text-black font-semibold leading-4 ">Rs.{grandTotal.toFixed(2)}</p>
                     </div>
 
                 <h2 class="text-lg font-medium mb-6 mt-6">Payment Information</h2>
