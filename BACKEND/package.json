@@ -6,7 +6,7 @@
     "scripts": {
         "build-css": "tailwindcss build ../frontend/src/components/styles.css -o ../frontend/public/styles.css",
         "dev": "nodemon server.js",
-        "start": "cd ../frontend && npm start"
+        "start": "node serer.js"
     },
     "keywords": [],
     "author": "",
