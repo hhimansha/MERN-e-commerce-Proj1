@@ -113,7 +113,7 @@ const Cart = () => {
      
      <div className="bg-grey-light rounded-lg p-8 drop-shadow-md my-10 max-w-4xl mx-auto flex flex-wrap justify-between items-center">
        
-       <div className="font-bold text-2xl w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0 "><span className="text-gray-500 text-2xl">
+       <div className="font-bold text-2xl w-full md:w-1/2  mb-4 md:mb-0 "><span className="text-gray-500 text-2xl">
         Total Price : </span>Rs. {total.toFixed(2)}</div>
        <div className="w-full md:w-1/2 lg:w-1/3">
          <Link to='/place-order'>

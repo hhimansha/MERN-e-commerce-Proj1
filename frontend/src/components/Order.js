@@ -139,7 +139,7 @@ const Order = () => {
                     </div>
                   </div>
                   <div class="flex justify-between space-x-8 items-start w-full">
-                    <p class="text-base dark:text-black xl:text-lg leading-6">Unit price : {cart.price}</p>
+                    <p class="text-base dark:text-black xl:text-lg leading-6">Unit price : Rs.{cart.price}</p>
                     <p class="text-base dark:text-black xl:text-lg leading-6 text-gray-800">Qty : {cart.qty}</p>
                     <p class="text-base dark:text-black xl:text-lg font-semibold leading-6 text-gray-800">Rs.{cart.TotPrice.toFixed(2)}</p>
                   </div>
@@ -211,7 +211,7 @@ const Order = () => {
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Discount <span class="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">PROTEIN</span></p>
-                        <p class="text-base text-black leading-4 ">-${discounted.toFixed(2)} (40%)</p>
+                        <p class="text-base text-black leading-4 ">-Rs.{discounted.toFixed(2)} (40%)</p>
                     </div>
                     <div class="flex justify-between items-center w-full">
                         <p class="text-base text-black leading-4 ">Shipping</p>
